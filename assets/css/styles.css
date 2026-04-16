@@ -1,32 +1,34 @@
 .btn-gradient {
-  background: linear-gradient(to bottom, #287032, #2f8f32);
-  border: none;
-  color: white;
+    background: linear-gradient(to bottom, #287032, #2f8f32);
+    border: none;
+    color: white;
 }
 .btn-gradient:hover {
-  background: linear-gradient(to bottom, #9ee09e, #246f27);
+    background: linear-gradient(to bottom, #287032, #2f8f32);
+    border: none;
+    color: white;
 }
 .hr-fancy {
-  border: 0;
-  height: 2px;
-  background-image: linear-gradient(90deg, transparent, rgba(47, 143, 50, 0.9), transparent);
-  box-shadow: 0 0 10px rgba(47, 143, 50, 0.25);
-  margin: 0 auto;
-  width: 80%;
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(90deg, transparent, rgba(47, 143, 50, 0.9), transparent);
+    box-shadow: 0 0 10px rgba(47, 143, 50, 0.25);
+    margin: 0 auto;
+    width: 80%;
 }
 .xxs-text {
-  font-size: 0.75rem;
+    font-size: 0.75rem;
 }
 .radio-large {
-  width: 20px;
-  height: 20px;
-}
-.radio-large::before {
-  width: 20px;
-  height: 20px;
+    width: 20px;
+    height: 20px;
 }
 .input-formulario {
-  width: 80px;
-  height: 50px;
-  text-align: center;
+    width: 80px;
+    height: 50px;
+    text-align: center;
+}
+.input-formulario-alto {
+    height: 50px;
+    text-align: center;
 }

@@ -55,7 +55,7 @@
             </div>
 
             <!--Vista de ATAQUE-->
-            <div id="vista-ataque" class= "xxs-text">
+            <div id="vista-ataque" class= "xxs-text d-none">
                 <!-- Título -->
                 <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
                     <h1 class="m-0">ATAQUE</h1>
@@ -134,7 +134,7 @@
                             <p class="m-0">ENORME</p>
                         </div>
                     </div>
-                    <div class="row g-3 justify-content-center">
+                    <div class="row m-0 justify-content-center">
                         <div class="col-2 d-flex justify-content-center">
                             <div class="form-check">
                                 <input class="form-check-input radio-large" type="radio" name="garra/agarre" id="DIMINUTO">
@@ -165,17 +165,17 @@
                 </div>
 
                 <div class="row m-0 justify-content-center">
-                    <div class="col-3">
+                    <div class="col-3 d-flex justify-content-center">
                         <input id="dadosInput" type="number" class="form-control xxs-text input-formulario" placeholder="DADOS">
                     </div>
-                    <div class="col-3">
-                        <input id="bonifPosInput" type="number" class="form-control xxs-text input-formulario"  placeholder="BONIF.+">
+                    <div class="col-3 d-flex justify-content-center">
+                        <input id="bonifPosInput" type="number" class="form-control xxs-text input-formulario-alto" placeholder="BONIF.+">
                     </div>
-                    <div class="col-3">
-                        <input id="bonifNegInput" type="number" class="form-control xxs-text input-formulario"  placeholder="BONIF.-">
+                    <div class="col-3 d-flex justify-content-center">
+                        <input id="bonifNegInput" type="number" class="form-control xxs-text input-formulario-alto" placeholder="BONIF.-">
                     </div>
-                    <div class="col-3">
-                        <button id="clearInputsBtn" type="button" class="btn btn-gradient fw-bold input-formulario xxs-text">LIMPIAR</button>
+                    <div class="col-3 d-flex justify-content-center">
+                        <button id="clearInputsBtn" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text">LIMPIAR</button>
                     </div>
                 </div>
 
@@ -229,7 +229,7 @@
                 <hr class="hr-fancy mt-2 mb-2">
 
                 <!-- 4 CHECKBOXES 2 POR FILA-->
-                 <div class="row g-3 justify-content-center text-center">
+                <div class="row g-3 justify-content-center text-center">
                     <div class="col-3 d-flex justify-content-center align-items-center">
                         <p class="m-0">FLANCO +15</p>
                     </div>
@@ -268,14 +268,591 @@
 
                 <!-- Botón de calcular-->
                 <div class="d-flex justify-content-center mt-4">
-                    <button class="btn btn-gradient fw-bold" style="padding: 15px 40px; white-space: nowrap;">CALCULAR</button>
+                    <button id="ataque_calcular" class="btn btn-gradient fw-bold" style="padding: 15px 40px; white-space: nowrap;">CALCULAR</button>
+                </div>
+            </div>
+
+            <!--Vista de Hechizos-->
+            <div id="vista-hechizo" class= "xxs-text d-none">
+                <!-- Título -->
+                <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
+                    <h1 class="m-0">HECHIZO</h1>
+                </div>
+
+                <div class="row m-0 justify-content-center text-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">BASICO</p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">DIRIGIDO</p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">BOLA</p>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="basico">
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="dirigido">
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="bola">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+                
+                <div class="row m-0 justify-content-center text-center">
+                    <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">ESENCIA</p>
+                    </div>
+                    <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">CANALIZACIÓN</p>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-6 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_lanzamiento" id="esencia">
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_lanzamiento" id="canalizacion">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+
+                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100%;">
+                    <span><b>LANZADOR</b></span>
+                </div>
+                <div class="row m-0 justify-content-center text-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">CORAZA/MALLA</p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">CUERO</p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">S.A.</p>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="lanzador_coraza">
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="lanzador_cuero">
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="lanzador_sa">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center mb-3 mt-3" style="height: 100%;">
+                    <span><b>RECEPTOR</b></span>
+                </div>
+                <div class="row m-0 justify-content-center text-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">CORAZA/MALLA</p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">CUERO</p>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">S.A.</p>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="receptor_coraza">
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="receptor_cuero">
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="receptor_sa">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+
+                <div class="d-flex justify-content-center align-items-center mb-3 mt-3" style="height: 100%;">
+                    <span><b>DADOS</b></span>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <input id="dados_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Lanzador">
+                    </div>
+                    <div class="col-6">
+                        <input id="dados_objetivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Objetivo">
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-4">
+                        <input id="nivel_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Lanzador">
+                    </div>
+                    <div class="col-4">
+                        <input id="nivel_receptor" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Receptor">
+                    </div>
+                    <div class="col-4">
+                        <input id="nivel_hechizo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Hechizo">
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <input id="bo_hechizo_basico" type="number" class="form-control xxs-text input-formulario-alto" placeholder="BO Hechizo Básico">
+                    </div>
+                    <div class="col-6">
+                        <input id="bonificacion_resistencia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación Resistencia">
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <input id="bonificador_positivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Positivo">
+                    </div>
+                    <div class="col-6">
+                        <input id="bonificador_negativo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Negativo">
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-4">
+                        <input id="asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos de Prep.">
+                    </div>
+                    <div class="col-4">
+                        <input id="distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <button id="boton_limpiar_hechizos" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
+                    </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+
+                <div class="row g-3 justify-content-center text-center">
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <p class="m-0">Blanco estático +10</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <p class="m-0">Blanco voluntario -50</p>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="checkbox" id="hechizo_blanco_estatico">
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="checkbox" id="hechizo_blanco_voluntario">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+
+                <!-- Botón de calcular-->
+                <div class="d-flex justify-content-center mt-4 mb-4">
+                    <button id="hechizo_calcular" class="btn btn-gradient fw-bold" style="padding: 15px 40px; white-space: nowrap;">CALCULAR</button>
+                </div>
+
+            </div>
+
+            <!--Vista de Resistencias-->
+            <div id="vista-resistencia" class= "xxs-text d-none">
+                <!-- Título -->
+                <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
+                    <h1 class="m-0">TIRADA DE RESISTENCIA</h1>
+                </div>
+                
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-12">
+                        <input id="resistencia_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <input id="nivel_origen_resistencia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel de Origen">
+                    </div>
+                    <div class="col-6">
+                        <input id="nivel_receptor_resistencia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del Receptor">
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-4">
+                        <input id="bonificacion_resistencia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación">
+                    </div>
+                    <div class="col-4">
+                        <input id="otra_bonificacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Otros Bonif.">
+                    </div>
+                    <div class="col-4">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center text-center">
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <p class="m-0">Blanco voluntario -50</p>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input id="resistencia_blanco_voluntario" class="form-check-input radio-large" type="checkbox">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de calcular-->
+                <div class="d-flex justify-content-center mt-4 mb-4">
+                    <button id="resistencia_calcular" class="btn btn-gradient fw-bold" style="padding: 15px 40px; white-space: nowrap;">CALCULAR</button>
+                </div>
+
+            </div>
+
+            <!--Vista de crítico-->
+            <div id="vista-critico" class= "xxs-text">
+                <!-- Título -->
+                <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
+                    <h1 class="m-0">CRÍTICO</h1>
+                </div>
+                
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <input id="dado_critico" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                    </div>
+                    <div class="col-6">
+                        <button id="boton_limpiar_critico" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
+                    </div>
+                </div>
+
+                <div class="row m-0">
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">T</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">A</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">B</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">C</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">D</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">E</p>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center">
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_t">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_a">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_b">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_c">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_d">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_e">
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+
+                <div class="row m-0">
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">CALOR</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">FRIO</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">ELECT.</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">IMPACTO</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">APLAST.</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">TAJO</p>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center mb-3">
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="calor">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="frio">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="electrico">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="impacto">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="aplastamiento">
+                    </div>
+                  </div>
+                  <div class="col-2 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="tajo">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row m-0 justify-content-center">
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">PERF.</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">DESEQ.</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">PRESA</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">FISICO GC</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">MAGICO GC</p>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center">
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="perforante">
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="desequilibrante">
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="presa">
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="fisico_gc">
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="magico_gc">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+
+                <div id="critico_tipo_gc" class="d-none">
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">NORMAL</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">MAGICA</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">MITHRIL</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">SAGRADA</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">EXTERMINADORA</p>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="normal">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="magica">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="mithril">
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="sagrada">
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="exterminadora">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                </div>
+
+            
+                <!-- Botón de calcular-->
+                <div class="d-flex justify-content-center mt-4 mb-4">
+                    <button id="critico_calcular" class="btn btn-gradient fw-bold" style="padding: 15px 40px; white-space: nowrap;">CALCULAR</button>
+                </div>
+            </div>
+
+            <div id="vista-pifia" class="xxs-text d-none">
+                <!-- Título -->
+                <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
+                    <h1 class="m-0">PIFIA</h1>
+                </div>
+
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <input id="dado_pifia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dado Pifia">
+                    </div>
+                    <div class="col-6">
+                        <button id="boton_limpiar_pifia" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">Arma empuñada</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">Arma proyectil</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">Hechizo</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">MM</p>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_accion_pifia" id="arma_empunada_pifia">
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_accion_pifia" id="arma_proyectil_pifia">
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_accion_pifia" id="hechizo_pifia">
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_accion_pifia" id="mm_pifia">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr-fancy mt-2 mb-2">
+
+                <div class="row m-0">
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">T</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">A</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">B</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <p class="m-0">C</p>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center">
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_t">
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_a">
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_b">
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_c">
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
         </div>
-
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script type="module" src="assets/js/app.js"></script>
     </body>
