@@ -1,10 +1,10 @@
 .btn-gradient {
-    background: linear-gradient(to bottom, #287032, #2f8f32);
+    background: linear-gradient(to bottom, #14441a, #2f8f32);
     border: none;
     color: white;
 }
 .btn-gradient:hover {
-    background: linear-gradient(to bottom, #287032, #2f8f32);
+    background: linear-gradient(to bottom, #14441a, #2f8f32);
     border: none;
     color: white;
 }
@@ -31,4 +31,16 @@
 .input-formulario-alto {
     height: 50px;
     text-align: center;
+}
+body {
+    height: 100vh;
+    background-image: url('../img/fondos/fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#navbar {
+    background-color: rgba(134, 72, 1, 0.6) !important;
+}
+.text-white {
+    color: white !important;
 }
