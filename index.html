@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calculadora - EDLA</title>
+        <title>Calculadora - ESDLA</title>
 
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="assets/img/logos/logo.png">
@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
                     <img src="assets/img/logos/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
-                    <a class="navbar-brand text-white" href="#"><b>Calculadora - EDLA</b></a>
+                    <a class="navbar-brand text-white" href="#"><b>Calculadora - ESDLA</b></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,17 +44,40 @@
 
             <!--Vista del menú-->
             <div id="menu-principal">
-                <h1 class="text-white">Calculadora - EDLA</h1>
-                <p class="text-white">Esta aplicación te permite calcular tus tiradas de dados en el manual de EDLA 2ª Edición.</p>
-
+                <!-- Título -->
+                <div class="mb-4 d-flex flex-column align-items-center">
+                    <img src="assets/img/varios/inicio_foto.png" alt="Logo" width="250" height="250" class="d-inline-block align-text-top">
+                </div>
+                
                 <!--Botones de acción-->
-                <div class="d-flex flex-column gap-3 mt-4">
-                    <button id="rollDiceBtn" class="btn btn-gradient fw-bold" style="padding: 20px;">ATAQUE</button>
-                    <button id="viewHistoryBtn" class="btn btn-secondary btn-gradient fw-bold" style="padding: 20px;">HECHIZO</button>
-                    <button id="settingsBtn" class="btn btn-secondary btn-gradient fw-bold" style="padding: 20px;">CRÍTICO</button>
-                    <button id="settingsBtn" class="btn btn-secondary btn-gradient fw-bold" style="padding: 20px;">PIFIA</button>
-                    <button id="settingsBtn" class="btn btn-secondary btn-gradient fw-bold" style="padding: 20px;">(MM) MANIOBRA DE MOVIMIENTO</button>
-                    <button id="settingsBtn" class="btn btn-secondary btn-gradient fw-bold" style="padding: 20px;">(ME) MANIOBRA ESTÁTICA</button>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">ATAQUE</button>
+                    </div>
+                    <div class="col-6">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">HECHIZO</button>
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">CRÍTICO</button>
+                    </div>
+                    <div class="col-6">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">PIFIA</button>
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">ME</button>
+                    </div>
+                    <div class="col-6">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">MM</button>
+                    </div>
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-12">
+                        <button id="boton_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">TIRADA DE RESISTENCIA</button>
+                    </div>
                 </div>
             </div>
 
