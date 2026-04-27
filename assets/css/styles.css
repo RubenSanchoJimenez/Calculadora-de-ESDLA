@@ -11,8 +11,8 @@
 .hr-fancy {
     border: 0;
     height: 2px;
-    background-image: linear-gradient(90deg, transparent, rgba(47, 143, 50, 0.9), transparent);
-    box-shadow: 0 0 10px rgba(47, 143, 50, 0.25);
+    background-image: linear-gradient(90deg, transparent, rgb(255, 255, 255), transparent);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
     width: 80%;
 }
@@ -33,10 +33,26 @@
     text-align: center;
 }
 body {
+    position: relative;
     height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
     background-image: url('../img/fondos/fondo.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(0);
+    transform: scale(1.05);
+    z-index: -1;
+    transition: filter 0.2s ease;
+}
+body.con-fondo-borroso::before {
+    filter: blur(6px);
 }
 #navbar {
     background-color: rgba(134, 72, 1, 0.6) !important;
@@ -46,4 +62,8 @@ body {
 }
 #menu-principal button {
     height: 80px;
+}
+p {
+    color: white;
+    font-weight: bold;
 }
