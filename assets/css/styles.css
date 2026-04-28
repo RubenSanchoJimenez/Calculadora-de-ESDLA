@@ -67,3 +67,14 @@ p {
     color: white;
     font-weight: bold;
 }
+.texto_resultado {
+    height: 40px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+}

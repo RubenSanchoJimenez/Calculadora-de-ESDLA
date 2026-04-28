@@ -2,10 +2,14 @@ export const ataque = {
     init() {
         registrarVisibilidadTamanios();
         registrarBotonLimpiar();
+        registrarBotonCalcular();
     }
 };
 
+const vistaAtaque = document.getElementById("vista-ataque");
 const radiosAtaque = document.querySelectorAll('input[name="ataque"]');
+const radiosTamanio = document.querySelectorAll('input[name="garra/agarre"]');
+const radiosArmadura = document.querySelectorAll('input[name="armadura"]');
 const ataqueGarra = document.getElementById("ataque_garra");
 const ataqueAgarre = document.getElementById("ataque_agarre");
 const ataqueTamanios = document.getElementById("ataque_tamanios");
@@ -13,6 +17,50 @@ const btnAtaqueLimpiar = document.getElementById("btn_ataque_limpiar");
 const btnAtaqueDados = document.getElementById("btn_ataque_dados");
 const btnAtaqueBonificadorPos = document.getElementById("btn_ataque_bonificador_pos");
 const btnAtaqueBonificadorNeg = document.getElementById("btn_ataque_bonificador_neg");
+const ataqueTextoResultado = document.getElementById("ataque_texto_resultado");
+const btnAtaqueCalcular = vistaAtaque?.querySelector("#ataque_calcular");
+const modificadoresSituacionales = [
+    { id: "ataque_flanco", valor: 15 },
+    { id: "ataque_espalda", valor: 20 },
+    { id: "ataque_sorpresa", valor: 20 },
+    { id: "ataque_aturdido", valor: 20 }
+];
+
+const tablasAtaque = {
+    ataque_filo: "ataque_filo.json",
+    ataque_contundente: "ataque_contundente.json",
+    ataque_2manos: "ataque_2manos.json",
+    ataque_proyectil: "ataque_proyectil.json",
+    ataque_garra: "ataque_garras.json",
+    ataque_agarre: "ataque_agarrar.json"
+};
+
+const columnasArmadura = {
+    ataque_coraza: "coraza",
+    ataque_malla: "cota_de_malla",
+    ataque_ce: "cuero_endurecido",
+    ataque_cuero: "cuero",
+    ataque_sa: "sin_armadura"
+};
+
+const maximosPorTamanio = {
+    ataque_garra: {
+        ataque_diminuto: 85,
+        ataque_pequeno: 105,
+        ataque_mediano: 120,
+        ataque_grande: 135,
+        ataque_enorme: 150
+    },
+    ataque_agarre: {
+        ataque_diminuto: 85,
+        ataque_pequeno: 105,
+        ataque_mediano: 120,
+        ataque_grande: 135,
+        ataque_enorme: 150
+    }
+};
+
+const cacheTablas = new Map();
 
 function registrarVisibilidadTamanios() {
     if (!ataqueTamanios || radiosAtaque.length === 0) {
@@ -41,8 +89,166 @@ function registrarBotonLimpiar() {
     });
 }
 
+function registrarBotonCalcular() {
+    if (!btnAtaqueCalcular) {
+        return;
+    }
+
+    btnAtaqueCalcular.addEventListener("click", async () => {
+        try {
+            const seleccion = obtenerSeleccionAtaque();
+
+            if (!seleccion.tipoAtaque) {
+                mostrarResultadoAtaque("Selecciona un tipo de ataque.");
+                return;
+            }
+
+            if (!seleccion.armadura) {
+                mostrarResultadoAtaque("Selecciona una armadura.");
+                return;
+            }
+
+            if (seleccion.requiereTamanio && !seleccion.tamanio) {
+                mostrarResultadoAtaque("Selecciona un tamaño para garra o agarre.");
+                return;
+            }
+
+            if (!Number.isFinite(seleccion.total)) {
+                mostrarResultadoAtaque("Introduce una tirada de dados válida.");
+                return;
+            }
+
+            const totalConsulta = aplicarMaximoPorTamanio(seleccion);
+            const tabla = await cargarTablaAtaque(seleccion.tipoAtaque);
+            const tramo =
+                tabla.find((fila) => totalConsulta >= fila.min && totalConsulta <= fila.max) ||
+                (totalConsulta > tabla[tabla.length - 1]?.max ? tabla[tabla.length - 1] : null);
+
+            if (!tramo) {
+                mostrarResultadoAtaque(`No existe resultado para una tirada total de ${seleccion.total}.`);
+                return;
+            }
+
+            const resultado = tramo[seleccion.armadura];
+            if (typeof resultado === "undefined") {
+                mostrarResultadoAtaque("No hay resultado para la combinación seleccionada.");
+                return;
+            }
+
+            const textoTotal =
+                totalConsulta !== seleccion.total
+                    ? `Total ${seleccion.total} (máx. ${seleccion.tamanioTexto}: ${totalConsulta})`
+                    : `Total ${seleccion.total}`;
+
+            mostrarResultadoAtaque(`${textoTotal}: ${resultado}`);
+        } catch (error) {
+            console.error(error);
+            mostrarResultadoAtaque("No se pudo calcular el ataque.");
+        }
+    });
+}
+
 function limpiarCamposAtaque() {
     btnAtaqueDados.value = "";
     btnAtaqueBonificadorPos.value = "";
     btnAtaqueBonificadorNeg.value = "";
+    ataqueTextoResultado?.classList.add("d-none");
+    ataqueTextoResultado.textContent = "";
+
+    radiosAtaque.forEach((radio) => {
+        radio.checked = false;
+    });
+
+    radiosTamanio.forEach((radio) => {
+        radio.checked = false;
+    });
+
+    radiosArmadura.forEach((radio) => {
+        radio.checked = false;
+    });
+
+    modificadoresSituacionales.forEach(({ id }) => {
+        const checkbox = document.getElementById(id);
+        if (checkbox) {
+            checkbox.checked = false;
+        }
+    });
+
+    actualizarVisibilidadTamanios();
+}
+
+function obtenerSeleccionAtaque() {
+    const tipoAtaque = Array.from(radiosAtaque).find((radio) => radio.checked)?.id ?? null;
+    const armaduraId = Array.from(radiosArmadura).find((radio) => radio.checked)?.id ?? null;
+    const tamanio = Array.from(radiosTamanio).find((radio) => radio.checked)?.id ?? null;
+    const dadosTexto = btnAtaqueDados?.value?.trim() ?? "";
+    const bonificadorPositivoTexto = btnAtaqueBonificadorPos?.value?.trim() ?? "";
+    const bonificadorNegativoTexto = btnAtaqueBonificadorNeg?.value?.trim() ?? "";
+    const dados = dadosTexto === "" ? Number.NaN : Number(dadosTexto);
+    const bonificadorPositivo = bonificadorPositivoTexto === "" ? 0 : Number(bonificadorPositivoTexto);
+    const bonificadorNegativo = bonificadorNegativoTexto === "" ? 0 : Number(bonificadorNegativoTexto);
+    const bonificadoresSituacionales = modificadoresSituacionales.reduce((total, { id, valor }) => {
+        const checkbox = document.getElementById(id);
+        return total + (checkbox?.checked ? valor : 0);
+    }, 0);
+
+    return {
+        tipoAtaque,
+        armadura: armaduraId ? columnasArmadura[armaduraId] : null,
+        tamanio,
+        tamanioTexto: obtenerTextoTamanio(tamanio),
+        requiereTamanio: tipoAtaque === "ataque_garra" || tipoAtaque === "ataque_agarre",
+        total: dados + bonificadorPositivo - bonificadorNegativo + bonificadoresSituacionales
+    };
+}
+
+function aplicarMaximoPorTamanio(seleccion) {
+    if (!seleccion.requiereTamanio || !seleccion.tamanio) {
+        return seleccion.total;
+    }
+
+    const maximo = maximosPorTamanio[seleccion.tipoAtaque]?.[seleccion.tamanio];
+    return typeof maximo === "number" ? Math.min(seleccion.total, maximo) : seleccion.total;
+}
+
+function obtenerTextoTamanio(tamanio) {
+    const textos = {
+        ataque_diminuto: "diminuto",
+        ataque_pequeno: "pequeño",
+        ataque_mediano: "mediano",
+        ataque_grande: "grande",
+        ataque_enorme: "enorme"
+    };
+
+    return textos[tamanio] ?? "";
+}
+
+async function cargarTablaAtaque(tipoAtaque) {
+    const nombreArchivo = tablasAtaque[tipoAtaque];
+
+    if (!nombreArchivo) {
+        throw new Error(`No hay tabla configurada para ${tipoAtaque}.`);
+    }
+
+    if (!cacheTablas.has(nombreArchivo)) {
+        const rutaTabla = new URL(`../../tablas/ataque/${nombreArchivo}`, import.meta.url);
+        const respuesta = await fetch(rutaTabla);
+
+        if (!respuesta.ok) {
+            throw new Error(`No se pudo cargar la tabla ${nombreArchivo}.`);
+        }
+
+        cacheTablas.set(nombreArchivo, await respuesta.json());
+    }
+
+    return cacheTablas.get(nombreArchivo);
+}
+
+function mostrarResultadoAtaque(texto) {
+    if (!ataqueTextoResultado) {
+        return;
+    }
+
+    ataqueTextoResultado.textContent = texto;
+    ataqueTextoResultado.classList.remove("d-none");
 }

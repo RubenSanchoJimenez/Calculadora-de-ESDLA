@@ -1,0 +1,28 @@
+[
+  {
+    "min": 1,
+    "max": 8,
+    "coraza": "Posible pifia",
+    "cota_de_malla": "Posible pifia",
+    "cuero_endurecido": "Posible pifia",
+    "cuero": "Posible pifia",
+    "sin_armadura": "Posible pifia"
+  },
+  { "min": 9, "max": 70, "coraza": 0, "cota_de_malla": 0, "cuero_endurecido": 0, "cuero": 0, "sin_armadura": 0 },
+  { "min": 71, "max": 75, "coraza": 1, "cota_de_malla": 0, "cuero_endurecido": 0, "cuero": 0, "sin_armadura": 0 },
+  { "min": 76, "max": 80, "coraza": 2, "cota_de_malla": 2, "cuero_endurecido": 0, "cuero": 4, "sin_armadura": 0 },
+  { "min": 81, "max": 85, "coraza": 3, "cota_de_malla": 4, "cuero_endurecido": 3, "cuero": 6, "sin_armadura": 0 },
+  { "min": 86, "max": 90, "coraza": 4, "cota_de_malla": 6, "cuero_endurecido": 5, "cuero": "8A", "sin_armadura": 0 },
+  { "min": 91, "max": 95, "coraza": 5, "cota_de_malla": 7, "cuero_endurecido": "7A", "cuero": "10A", "sin_armadura": "8A" },
+  { "min": 96, "max": 100, "coraza": 6, "cota_de_malla": "8A", "cuero_endurecido": "9A", "cuero": "12B", "sin_armadura": "10B" },
+  { "min": 101, "max": 105, "coraza": 7, "cota_de_malla": "10A", "cuero_endurecido": "10B", "cuero": "13B", "sin_armadura": "11C" },
+  { "min": 106, "max": 110, "coraza": "8A", "cota_de_malla": "13B", "cuero_endurecido": "12B", "cuero": "14B", "sin_armadura": "13C" },
+  { "min": 111, "max": 115, "coraza": "9A", "cota_de_malla": "14B", "cuero_endurecido": "13B", "cuero": "16C", "sin_armadura": "15C" },
+  { "min": 116, "max": 120, "coraza": "10A", "cota_de_malla": "16B", "cuero_endurecido": "15C", "cuero": "17C", "sin_armadura": "16D" },
+  { "min": 121, "max": 125, "coraza": "11B", "cota_de_malla": "17C", "cuero_endurecido": "17C", "cuero": "19D", "sin_armadura": "18D" },
+  { "min": 126, "max": 130, "coraza": "11B", "cota_de_malla": "19C", "cuero_endurecido": "19D", "cuero": "20D", "sin_armadura": "20D" },
+  { "min": 131, "max": 135, "coraza": "12C", "cota_de_malla": "20D", "cuero_endurecido": "21D", "cuero": "22D", "sin_armadura": "22E" },
+  { "min": 136, "max": 140, "coraza": "13C", "cota_de_malla": "22D", "cuero_endurecido": "23D", "cuero": "23E", "sin_armadura": "23E" },
+  { "min": 141, "max": 145, "coraza": "14D", "cota_de_malla": "23E", "cuero_endurecido": "25E", "cuero": "25E", "sin_armadura": "25E" },
+  { "min": 146, "max": 150, "coraza": "15E", "cota_de_malla": "25E", "cuero_endurecido": "26E", "cuero": "26E", "sin_armadura": "27E" }
+]
