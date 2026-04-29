@@ -153,7 +153,7 @@ async function calcularHechizoBasico() {
     const distancia = leerNumeroObligatorio(document.getElementById("hechizo_distancia"));
 
     if (!tipoLanzamiento) {
-        mostrarResultadoHechizo("Selecciona esencia o canalizaciÃ³n.");
+        mostrarResultadoHechizo("Selecciona esencia o canalizacion.");
         return;
     }
 
@@ -191,7 +191,7 @@ async function calcularHechizoBasico() {
             distancia
         ])
     ) {
-        mostrarResultadoHechizo("Completa los campos numÃ©ricos obligatorios del hechizo bÃ¡sico.");
+        mostrarResultadoHechizo("Completa los campos numericos obligatorios del hechizo basico.");
         return;
     }
 
@@ -217,7 +217,7 @@ async function calcularHechizoBasico() {
     const modificadorTabla = fila?.[columna];
 
     if (typeof modificadorTabla === "undefined") {
-        mostrarResultadoHechizo("No se encontrÃ³ el resultado del hechizo bÃ¡sico.");
+        mostrarResultadoHechizo("No se encontro el resultado del hechizo basico.");
         return;
     }
 
@@ -264,7 +264,7 @@ async function calcularHechizoDirigido() {
     }
 
     if (!sonNumerosValidos([dados, asaltos, distancia])) {
-        mostrarResultadoHechizo("Completa los campos numÃ©ricos obligatorios del hechizo dirigido.");
+        mostrarResultadoHechizo("Completa los campos numericos obligatorios del hechizo dirigido.");
         return;
     }
 
@@ -285,7 +285,7 @@ async function calcularHechizoDirigido() {
     const resultado = fila?.[columnasImpacto[armaduraId]];
 
     if (typeof resultado === "undefined") {
-        mostrarResultadoHechizo("No se encontrÃ³ el resultado del hechizo dirigido.");
+        mostrarResultadoHechizo("No se encontro el resultado del hechizo dirigido.");
         return;
     }
 
@@ -297,7 +297,7 @@ async function calcularHechizoDirigido() {
     }
 
     const textoTotal =
-        tiradaCapada !== tirada ? `total ${tirada} (mÃ¡x. ${tiradaCapada})` : `total ${tirada}`;
+        tiradaCapada !== tirada ? `total ${tirada} (max. ${tiradaCapada})` : `total ${tirada}`;
 
     const textoResultado = `Hechizo dirigido: ${textoTotal}, resultado ${resultado}.`;
     mostrarResultadoHechizo(textoResultado);
@@ -325,7 +325,7 @@ async function calcularHechizoBola() {
     }
 
     if (!sonNumerosValidos([dados, asaltos, distancia])) {
-        mostrarResultadoHechizo("Completa los campos numÃ©ricos obligatorios del hechizo de bola.");
+        mostrarResultadoHechizo("Completa los campos numericos obligatorios del hechizo de bola.");
         return;
     }
 
@@ -343,7 +343,7 @@ async function calcularHechizoBola() {
     const resultado = fila?.[columnasImpacto[armaduraId]];
 
     if (typeof resultado === "undefined") {
-        mostrarResultadoHechizo("No se encontrÃ³ el resultado del hechizo de bola.");
+        mostrarResultadoHechizo("No se encontro el resultado del hechizo de bola.");
         return;
     }
 

@@ -19,7 +19,8 @@ if ($duplicatedIds) {
 $bannedPatterns = @(
     'name="armadura"',
     'id="vita-maniobra-movimiento"',
-    'experiacia_nivel.json'
+    'experiacia_nivel.json',
+    'README.markdown'
 )
 
 foreach ($pattern in $bannedPatterns) {
@@ -34,6 +35,16 @@ foreach ($file in $sourceFiles) {
     foreach ($pattern in $bannedPatterns) {
         if ($source.Contains($pattern)) {
             throw "Patron obsoleto en $($file.FullName): $pattern"
+        }
+    }
+}
+
+$readmePath = Join-Path $Root "README.md"
+if (Test-Path $readmePath) {
+    $readme = Get-Content $readmePath -Raw
+    foreach ($pattern in $bannedPatterns) {
+        if ($readme.Contains($pattern)) {
+            throw "Patron obsoleto en README.md: $pattern"
         }
     }
 }
