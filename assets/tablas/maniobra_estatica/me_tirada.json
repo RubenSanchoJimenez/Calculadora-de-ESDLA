@@ -6,60 +6,60 @@
     "influencia_interaccion": "Error Garrafal: Tu descarado intento de coacción repugna a la audiencia. Deciden hacer lo contrario de lo que tú intentabas que hiciesen. Hasta que no se produzca un cambio en las circunstancias, fracasarán todos tus intentos de influencia.",
     "desactivar_trampas_cerraduras": "Error Garrafal: Si estás abriendo una cerradura, se te rompe la ganzúa, que queda atascada en la cerradura, impidiendo abrirla hasta que sea extraído el trozo de herramienta. Cualquier trampa se disparará.",
     "leer_runas_usar_objetos": "Error Garrafal: Las capacidades o hechizos que se encuentran en el papel de runas o en el objeto se activan y se dirigen contra ti. Las runas del papel desaparecerán y no podrás usar nunca los hechizos o capacidades contenidas en el objeto.",
-    "percepcion_rastrear": "Error Garrafal: No sólo no consigues ninguna información válida, sino que obtienes información falsa debido a un juicio erróneo o por fijarte en los detalles equivocados. Nunca podrás volver a intentar sobre el mismo tema y en la misma zona."
+    "percepcion_rastrear": "Error Garrafal: No sólo no consigues ninguna información válida, sino que obtienes información falsa debido a un juicio erróneo o por fijarte en los detalles equivocados. Nunca podrás volver a intentarlo sobre el mismo tema y en la misma zona."
   },
   {
     "min": -25,
     "max": 4,
-    "general": "Fracaso Absoluto: Tu total incompetencia produce un lapsus mental. Cualquier maniobra estática que intentes durante los siguientes diez minutos será un fracaso.",
-    "influencia_interaccion": "Fracaso Absoluto: Tu audiencia te rechaza, lo que te hace perder la confianza y tu autoridad. Cualquier intento de influencia durante la siguiente hora resultará en fracaso.",
-    "desactivar_trampas_cerraduras": "Fracaso Absoluto: Te has bloqueado mentalmente con esta cerradura/trampa y fracasarás automáticamente en cualquier otro intento de abrirla o desactivarla. Existe un 50% de que las trampas se disparen.",
-    "leer_runas_usar_objetos": "Fracaso Absoluto: Tu mente se bloquea con este objeto/papel de runas y fracasarás automáticamente en futuros intentos de usarlo o leerlo. Existe un 50% de que un hechizo se active.",
-    "percepcion_rastrear": "Fracaso Absoluto: La confusión te causa un lapsus mental. Esta tirada y todas las tiradas de percepción realizadas durante los siguientes diez minutos resultarán en fracaso."
+    "general": "Fracaso Absoluto: Tu total incompetencia produce un lapsus mental. Cualquier maniobra estática que intentes durante los siguientes diez minutos (60 asaltos) será un fracaso (ver 05-75 más abajo).",
+    "influencia_interaccion": "Fracaso Absoluto: Tu audiencia te rechaza, lo que te hace perder la confianza y tu autoridad. Cualquier intento de influencia durante la siguiente hora resultará en fracaso (ver 05-75 más abajo).",
+    "desactivar_trampas_cerraduras": "Fracaso Absoluto: Te has bloqueado mentalmente con esta cerradura/trampa y fracasarás automáticamente en cualquier otro intento de abrirla/desactivarla. Existe un 50% de que las trampas se disparen. Incluye el abrir una cerradura que tenga una trampa.",
+    "leer_runas_usar_objetos": "Fracaso Absoluto: Tu mente se bloquea con este objeto/papel de runas y fracasarás automáticamente en futuros intentos de usarlo o leerlo. Existe una probabilidad del 50% de que un hechizo se active. (incluye el intentar usar un objeto que contenga un hechizo)",
+    "percepcion_rastrear": "Fracaso Absoluto: La confusión te causa un lapsus mental. Esta tirada de percepción y todas las tiradas de percepción realizadas durante los siguientes 10 minutos (60 asaltos) resultarán en fracaso (ver 05-75 más abajo)."
   },
   {
     "min": 5,
     "max": 75,
-    "general": "Fracaso: Has fallado. No podrás intentar la misma maniobra estática en el mismo sitio durante el día.",
-    "influencia_interaccion": "Fracaso: Has fallado. Tu audiencia no será receptiva a ninguno de tus intentos de influenciarla, al menos durante un día.",
-    "desactivar_trampas_cerraduras": "Fracaso: Has fallado. No se te ocurre ninguna idea más sobre cómo abrir/desactivar esta cerradura/trampa. Tras 24 horas podrás volver a intentarlo.",
+    "general": "Fracaso: Has fallado. No podrás intentar la misma maniobra estática en el mismo sitio durante 1 día.",
+    "influencia_interaccion": "Fracaso: Has fallado. Tu audiencia no será receptiva a ninguno de tus intentos de influenciarla, al menos durante 1 día.",
+    "desactivar_trampas_cerraduras": "Fracaso: Has fallado. No se te ocurre ninguna idea más sobre cómo abrir/desactivar esta cerradura/trampa. Después de 24 horas podrás hacer una tirada de percepción y si tienes éxito, podrás intentarlo otra vez. Hay un 20% de prob. de que la trampa se dispare (incluye el abrir una cerradura que tenga una trampa).",
     "leer_runas_usar_objetos": "Fracaso: En estos momentos no se te ocurren más ideas sobre cómo leer/utilizar esta runa/objeto. Cuando hayas subido de nivel, podrás realizar otro intento de leer/usar esta runa/objeto. Hay un 20% de probabilidades de que el hechizo se active (incluye el intentar usar un objeto que contenga un hechizo)",
-    "percepcion_rastrear": "Fracaso: No consigues información, pero te parece que has averiguado todo lo posible. No podrás volver a intentarlo durante un día en la misma zona."
+    "percepcion_rastrear": "Fracaso: No consigues información pero te parece que has averiguado todo lo que era posible averiguar. No podrás intentarlo otra vez, sobre el mismo tema y en la misma zona, durante 1 día."
   },
   {
     "min": 76,
     "max": 90,
-    "general": "Éxito Parcial: Si es posible el éxito parcial, consigues el 20% de tu maniobra estática. No podrás intentar la misma maniobra en el mismo lugar durante una hora.",
-    "influencia_interaccion": "Éxito Parcial: Tu audiencia sigue escuchando. Puedes seguir intentando influenciarles.",
-    "desactivar_trampas_cerraduras": "Éxito Parcial: Has descubierto cómo funciona parte de la cerradura/trampa, pero no el resto.",
-    "leer_runas_usar_objetos": "Éxito Parcial: Averiguas cuántos hechizos y capacidades contiene y qué son, pero todavía no puedes leerlos ni usarlos.",
-    "percepcion_rastrear": "Éxito Parcial: Averiguas algo de la información requerida, pero te das cuenta de que algo se te ha escapado."
+    "general": "Éxito Parcial: Si es posible el éxito parcial, consigues el 20% de tu maniobra estática. No podrás intentar la misma maniobra estática en el mismo lugar durante 1 hora.",
+    "influencia_interaccion": "Éxito Parcial: Tu audiencia te sigue escuchando. Puedes seguir intentando influenciarles.",
+    "desactivar_trampas_cerraduras": "Éxito Parcial: Has descubierto ya como funciona parte de la cerradura/trampa y tienes cierta idea de cómo puede ser el resto. Haz otra cosa durante 10 minutos y luego puedes volver a intentarlo.",
+    "leer_runas_usar_objetos": "Éxito Parcial: Averiguas cuántos hechizos y capacidades contiene y qué son. Pero todavía no puedes leerlo/usarlo y no podrás volver a intentarlo hasta que haya transcurrido una semana.",
+    "percepcion_rastrear": "Éxito Parcial: Averiguas algo de la información referente al tema sobre el que iba la tirada de percepción, pero te das cuenta de que hay algo que se te ha escapado. No podrás volver a intentarlo sobre el mismo tema y en la misma zona durante 1 hora."
   },
   {
     "min": 91,
     "max": 110,
-    "general": "Casi Éxito: Si es posible el éxito parcial, consigues el 50% de tu acción. Puedes volver a intentarlo tras 3 asaltos de reflexión.",
-    "influencia_interaccion": "Casi Éxito: Sigue hablando y tu audiencia se muestra más receptiva. Modifica la siguiente tirada con +20.",
-    "desactivar_trampas_cerraduras": "Casi Éxito: Casi lo consigues. Si pasas 2 asaltos pensando en tu intento puedes volver a intentarlo con una bonificación adicional de +5.",
-    "leer_runas_usar_objetos": "Casi Éxito: Casi lo consigues. Averiguas los hechizos y capacidades que contiene. Si esperas 24 horas y meditas, podrás intentarlo de nuevo con +10.",
-    "percepcion_rastrear": "Casi Éxito: Consigues parte de la información. Te das cuenta de que falta algo. Piensa durante 3 asaltos y vuelve a intentarlo."
+    "general": "Casi Éxito: Si es posible el éxito parcial, consigues el 50% de tu acción. Puedes volver a intentarlo después de 3 asaltos de reflexión.",
+    "influencia_interaccion": "Casi Éxito: Sigue hablando, tu audiencia se muestra más receptiva. Modifica la siguiente tirada en + 20.",
+    "desactivar_trampas_cerraduras": "Casi Éxito: Casi lo consigues. Si pasas 2 asaltos pensando en tu intento (ninguna otra actividad), puedes volverlo a intentar con una bonificación extra de + 5.",
+    "leer_runas_usar_objetos": "Casi éxito: Casi lo consigues. Averiguas cuántos hechizos y capacidades contiene y qué son. Si esperas 24 horas y meditas acerca de tu tentativa durante 2 horas (sin realizar ninguna otra actividad), puedes intentarlo de nuevo con un modificador adicional de +10.",
+    "percepcion_rastrear": "Casi Éxito: Consigues algo de la información requerida por el tema sobre el que iba la tirada de percepción y te das cuenta de que te falta algo. Piensa en ello durante 3 asaltos y puedes volver a intentarlo."
   },
   {
     "min": 111,
     "max": 175,
     "general": "Éxito: Tu maniobra estática ha sido un éxito.",
     "influencia_interaccion": "Éxito: Has influenciado a tu audiencia.",
-    "desactivar_trampas_cerraduras": "Éxito: La cerradura o trampa está abierta/desactivada.",
-    "leer_runas_usar_objetos": "Éxito: Aprendes uno de los hechizos o capacidades contenidos en el objeto o papel.",
-    "percepcion_rastrear": "Éxito: Consigues toda la información que requería la tirada."
+    "desactivar_trampas_cerraduras": "Éxito: La cerradura/trampa está abierta/desactivada. + 50 en los futuros intentos de abrir/desactivar esta misma cerradura/trampa.",
+    "leer_runas_usar_objetos": "Éxito: Aprendes uno de los hechizos o capacidades en un objeto o en un trozo de papel o pergamino y podrás usarlo siempre que sostengas el objeto o el papel (las runas sólo se pueden usar una vez). Aprendes los otros hechizos o capacidades, y puedes hacer más tiradas para usarlas.",
+    "percepcion_rastrear": "Éxito: Consigues toda la información sobre el tema que requería la tirada de percepción."
   },
   {
     "min": 176,
     "max": 9999,
-    "general": "Éxito Absoluto: Éxito completo. Obtienes una bonificación de +20 para acciones estáticas similares durante 10 minutos.",
-    "influencia_interaccion": "Éxito Absoluto: No sólo influyes, sino que recibes una bonificación de +50 a futuros intentos con esta audiencia.",
-    "desactivar_trampas_cerraduras": "Éxito Absoluto: Podrás abrir o desactivar automáticamente cerraduras o trampas similares en el futuro.",
-    "leer_runas_usar_objetos": "Éxito Absoluto: Aprendes todos los hechizos y capacidades del objeto o papel.",
-    "percepcion_rastrear": "Éxito Absoluto: Percibes todo en la zona. Incluye información adicional y obtienes +20 a percepción durante 10 minutos."
+    "general": "Éxito Absoluto: Tu maniobra estática tiene éxito y tienes una bonificación de + 20 para las acciones estáticas que realices en los siguientes 10 minutos (60 asaltos).",
+    "influencia_interaccion": "Éxito Absoluto: No sólo influencias a tu audiencia, sino que recibes una bonificación de + 50 cada vez que quieras volverles a influenciar, hasta que hagas algo que provoque una pérdida de confianza.",
+    "desactivar_trampas_cerraduras": "Éxito Absoluto: Podrás abrir/desactivar automáticamente (tardas 1 asalto esta cerradura/trampa, o cualquier cerradura/trampa que sea idéntica). Bono + 10 para los intentos de abrir/desactivar cerraduras/trampas similares en el futuro.",
+    "leer_runas_usar_objetos": "Éxito Absoluto: Aprendes todos los hechizos y capacidades en un objeto o trozo de papel o pergamino rúnico, y puedes usarlos siempre que sostengas el papel o el objeto (las runas sólo pueden usarse una vez).",
+    "percepcion_rastrear": "Éxito Absoluto: Percibes todo en la zona que estás examinando. Ello incluye la información sobre otros temas que no eran el que requería la tirada de percepción. Obtienes un +20 en las tiradas de percepción durante 10 minutos."
   }
 ]

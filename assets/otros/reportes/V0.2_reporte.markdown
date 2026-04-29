@@ -1,0 +1,596 @@
+# Reporte de analisis V1.0 - Calculadora ESDLA
+
+Fecha de revision: 2026-04-29  
+Alcance: revision estatica completa de `index.html`, `README.txt`, `assets/js`, `assets/css` y todos los JSON de `assets/tablas`.
+
+## Resumen ejecutivo
+
+El proyecto es una aplicacion web estatica bien separada por vistas JS, con tablas JSON externas y un punto de entrada claro (`assets/js/app.js`). La estructura general es razonable para una calculadora sin backend.
+
+Los riesgos principales estan en la logica de seleccion de formularios y en algunas reglas de calculo:
+
+- Hay grupos `radio` reutilizados entre vistas distintas (`name="armadura"` y `name="pifia_mm_seleccion"`), lo que permite que una seleccion oculta de una vista afecte a otra.
+- Hay IDs duplicados en la pantalla de Pifia y Maniobra de Movimiento para las dificultades de MM.
+- La vista de Ataque consulta todas las armaduras del documento, no solo las de Ataque.
+- La logica de tirada de resistencia para niveles superiores a 15 aplica un ajuste dificil de justificar y posiblemente incorrecto.
+- Algunas reglas de hechizo tienen topes o modificadores por defecto que pueden producir resultados inesperados si el usuario deja campos opcionales vacios.
+- No hay tests automaticos ni harness de validacion de reglas, lo que vuelve fragil cualquier cambio en tablas o calculos.
+
+## Estado de validacion
+
+- Todos los JSON bajo `assets/tablas` parsean correctamente con `ConvertFrom-Json`.
+- No se ha podido usar `git status` porque `git` no esta disponible en el entorno.
+- No se ha podido usar `rg` porque el ejecutable devuelve "Acceso denegado"; la revision se ha hecho con PowerShell.
+- No hay `package.json`, runner de tests ni tooling local de lint/build.
+
+## Hallazgos criticos y altos
+
+### 1. Los radios de armadura se comparten entre Ataque, Hechizo dirigido y Hechizo de bola
+
+Severidad: Alta
+Archivos:
+
+- `index.html:239-259`
+- `index.html:625-645`
+- `index.html:735-755`
+- `assets/js/views/ataque.js:14`
+- `assets/js/views/ataque.js:210`
+- `assets/js/views/hechizo.js:246`
+- `assets/js/views/hechizo.js:305`
+
+Problema:
+
+En HTML hay 15 radios con `name="armadura"` repartidos entre tres vistas: Ataque, Hechizo dirigido y Hechizo de bola. En HTML, los radios con el mismo `name` pertenecen al mismo grupo aunque esten ocultos o en vistas distintas. Ademas, `ataque.js` hace:
+
+```js
+const radiosArmadura = document.querySelectorAll('input[name="armadura"]');
+```
+
+y despues toma el primer radio marcado del conjunto global:
+
+```js
+const armaduraId = Array.from(radiosArmadura).find((radio) => radio.checked)?.id ?? null;
+```
+
+Impacto:
+
+- Seleccionar una armadura en Hechizo dirigido o Bola puede desmarcar la armadura seleccionada en Ataque.
+- Ataque puede detectar un radio de Hechizo como armadura activa. Como `columnasArmadura` solo mapea IDs de Ataque, `columnasArmadura[armaduraId]` devuelve `undefined`.
+- El usuario puede ver "Selecciona una armadura" o "No hay resultado para la combinacion seleccionada" aunque visualmente haya elegido una armadura en la vista actual.
+- El boton limpiar de Ataque limpia tambien radios de armadura de Hechizo, porque itera sobre el grupo global.
+
+Recomendacion:
+
+- Cambiar los nombres a grupos independientes:
+  - Ataque: `name="ataque_armadura"`
+  - Hechizo dirigido: `name="hechizo_dirigido_armadura"`
+  - Hechizo bola: `name="hechizo_bola_armadura"`
+- En JS, consultar siempre dentro de la vista:
+
+```js
+const radiosArmadura = vistaAtaque?.querySelectorAll('input[name="ataque_armadura"]') ?? [];
+```
+
+### 2. IDs duplicados entre Pifia MM y Maniobra de Movimiento
+
+Severidad: Alta  
+Archivos:
+
+- `index.html:1306-1362`
+- `index.html:1428-1484`
+- `assets/js/views/mm.js:17`
+- `assets/js/views/pifia.js:63`
+- `assets/js/views/popupCritico.js:107`
+
+Problema:
+
+Los IDs de dificultad de MM aparecen dos veces:
+
+- `pifia_mm_rutinaria`
+- `pifia_mm_muy_facil`
+- `pifia_mm_facil`
+- `pifia_mm_media`
+- `pifia_mm_dificil`
+- `pifia_mm_muy_dificil`
+- `pifia_mm_extr_dificil`
+- `pifia_mm_locura_comp`
+- `pifia_mm_absurdo`
+
+Un `id` debe ser unico en todo el documento. Aqui los mismos IDs se usan en la seccion de pifias de MM y en la propia vista de Maniobra de Movimiento.
+
+Impacto:
+
+- `document.getElementById("pifia_mm_rutinaria")` siempre devuelve el primer elemento del DOM, no necesariamente el que espera la vista actual.
+- `popupCritico.js` usa `document.getElementById(id)` para preseleccionar radios al aceptar el popup. Con IDs duplicados, el comportamiento depende del orden del HTML.
+- Cualquier label futuro con `for=...`, test DOM o manipulacion directa por ID sera ambiguo.
+
+Recomendacion:
+
+- Usar IDs distintos por contexto:
+  - Pifia: `pifia_mm_rutinaria`, etc.
+  - MM: `mm_rutinaria`, `mm_muy_facil`, etc.
+- Ajustar `columnasMm` para usar los nuevos IDs de MM.
+- Mantener en `pifia.js` los IDs `pifia_mm_*` si se quieren reutilizar para el popup de pifia.
+
+### 3. El mismo `name="pifia_mm_seleccion"` se usa en dos vistas diferentes
+
+Severidad: Alta  
+Archivos:
+
+- `index.html:1306-1362`
+- `index.html:1428-1484`
+- `assets/js/views/mm.js:17`
+- `assets/js/views/pifia.js:63`
+
+Problema:
+
+Ademas de IDs duplicados, las dificultades de Pifia MM y de Maniobra de Movimiento comparten `name="pifia_mm_seleccion"`. Esto une ambos conjuntos en un solo grupo de radio a nivel de documento.
+
+Impacto:
+
+- Marcar una dificultad en MM puede desmarcar una dificultad previamente marcada en Pifia.
+- Marcar una dificultad en Pifia puede desmarcar la de MM.
+- El problema es silencioso porque una de las vistas puede estar oculta.
+
+Recomendacion:
+
+- Cambiar el grupo de la vista MM a `name="mm_dificultad"`.
+- Dejar Pifia con `name="pifia_mm_seleccion"` o renombrarla a `name="pifia_mm_dificultad"`.
+- En `mm.js`, cambiar el selector:
+
+```js
+const radiosDificultadMm = vistaMm?.querySelectorAll('input[name="mm_dificultad"]') ?? [];
+```
+
+### 4. La logica de resistencia para niveles superiores a 15 parece doblemente ajustada
+
+Severidad: Alta  
+Archivos:
+
+- `assets/js/views/tr.js:55`
+- `assets/js/views/tr.js:115`
+- `assets/js/views/tr.js:123`
+- `assets/js/views/hechizo.js:533-540`
+
+Problema:
+
+La resistencia ajusta niveles superiores a 15 asi:
+
+```js
+const nivelAtacanteAjustado = ajustarNivel(nivelAtacante, 1, 15);
+const nivelBlancoAjustado = ajustarNivel(nivelBlanco, 0, 15);
+const ajusteNivelAtacante = calcularExcesoNivel(nivelAtacante);
+const ajusteNivelBlanco = calcularExcesoNivel(nivelBlanco);
+const nivelBlancoEfectivo = Math.max(nivelBlancoAjustado - ajusteNivelAtacante, 0);
+```
+
+Luego busca la fila por `nivelBlancoEfectivo` y ademas ajusta el umbral:
+
+```js
+umbral + ajusteNivelAtacante - ajusteNivelBlanco
+```
+
+Impacto:
+
+Un atacante de nivel 20 contra blanco de nivel 10 no solo usa la columna de atacante 15, sino que tambien reduce la fila efectiva del blanco de 10 a 5 y despues suma +5 al umbral. Eso no equivale a un ajuste lineal simple: cambia simultaneamente fila y umbral. Es muy probable que distorsione la tabla para niveles altos.
+
+Recomendacion:
+
+- Verificar la regla exacta del manual para niveles superiores a la tabla.
+- Si el exceso debe aplicarse como diferencia de niveles, mantener una sola via de ajuste:
+  - o ajustar filas/columnas,
+  - o ajustar el umbral final,
+  - pero no ambos sin una justificacion explicita.
+- Extraer esta logica a una funcion compartida probada, usada tanto por `tr.js` como por `hechizo.js`, para evitar divergencias.
+
+## Hallazgos medios
+
+### 5. Los campos opcionales vacios de hechizo aplican penalizadores por defecto
+
+Severidad: Media  
+Archivo: `assets/js/views/hechizo.js:391-453`
+
+Problema:
+
+`leerNumeroOpcional` convierte un campo vacio a `0`. Para distancia y asaltos de preparacion, `0` no es neutro:
+
+- `calcularModificadorDistancia(0)` devuelve `+30` en hechizo basico.
+- `calcularModificadorDistanciaDirigido(0)` devuelve `+35`.
+- `calcularModificadorPreparacion(0)` devuelve `-30`.
+
+Impacto:
+
+Si el usuario deja vacia la distancia, se trata como distancia 0 y recibe bonificador de contacto. Si deja vacios los asaltos, se aplica penalizador de falta de preparacion. Puede ser correcto como regla por defecto, pero es una decision fuerte y no esta comunicada ni validada por la UI.
+
+Recomendacion:
+
+- Decidir si esos campos son realmente obligatorios.
+- Si son obligatorios, usar `leerNumeroObligatorio` y mostrar mensaje si faltan.
+- Si son opcionales, separar "vacio" de `0` y aplicar un valor neutro documentado.
+
+### 6. Blanco voluntario resta 50 al total de resistencia
+
+Severidad: Media  
+Archivos:
+
+- `assets/js/views/tr.js:123`
+- `assets/js/views/hechizo.js:232`
+
+Problema:
+
+El checkbox de blanco voluntario aplica `-50` al total de resistencia:
+
+```js
+resistenciaBlancoVoluntario?.checked ? -50 : 0
+```
+
+y en hechizo basico:
+
+```js
+document.getElementById("hechizo_blanco_voluntario")?.checked ? -50 : 0
+```
+
+Impacto:
+
+Esto hace mas dificil resistir, que puede ser la intencion si el blanco no quiere resistir. El riesgo esta en que el texto "blanco voluntario" puede interpretarse tambien como blanco cooperativo para el lanzamiento, no necesariamente como penalizacion de TR. Es una regla sensible y conviene que quede confirmada.
+
+Recomendacion:
+
+- Validar contra el manual si `-50` es el modificador correcto y si debe sumarse al blanco o modificar el umbral.
+- Renombrar en UI a algo menos ambiguo, por ejemplo "No resiste voluntariamente (-50 TR)".
+
+### 7. `calcularTiradaTablaHechizo` capa casi todos los resultados modificados a 96
+
+Severidad: Media  
+Archivo: `assets/js/views/hechizo.js:504-513`
+
+Problema:
+
+La funcion devuelve:
+
+```js
+if (dadosNaturales === 100) return 100;
+if (dadosNaturales >= 97 && dadosNaturales <= 99) return dadosNaturales;
+return Math.min(tiradaModificada, 96);
+```
+
+Esto significa que en hechizo basico y bola ninguna tirada modificada puede consultar filas superiores a 96 salvo que el dado natural sea 97-100.
+
+Impacto:
+
+En las tablas actuales de basico y bola solo hay filas hasta 100, y las filas 97-100 tienen `sin_Modificador`. Por tanto puede ser intencional. Aun asi, la regla esta codificada de forma generica y podria ser erronea si se reutiliza para otra tabla de hechizo con filas superiores o si el manual permite que modificadores lleven a 97+.
+
+Recomendacion:
+
+- Renombrar la funcion a algo que refleje la regla concreta, por ejemplo `caparHechizoBasicoYBolaPorTiradaNatural`.
+- Anadir comentario corto con la regla del manual.
+- Cubrir con tests de ejemplo: dado 80 + 30 debe consultar 96 o 110 segun la regla esperada.
+
+### 8. Topes de hechizo dirigido se aplican antes de comprobar tirada natural especial
+
+Severidad: Media  
+Archivo: `assets/js/views/hechizo.js:278-279`
+
+Problema:
+
+En hechizo dirigido se calcula:
+
+```js
+const tiradaCapada = Math.min(tirada, maximosHechizoDirigido[subtipo] ?? 150);
+const tiradaTabla = obtenerTiradaConsulta(tabla, dados, tiradaCapada);
+```
+
+El `obtenerTiradaConsulta` solo respeta filas con `sin_Modificador`. En `hechizo_dirigido.json` solo esta marcado el tramo 1-2. Por tanto una tirada natural alta no evita el tope por subtipo.
+
+Impacto:
+
+Puede ser correcto si el maximo del subtipo siempre limita el resultado, pero contrasta con el tratamiento especial de 97-100 en basico y bola.
+
+Recomendacion:
+
+- Confirmar si los topes por subtipo de dirigido deben limitar incluso resultados naturales altos.
+- Si no deben, aplicar primero la regla de tirada natural y despues el tope solo a tiradas modificadas.
+
+### 9. Pifias de ataques naturales no estan configuradas
+
+Severidad: Media  
+Archivo: `assets/js/views/ataque.js:49-54`
+
+Problema:
+
+`tiposPifiaAtaque` solo contempla:
+
+- filo
+- contundente
+- dos manos
+- proyectil
+
+No contempla `ataque_garra` ni `ataque_agarre`.
+
+Impacto:
+
+Actualmente las tablas de garra/agarrar devuelven "Ataque fallido" en las tiradas bajas, no `"F"`, asi que no se dispara el popup de pifia. Si en el futuro se cambia la tabla a `"F"` o hay una regla de pifia para ataques naturales, el popup se abriria sin preseleccionar tipo ni subtipo.
+
+Recomendacion:
+
+- Confirmar si garra/agarrar pueden pifiar.
+- Si no pueden, dejarlo documentado con un comentario.
+- Si pueden, anadir el mapeo de pifia correspondiente o tratar explicitamente el caso.
+
+### 10. La vista MM usa un ID con errata: `vita-maniobra-movimiento`
+
+Severidad: Media/Baja  
+Archivos:
+
+- `index.html:1378`
+- `assets/js/views/mm.js:10`
+- `assets/js/views/inicio.js:27`
+- `README.txt:342`
+
+Problema:
+
+El ID de la vista es `vita-maniobra-movimiento`, no `vista-maniobra-movimiento`.
+
+Impacto:
+
+No rompe ahora porque HTML, JS y README usan la misma errata. Pero aumenta el riesgo de que una futura correccion parcial rompa la navegacion o los selectores.
+
+Recomendacion:
+
+- Renombrar a `vista-maniobra-movimiento` en HTML, `inicio.js`, `mm.js` y README en el mismo cambio.
+
+### 11. `me_leer_runas` no exige nivel de hechizo
+
+Severidad: Media/Baja  
+Archivo: `assets/js/views/me.js:176-184`
+
+Problema:
+
+Para leer runas se lee:
+
+```js
+const nivelHechizo = leerNumeroOpcional(document.getElementById("me_nivel_hechizo"));
+```
+
+Despues siempre se resta:
+
+```js
+totalBase: dados + bonificador + modificadores - nivelHechizo
+```
+
+Impacto:
+
+Si el usuario olvida el nivel de hechizo, el calculo se hace con `0`, lo que puede favorecer indebidamente la maniobra.
+
+Recomendacion:
+
+- Para `me_leer_runas`, tratar `me_nivel_hechizo` como obligatorio.
+- Mostrar "Introduce el nivel del hechizo" si falta.
+
+### 12. Posible incoherencia en el modificador de canalizacion contra cuero
+
+Severidad: Media/Baja  
+Archivo: `assets/js/views/hechizo.js:459-465`
+
+Problema:
+
+La funcion:
+
+```js
+if (tipoLanzamiento === "hechizo_canalizacion" && armaduraReceptorId === "hechizo_receptor_cuero") {
+    return "sin_armadura";
+}
+```
+
+Hace que canalizacion contra receptor con cuero use la columna `sin_armadura`.
+
+Impacto:
+
+Puede ser una regla correcta del manual, pero es sorprendente porque la propia seleccion del usuario dice "cuero". Si no esta documentado, parece un bug al revisar o mantener la tabla.
+
+Recomendacion:
+
+- Confirmar contra el manual.
+- Anadir comentario explicando la regla o codificarlo mediante una tabla de mapeo por tipo de lanzamiento para que no parezca un caso accidental.
+
+## Hallazgos bajos y mantenibilidad
+
+### 13. No hay pruebas automaticas de reglas
+
+Severidad: Baja, con alto impacto futuro  
+Archivos afectados: todos los modulos de calculo.
+
+Problema:
+
+La logica de reglas esta embebida en handlers DOM y depende de tablas JSON. No hay tests de casos conocidos.
+
+Impacto:
+
+Cambios en IDs, nombres de radio, tablas o reglas pueden romper calculos sin deteccion automatica.
+
+Recomendacion:
+
+- Extraer funciones puras de calculo por modulo:
+  - `calcularAtaque(seleccion, tabla)`
+  - `calcularTR(...)`
+  - `calcularMM(...)`
+  - `calcularME(...)`
+  - `calcularHechizoBasico(...)`
+- Crear un set minimo de tests con casos manuales conocidos.
+- Validar tambien que cada JSON tiene tramos continuos y columnas esperadas.
+
+### 14. Dependencia CDN sin fallback
+
+Severidad: Baja  
+Archivo: `index.html:12` y `index.html:1904`
+
+Problema:
+
+Bootstrap se carga desde CDN. Si la app se usa offline durante una partida o desde `file://` sin red, el estilo y el collapse del navbar pueden fallar.
+
+Impacto:
+
+El proyecto se describe como cliente estatico y probablemente se usara localmente. Depender de red reduce fiabilidad.
+
+Recomendacion:
+
+- Incluir Bootstrap localmente en `assets/vendor/bootstrap`.
+- O documentar que requiere conexion.
+
+### 15. `README.txt` y `index.html` reflejan algunos textos con caracteres mal representados en consola
+
+Severidad: Baja  
+Archivos:
+
+- `README.txt`
+- `index.html`
+- varios `.js`
+
+Observacion:
+
+Durante la lectura en PowerShell algunos textos aparecen como `Ã±`, `Ã`, `Â¿`. El HTML declara UTF-8, por lo que puede ser solo una cuestion de consola/codificacion de salida. Aun asi, conviene revisar en navegador y editor que el contenido real no este mojibakeado.
+
+Recomendacion:
+
+- Confirmar que todos los archivos estan guardados como UTF-8.
+- Si en navegador se ven mal, regrabar los textos como UTF-8 real.
+
+### 16. Nombre de archivo informativo con errata
+
+Severidad: Baja  
+Archivos:
+
+- `assets/js/views/informativas.js:14`
+- `assets/tablas/informativas/experiacia_nivel.json`
+
+Problema:
+
+El archivo se llama `experiacia_nivel.json`, probablemente por errata de "experiencia".
+
+Impacto:
+
+No rompe porque JS usa el mismo nombre, pero dificulta mantenimiento.
+
+Recomendacion:
+
+- Renombrar a `experiencia_nivel.json` y actualizar `informativas.js`.
+
+## Observaciones por modulo
+
+### Ataque
+
+Fortalezas:
+
+- Carga tablas por tipo de ataque con cache.
+- Soporta `sin_Modificador`.
+- Aplica maximos por tamano para garra/agarrar.
+- Integra popup de critico/pifia.
+
+Riesgos:
+
+- La seleccion de armadura es global y cruza vistas.
+- El resultado puede ser numero, string de critico, `"F"` o texto como "Ataque fallido"; la logica asume principalmente `"F"` y criticos con patron numero+letra.
+- No hay validacion de rango de dado natural. El input acepta cualquier numero.
+
+### Hechizo
+
+Fortalezas:
+
+- Separa basico, dirigido y bola.
+- Reutiliza tabla de resistencia para hechizo basico.
+- Tiene cache de tablas.
+
+Riesgos:
+
+- Los radios de armadura de dirigido y bola comparten grupo con Ataque.
+- Campos opcionales vacios tienen efectos no neutros.
+- La logica de resistencia de niveles altos esta duplicada con TR.
+- Varias reglas importantes estan codificadas sin comentario ni tests.
+
+### Critico
+
+Fortalezas:
+
+- Mapea tipos de critico a columnas de tabla.
+- Soporta grandes criaturas con modificadores especificos.
+
+Riesgos:
+
+- No valida rango de dado natural.
+- Depende de que los nombres de columnas de JSON no cambien.
+- La integracion por popup selecciona radios por ID global; si hay IDs duplicados futuros, fallara como en MM/Pifia.
+
+### Pifia
+
+Fortalezas:
+
+- La seleccion esta bastante bien acotada a `vistaPifia`.
+- Limpia subopciones al cambiar el tipo de pifia.
+
+Riesgos:
+
+- Comparte IDs y `name` con MM.
+- La seleccion de pifia MM depende de IDs duplicados si viene desde popup de MM.
+
+### Maniobra de movimiento
+
+Fortalezas:
+
+- Calculo simple y trazable.
+- Integra popup de pifia cuando el resultado es `"F"`.
+
+Riesgos:
+
+- Usa IDs y `name` propios de pifia.
+- La vista tiene una errata en el ID.
+- No valida rango de dado natural.
+
+### Maniobra estatica
+
+Fortalezas:
+
+- Gestiona subformularios por tipo.
+- Aplica modificadores de dificultad desde JSON.
+
+Riesgos:
+
+- `me_leer_runas` no exige nivel de hechizo.
+- Los modificadores especificos se suman por checkbox global; si algun selector quedase marcado oculto por un fallo de limpieza, afectaria al calculo.
+
+### Informativas
+
+Fortalezas:
+
+- Renderiza tablas dinamicas de forma generica con `textContent`, evitando inyeccion HTML.
+- Hace pivote para tablas complejas.
+
+Riesgos:
+
+- La tabla de puntos por critico filtra `nivel_oponente <= 10`, lo que puede ocultar datos si el JSON contiene niveles superiores que deban verse.
+- Hay errata en `experiacia_nivel.json`.
+
+## Prioridad recomendada de correccion
+
+1. Separar `name="armadura"` por vista y acotar los selectores de Ataque.
+2. Eliminar IDs duplicados de MM/Pifia y separar `name="pifia_mm_seleccion"` de la vista MM.
+3. Revisar y corregir la logica de resistencia para niveles superiores a 15 en `tr.js` y `hechizo.js`.
+4. Decidir si distancia/asaltos/nivel de hechizo son obligatorios o tienen defaults neutros.
+5. Renombrar `vita-maniobra-movimiento` a `vista-maniobra-movimiento`.
+6. Extraer funciones puras de calculo y crear tests de casos conocidos.
+
+## Checklist tecnico propuesto
+
+- [ ] Cambiar grupos de radio de armadura por vista.
+- [ ] Cambiar IDs de dificultad de MM a `mm_*`.
+- [ ] Cambiar `name` de dificultad de MM a `mm_dificultad`.
+- [ ] Ajustar `mm.js`, `pifia.js` y `popupCritico.js` si procede.
+- [ ] Unificar la funcion de umbral de resistencia.
+- [ ] Anadir pruebas para TR con niveles 0, 1, 10, 15, 16 y 20.
+- [ ] Anadir pruebas para hechizo basico con dado natural 1, 2, 96, 97, 99 y 100.
+- [ ] Anadir pruebas para ataque con armadura seleccionada tras navegar desde hechizo.
+- [ ] Validar en navegador los textos con acentos.
+- [ ] Documentar reglas especiales con comentarios cortos junto al codigo.
+
+## Conclusion
+
+La base del proyecto es funcional y entendible, pero hay errores estructurales de DOM que pueden producir fallos dificiles de detectar durante una partida. Los mas urgentes son los grupos de radio compartidos, los IDs duplicados y la logica de resistencia de niveles altos. Una vez corregidos esos puntos, el siguiente salto de calidad deberia ser separar calculo puro de manipulacion DOM y cubrir las reglas principales con tests de regresion.
