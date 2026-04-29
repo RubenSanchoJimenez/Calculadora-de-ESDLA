@@ -1,0 +1,212 @@
+[
+  {
+    "peso_personaje_min": 20,
+    "peso_personaje_max": 30,
+    "cargas": [
+      { "minimo": 8,  "maximo": 12, "valor": 30 },
+      { "minimo": 13, "maximo": 18, "valor": 60 },
+      { "minimo": 19, "maximo": 22, "valor": "NP" },
+      { "minimo": 23, "maximo": 30, "valor": "NP" },
+      { "minimo": 31, "maximo": 40, "valor": "NP" },
+      { "minimo": 41, "maximo": 50, "valor": "NP" },
+      { "minimo": 51, "maximo": 60, "valor": "NP" },
+      { "minimo": 61, "maximo": 70, "valor": "NP" },
+      { "minimo": 71, "maximo": 80, "valor": "NP" }
+    ]
+  },
+  {
+    "peso_personaje_min": 31,
+    "peso_personaje_max": 40,
+    "cargas": [
+      { "minimo": 8,  "maximo": 12, "valor": 20 },
+      { "minimo": 13, "maximo": 18, "valor": 35 },
+      { "minimo": 19, "maximo": 22, "valor": 60 },
+      { "minimo": 23, "maximo": 30, "valor": 80 },
+      { "minimo": 31, "maximo": 40, "valor": "NP" },
+      { "minimo": 41, "maximo": 50, "valor": "NP" },
+      { "minimo": 51, "maximo": 60, "valor": "NP" },
+      { "minimo": 61, "maximo": 70, "valor": "NP" },
+      { "minimo": 71, "maximo": 80, "valor": "NP" }
+    ]
+  },
+  {
+    "peso_personaje_min": 41,
+    "peso_personaje_max": 50,
+    "cargas": [
+      { "minimo": 8,  "maximo": 12, "valor": 15 },
+      { "minimo": 13, "maximo": 18, "valor": 25 },
+      { "minimo": 19, "maximo": 22, "valor": 40 },
+      { "minimo": 23, "maximo": 30, "valor": 60 },
+      { "minimo": 31, "maximo": 40, "valor": "NP" },
+      { "minimo": 41, "maximo": 50, "valor": "NP" },
+      { "minimo": 51, "maximo": 60, "valor": "NP" },
+      { "minimo": 61, "maximo": 70, "valor": "NP" },
+      { "minimo": 71, "maximo": 80, "valor": "NP" }
+    ]
+  },
+  {
+    "peso_personaje_min": 51,
+    "peso_personaje_max": 70,
+    "cargas": [
+      { "minimo": 8,  "maximo": 12, "valor": 15 },
+      { "minimo": 13, "maximo": 18, "valor": 20 },
+      { "minimo": 19, "maximo": 22, "valor": 30 },
+      { "minimo": 23, "maximo": 30, "valor": 40 },
+      { "minimo": 31, "maximo": 40, "valor": 60 },
+      { "minimo": 41, "maximo": 50, "valor": "NP" },
+      { "minimo": 51, "maximo": 60, "valor": "NP" },
+      { "minimo": 61, "maximo": 70, "valor": "NP" },
+      { "minimo": 71, "maximo": 80, "valor": "NP" }
+    ]
+  },
+  {
+    "peso_personaje_min": 71,
+    "peso_personaje_max": 80,
+    "cargas": [
+      { "minimo": 8,  "maximo": 12, "valor": 10 },
+      { "minimo": 13, "maximo": 18, "valor": 15 },
+      { "minimo": 19, "maximo": 22, "valor": 20 },
+      { "minimo": 23, "maximo": 30, "valor": 30 },
+      { "minimo": 31, "maximo": 40, "valor": 35 },
+      { "minimo": 41, "maximo": 50, "valor": 40 },
+      { "minimo": 51, "maximo": 60, "valor": 60 },
+      { "minimo": 61, "maximo": 70, "valor": "NP" },
+      { "minimo": 71, "maximo": 80, "valor": "NP" }
+    ]
+  },
+  {
+    "peso_personaje_min": 81,
+    "peso_personaje_max": 90,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 5 },
+      { "minimo": 13, "maximo": 18, "valor": 10 },
+      { "minimo": 19, "maximo": 22, "valor": 15 },
+      { "minimo": 23, "maximo": 30, "valor": 25 },
+      { "minimo": 31, "maximo": 40, "valor": 30 },
+      { "minimo": 41, "maximo": 50, "valor": 35 },
+      { "minimo": 51, "maximo": 60, "valor": 45 },
+      { "minimo": 61, "maximo": 70, "valor": 60 },
+      { "minimo": 71, "maximo": 80, "valor": "NP" }
+    ]
+  },
+  {
+    "peso_personaje_min": 91,
+    "peso_personaje_max": 100,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 5 },
+      { "minimo": 13, "maximo": 18, "valor": 10 },
+      { "minimo": 19, "maximo": 22, "valor": 15 },
+      { "minimo": 23, "maximo": 30, "valor": 20 },
+      { "minimo": 31, "maximo": 40, "valor": 25 },
+      { "minimo": 41, "maximo": 50, "valor": 30 },
+      { "minimo": 51, "maximo": 60, "valor": 35 },
+      { "minimo": 61, "maximo": 70, "valor": 50 },
+      { "minimo": 71, "maximo": 80, "valor": 60 }
+    ]
+  },
+  {
+    "peso_personaje_min": 101,
+    "peso_personaje_max": 110,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 5 },
+      { "minimo": 13, "maximo": 18, "valor": 10 },
+      { "minimo": 19, "maximo": 22, "valor": 15 },
+      { "minimo": 23, "maximo": 30, "valor": 20 },
+      { "minimo": 31, "maximo": 40, "valor": 25 },
+      { "minimo": 41, "maximo": 50, "valor": 30 },
+      { "minimo": 51, "maximo": 60, "valor": 35 },
+      { "minimo": 61, "maximo": 70, "valor": 45 },
+      { "minimo": 71, "maximo": 80, "valor": 55 }
+    ]
+  },
+  {
+    "peso_personaje_min": 111,
+    "peso_personaje_max": 120,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 0 },
+      { "minimo": 13, "maximo": 18, "valor": 10 },
+      { "minimo": 19, "maximo": 22, "valor": 10 },
+      { "minimo": 23, "maximo": 30, "valor": 15 },
+      { "minimo": 31, "maximo": 40, "valor": 20 },
+      { "minimo": 41, "maximo": 50, "valor": 25 },
+      { "minimo": 51, "maximo": 60, "valor": 30 },
+      { "minimo": 61, "maximo": 70, "valor": 40 },
+      { "minimo": 71, "maximo": 80, "valor": 50 }
+    ]
+  },
+  {
+    "peso_personaje_min": 121,
+    "peso_personaje_max": 130,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 0 },
+      { "minimo": 13, "maximo": 18, "valor": 10 },
+      { "minimo": 19, "maximo": 22, "valor": 10 },
+      { "minimo": 23, "maximo": 30, "valor": 15 },
+      { "minimo": 31, "maximo": 40, "valor": 20 },
+      { "minimo": 41, "maximo": 50, "valor": 25 },
+      { "minimo": 51, "maximo": 60, "valor": 30 },
+      { "minimo": 61, "maximo": 70, "valor": 35 },
+      { "minimo": 71, "maximo": 80, "valor": 45 }
+    ]
+  },
+  {
+    "peso_personaje_min": 131,
+    "peso_personaje_max": 140,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 0 },
+      { "minimo": 13, "maximo": 18, "valor": 5 },
+      { "minimo": 19, "maximo": 22, "valor": 10 },
+      { "minimo": 23, "maximo": 30, "valor": 15 },
+      { "minimo": 31, "maximo": 40, "valor": 15 },
+      { "minimo": 41, "maximo": 50, "valor": 20 },
+      { "minimo": 51, "maximo": 60, "valor": 25 },
+      { "minimo": 61, "maximo": 70, "valor": 30 },
+      { "minimo": 71, "maximo": 80, "valor": 40 }
+    ]
+  },
+  {
+    "peso_personaje_min": 141,
+    "peso_personaje_max": 150,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 0 },
+      { "minimo": 13, "maximo": 18, "valor": 5 },
+      { "minimo": 19, "maximo": 22, "valor": 5 },
+      { "minimo": 23, "maximo": 30, "valor": 10 },
+      { "minimo": 31, "maximo": 40, "valor": 15 },
+      { "minimo": 41, "maximo": 50, "valor": 20 },
+      { "minimo": 51, "maximo": 60, "valor": 25 },
+      { "minimo": 61, "maximo": 70, "valor": 30 },
+      { "minimo": 71, "maximo": 80, "valor": 35 }
+    ]
+  },
+  {
+    "peso_personaje_min": 151,
+    "peso_personaje_max": 175,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 0 },
+      { "minimo": 13, "maximo": 18, "valor": 0 },
+      { "minimo": 19, "maximo": 22, "valor": 5 },
+      { "minimo": 23, "maximo": 30, "valor": 10 },
+      { "minimo": 31, "maximo": 40, "valor": 10 },
+      { "minimo": 41, "maximo": 50, "valor": 20 },
+      { "minimo": 51, "maximo": 60, "valor": 25 },
+      { "minimo": 61, "maximo": 70, "valor": 25 },
+      { "minimo": 71, "maximo": 80, "valor": 35 }
+    ]
+  },
+  {
+    "peso_personaje_min": 176,
+    "peso_personaje_max": 200,
+    "cargas": [
+      { "minimo": 8, "maximo": 12, "valor": 0 },
+      { "minimo": 13, "maximo": 18, "valor": 0 },
+      { "minimo": 19, "maximo": 22, "valor": 0 },
+      { "minimo": 23, "maximo": 30, "valor": 5 },
+      { "minimo": 31, "maximo": 40, "valor": 10 },
+      { "minimo": 41, "maximo": 50, "valor": 15 },
+      { "minimo": 51, "maximo": 60, "valor": 20 },
+      { "minimo": 61, "maximo": 70, "valor": 25 },
+      { "minimo": 71, "maximo": 80, "valor": 30 }
+    ]
+  }
+]

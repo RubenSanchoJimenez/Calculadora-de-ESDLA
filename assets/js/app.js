@@ -7,6 +7,7 @@ import { pifia } from "./views/pifia.js";
 import { tr } from "./views/tr.js";
 import { inicio } from "./views/inicio.js";
 import { popupCritico } from "./views/popupCritico.js";
+import { informativas } from "./views/informativas.js";
 
 const app = {
     init() {
@@ -17,6 +18,7 @@ const app = {
         hechizo.init();
         pifia.init();
         tr.init();
+        informativas.init();
         popupCritico.init();
         inicio.init();
     }

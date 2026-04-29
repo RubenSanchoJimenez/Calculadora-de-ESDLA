@@ -1,0 +1,11 @@
+[
+  { "dificultad": "rutinaria", "modificador": 30 },
+  { "dificultad": "muy_facil", "modificador": 20 },
+  { "dificultad": "facil", "modificador": 10 },
+  { "dificultad": "media", "modificador": 0 },
+  { "dificultad": "dificil", "modificador": -10 },
+  { "dificultad": "muy_dificil", "modificador": -20 },
+  { "dificultad": "extremadamente_dificil", "modificador": -30 },
+  { "dificultad": "locura_completa", "modificador": -50 },
+  { "dificultad": "absurdo", "modificador": -70 }
+]

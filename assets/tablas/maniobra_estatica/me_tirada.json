@@ -1,0 +1,65 @@
+[
+  {
+    "min": -9999,
+    "max": -26,
+    "general": "Error Garrafal: Fracasas espectacularmente. Si es posible, tu acción estática tiene el efecto contrario al que te proponías.",
+    "influencia_interaccion": "Error Garrafal: Tu descarado intento de coacción repugna a la audiencia. Deciden hacer lo contrario de lo que tú intentabas que hiciesen. Hasta que no se produzca un cambio en las circunstancias, fracasarán todos tus intentos de influencia.",
+    "desactivar_trampas_cerraduras": "Error Garrafal: Si estás abriendo una cerradura, se te rompe la ganzúa, que queda atascada en la cerradura, impidiendo abrirla hasta que sea extraído el trozo de herramienta. Cualquier trampa se disparará.",
+    "leer_runas_usar_objetos": "Error Garrafal: Las capacidades o hechizos que se encuentran en el papel de runas o en el objeto se activan y se dirigen contra ti. Las runas del papel desaparecerán y no podrás usar nunca los hechizos o capacidades contenidas en el objeto.",
+    "percepcion_rastrear": "Error Garrafal: No sólo no consigues ninguna información válida, sino que obtienes información falsa debido a un juicio erróneo o por fijarte en los detalles equivocados. Nunca podrás volver a intentar sobre el mismo tema y en la misma zona."
+  },
+  {
+    "min": -25,
+    "max": 4,
+    "general": "Fracaso Absoluto: Tu total incompetencia produce un lapsus mental. Cualquier maniobra estática que intentes durante los siguientes diez minutos será un fracaso.",
+    "influencia_interaccion": "Fracaso Absoluto: Tu audiencia te rechaza, lo que te hace perder la confianza y tu autoridad. Cualquier intento de influencia durante la siguiente hora resultará en fracaso.",
+    "desactivar_trampas_cerraduras": "Fracaso Absoluto: Te has bloqueado mentalmente con esta cerradura/trampa y fracasarás automáticamente en cualquier otro intento de abrirla o desactivarla. Existe un 50% de que las trampas se disparen.",
+    "leer_runas_usar_objetos": "Fracaso Absoluto: Tu mente se bloquea con este objeto/papel de runas y fracasarás automáticamente en futuros intentos de usarlo o leerlo. Existe un 50% de que un hechizo se active.",
+    "percepcion_rastrear": "Fracaso Absoluto: La confusión te causa un lapsus mental. Esta tirada y todas las tiradas de percepción realizadas durante los siguientes diez minutos resultarán en fracaso."
+  },
+  {
+    "min": 5,
+    "max": 75,
+    "general": "Fracaso: Has fallado. No podrás intentar la misma maniobra estática en el mismo sitio durante el día.",
+    "influencia_interaccion": "Fracaso: Has fallado. Tu audiencia no será receptiva a ninguno de tus intentos de influenciarla, al menos durante un día.",
+    "desactivar_trampas_cerraduras": "Fracaso: Has fallado. No se te ocurre ninguna idea más sobre cómo abrir/desactivar esta cerradura/trampa. Tras 24 horas podrás volver a intentarlo.",
+    "leer_runas_usar_objetos": "Fracaso: En estos momentos no se te ocurren más ideas sobre cómo leer/utilizar esta runa/objeto. Cuando hayas subido de nivel, podrás realizar otro intento de leer/usar esta runa/objeto. Hay un 20% de probabilidades de que el hechizo se active (incluye el intentar usar un objeto que contenga un hechizo)",
+    "percepcion_rastrear": "Fracaso: No consigues información, pero te parece que has averiguado todo lo posible. No podrás volver a intentarlo durante un día en la misma zona."
+  },
+  {
+    "min": 76,
+    "max": 90,
+    "general": "Éxito Parcial: Si es posible el éxito parcial, consigues el 20% de tu maniobra estática. No podrás intentar la misma maniobra en el mismo lugar durante una hora.",
+    "influencia_interaccion": "Éxito Parcial: Tu audiencia sigue escuchando. Puedes seguir intentando influenciarles.",
+    "desactivar_trampas_cerraduras": "Éxito Parcial: Has descubierto cómo funciona parte de la cerradura/trampa, pero no el resto.",
+    "leer_runas_usar_objetos": "Éxito Parcial: Averiguas cuántos hechizos y capacidades contiene y qué son, pero todavía no puedes leerlos ni usarlos.",
+    "percepcion_rastrear": "Éxito Parcial: Averiguas algo de la información requerida, pero te das cuenta de que algo se te ha escapado."
+  },
+  {
+    "min": 91,
+    "max": 110,
+    "general": "Casi Éxito: Si es posible el éxito parcial, consigues el 50% de tu acción. Puedes volver a intentarlo tras 3 asaltos de reflexión.",
+    "influencia_interaccion": "Casi Éxito: Sigue hablando y tu audiencia se muestra más receptiva. Modifica la siguiente tirada con +20.",
+    "desactivar_trampas_cerraduras": "Casi Éxito: Casi lo consigues. Si pasas 2 asaltos pensando en tu intento puedes volver a intentarlo con una bonificación adicional de +5.",
+    "leer_runas_usar_objetos": "Casi Éxito: Casi lo consigues. Averiguas los hechizos y capacidades que contiene. Si esperas 24 horas y meditas, podrás intentarlo de nuevo con +10.",
+    "percepcion_rastrear": "Casi Éxito: Consigues parte de la información. Te das cuenta de que falta algo. Piensa durante 3 asaltos y vuelve a intentarlo."
+  },
+  {
+    "min": 111,
+    "max": 175,
+    "general": "Éxito: Tu maniobra estática ha sido un éxito.",
+    "influencia_interaccion": "Éxito: Has influenciado a tu audiencia.",
+    "desactivar_trampas_cerraduras": "Éxito: La cerradura o trampa está abierta/desactivada.",
+    "leer_runas_usar_objetos": "Éxito: Aprendes uno de los hechizos o capacidades contenidos en el objeto o papel.",
+    "percepcion_rastrear": "Éxito: Consigues toda la información que requería la tirada."
+  },
+  {
+    "min": 176,
+    "max": 9999,
+    "general": "Éxito Absoluto: Éxito completo. Obtienes una bonificación de +20 para acciones estáticas similares durante 10 minutos.",
+    "influencia_interaccion": "Éxito Absoluto: No sólo influyes, sino que recibes una bonificación de +50 a futuros intentos con esta audiencia.",
+    "desactivar_trampas_cerraduras": "Éxito Absoluto: Podrás abrir o desactivar automáticamente cerraduras o trampas similares en el futuro.",
+    "leer_runas_usar_objetos": "Éxito Absoluto: Aprendes todos los hechizos y capacidades del objeto o papel.",
+    "percepcion_rastrear": "Éxito Absoluto: Percibes todo en la zona. Incluye información adicional y obtienes +20 a percepción durante 10 minutos."
+  }
+]

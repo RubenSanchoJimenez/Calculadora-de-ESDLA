@@ -1,0 +1,12 @@
+[
+  { "nivel": 1,  "total_puntos_experiencia": 10000 },
+  { "nivel": 2,  "total_puntos_experiencia": 20000 },
+  { "nivel": 3,  "total_puntos_experiencia": 30000 },
+  { "nivel": 4,  "total_puntos_experiencia": 40000 },
+  { "nivel": 5,  "total_puntos_experiencia": 50000 },
+  { "nivel": 6,  "total_puntos_experiencia": 70000 },
+  { "nivel": 7,  "total_puntos_experiencia": 90000 },
+  { "nivel": 8,  "total_puntos_experiencia": 110000 },
+  { "nivel": 9,  "total_puntos_experiencia": 130000 },
+  { "nivel": 10, "total_puntos_experiencia": 150000 }
+]

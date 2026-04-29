@@ -1,0 +1,22 @@
+[
+  {
+    "grado": 1,
+    "descripcion": "Permite la comunicación verbal básica mediante frases sencillas (por ejemplo: ¿bueno para comer? ¿Peligro? ¿Cuánto vale? ¿dónde está el baño?, etc.). Ni leer ni escribir."
+  },
+  {
+    "grado": 2,
+    "descripcion": "Permite hablar sobre temas sencillos mediante construcciones sencillas si ambos interlocutores hablan despacio y con cuidado. Permite la lectura de frases sencillas para captar el significado general, sin demasiados detalles, pero no la escritura."
+  },
+  {
+    "grado": 3,
+    "descripcion": "Permite hablar con la fluidez equivalente a la de un nativo, pero sin las cualidades tonales (es decir, que se habla con acento extranjero). Permite leer y escribir textos moderadamente sencillos, pero no acerca de conceptos sutiles."
+  },
+  {
+    "grado": 4,
+    "descripcion": "Se habla como en grado 3 y la capacidad de leer y escribir es la de un hombre de letras medio."
+  },
+  {
+    "grado": 5,
+    "descripcion": "Permite una absoluta fluidez, sin acento extranjero, y leer y escribir con corrección exquisita."
+  }
+]

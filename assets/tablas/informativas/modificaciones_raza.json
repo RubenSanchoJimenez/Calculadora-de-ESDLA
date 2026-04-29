@@ -1,0 +1,82 @@
+[
+  {
+    "raza": "hobbit",
+    "caracteristicas": { "FUE": -20, "AGI": 15, "CON": 15, "INT": 0, "I": -5, "PRE": -5 },
+    "resistencias": { "ESE": 50, "CAN": 20, "VEN": 30, "ENF": 15 }
+  },
+  {
+    "raza": "umli",
+    "caracteristicas": { "FUE": 5, "AGI": 0, "CON": 10, "INT": 0, "I": -5, "PRE": -5 },
+    "resistencias": { "ESE": 20, "CAN": 0, "VEN": 5, "ENF": 5 }
+  },
+  {
+    "raza": "enano",
+    "caracteristicas": { "FUE": 5, "AGI": -5, "CON": 15, "INT": 0, "I": -5, "PRE": -5 },
+    "resistencias": { "ESE": 40, "CAN": 0, "VEN": 10, "ENF": 10 }
+  },
+  {
+    "raza": "wose",
+    "caracteristicas": { "FUE": 0, "AGI": 0, "CON": 5, "INT": 0, "I": 0, "PRE": -5 },
+    "resistencias": { "ESE": 20, "CAN": 0, "VEN": 0, "ENF": 0 }
+  },
+  {
+    "raza": "humano",
+    "caracteristicas": { "FUE": 5, "AGI": 0, "CON": 0, "INT": 0, "I": 0, "PRE": 0 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 0, "ENF": 0 }
+  },
+  {
+    "raza": "dunedain",
+    "caracteristicas": { "FUE": 5, "AGI": 0, "CON": 10, "INT": 0, "I": 0, "PRE": 5 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 5, "ENF": 5 }
+  },
+  {
+    "raza": "medio_elfo",
+    "caracteristicas": { "FUE": 5, "AGI": 5, "CON": 5, "INT": 0, "I": 0, "PRE": 5 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 5, "ENF": 50 }
+  },
+  {
+    "raza": "elfo_silvano",
+    "caracteristicas": { "FUE": 0, "AGI": 10, "CON": 0, "INT": 0, "I": 5, "PRE": 5 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 10, "ENF": 100 }
+  },
+  {
+    "raza": "elfo_sinda",
+    "caracteristicas": { "FUE": 0, "AGI": 10, "CON": 5, "INT": 0, "I": 5, "PRE": 10 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 10, "ENF": 100 }
+  },
+  {
+    "raza": "elfo_noldo",
+    "caracteristicas": { "FUE": 0, "AGI": 15, "CON": 10, "INT": 5, "I": 5, "PRE": 15 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 10, "ENF": 100 }
+  },
+  {
+    "raza": "medio_orco",
+    "caracteristicas": { "FUE": 5, "AGI": 0, "CON": 5, "INT": 0, "I": 0, "PRE": -5 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 10, "ENF": 0 }
+  },
+  {
+    "raza": "orco",
+    "caracteristicas": { "FUE": 5, "AGI": -5, "CON": 15, "INT": -10, "I": -10, "PRE": -10 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 20, "ENF": 5 }
+  },
+  {
+    "raza": "uruk_hai",
+    "caracteristicas": { "FUE": 10, "AGI": 0, "CON": 20, "INT": 0, "I": -5, "PRE": -10 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 20, "ENF": 5 }
+  },
+  {
+    "raza": "medio_troll",
+    "caracteristicas": { "FUE": 10, "AGI": -5, "CON": 10, "INT": -5, "I": -5, "PRE": -5 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 15, "ENF": 5 }
+  },
+  {
+    "raza": "troll",
+    "caracteristicas": { "FUE": 15, "AGI": -10, "CON": 15, "INT": -15, "I": -15, "PRE": -10 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 30, "ENF": 10 }
+  },
+  {
+    "raza": "olog_hai",
+    "caracteristicas": { "FUE": 20, "AGI": -5, "CON": 15, "INT": -5, "I": -10, "PRE": -10 },
+    "resistencias": { "ESE": 0, "CAN": 0, "VEN": 20, "ENF": 10 }
+  }
+]

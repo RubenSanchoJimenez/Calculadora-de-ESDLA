@@ -1,0 +1,80 @@
+[
+  {
+    "min": 102,
+    "max": 999,
+    "bonificacion": 35,
+    "puntos_de_poder": 4
+  },
+  {
+    "min": 101,
+    "max": 101,
+    "bonificacion": 30,
+    "puntos_de_poder": 3
+  },
+  {
+    "min": 100,
+    "max": 100,
+    "bonificacion": 25,
+    "puntos_de_poder": 3
+  },
+  {
+    "min": 98,
+    "max": 99,
+    "bonificacion": 20,
+    "puntos_de_poder": 2
+  },
+  {
+    "min": 95,
+    "max": 97,
+    "bonificacion": 15,
+    "puntos_de_poder": 2
+  },
+  {
+    "min": 90,
+    "max": 94,
+    "bonificacion": 10,
+    "puntos_de_poder": 1
+  },
+  {
+    "min": 75,
+    "max": 89,
+    "bonificacion": 5,
+    "puntos_de_poder": 1
+  },
+  {
+    "min": 25,
+    "max": 74,
+    "bonificacion": 0,
+    "puntos_de_poder": 0
+  },
+  {
+    "min": 10,
+    "max": 24,
+    "bonificacion": -5,
+    "puntos_de_poder": 0
+  },
+  {
+    "min": 5,
+    "max": 9,
+    "bonificacion": -10,
+    "puntos_de_poder": 0
+  },
+  {
+    "min": 3,
+    "max": 4,
+    "bonificacion": -15,
+    "puntos_de_poder": 0
+  },
+  {
+    "min": 2,
+    "max": 2,
+    "bonificacion": -20,
+    "puntos_de_poder": 0
+  },
+  {
+    "min": 1,
+    "max": 1,
+    "bonificacion": -25,
+    "puntos_de_poder": 0
+  }
+]

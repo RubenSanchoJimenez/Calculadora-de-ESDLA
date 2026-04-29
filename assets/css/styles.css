@@ -8,6 +8,10 @@
     border: none;
     color: white;
 }
+#btn_navbar_collapse{
+    background-color: rgba(255, 255, 255, 0.7);
+    color: white;
+}
 .hr-fancy {
     border: 0;
     height: 2px;
@@ -63,36 +67,80 @@ body.con-fondo-borroso::before {
 #menu-principal button {
     height: 80px;
 }
+#vista-otros button {
+    height: 80px;
+}
+.tabla-dinamica-contenedor {
+    max-height: calc(100vh - 170px);
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-radius: 5px;
+}
+.tabla-dinamica {
+    margin: 0;
+    min-width: 100%;
+}
+.tabla-dinamica th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #14441a;
+    color: white;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.tabla-dinamica td {
+    vertical-align: middle;
+}
+.tabla-dinamica-interna {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+}
+.tabla-dinamica-interna th,
+.tabla-dinamica-interna td {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 4px 6px;
+    text-align: center;
+}
+.tabla-dinamica-interna th {
+    background-color: rgba(20, 68, 26, 0.12);
+    color: #212529;
+    position: static;
+    text-transform: none;
+    white-space: nowrap;
+}
+.tabla-dinamica-lista {
+    display: grid;
+    gap: 6px;
+}
+.tabla-dinamica-lista-item {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, 0.65);
+}
+.vista-informativa {
+    background-color: rgba(255, 255, 255, 0.94);
+    border-radius: 5px;
+    padding: 18px;
+    font-size: 1rem;
+}
+.vista-informativa h2 {
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+.vista-informativa p {
+    color: #212529;
+    font-weight: 400;
+    line-height: 1.55;
+}
 p {
     color: white;
     font-weight: bold;
 }
 .texto_resultado {
-    height: 50px;
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: medium;
-}
-.texto_resultado_critico_pifia {
-    height: 100px;
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: medium;
-}
-.texto_resultado_popup {
-    height: 100px;
+    min-height: 50px;
     width: 100%;
     padding: 10px;
     background-color: rgb(255, 255, 255);

@@ -1,0 +1,11 @@
+[
+  { "dificultad": "rutinaria", "valor": 0 },
+  { "dificultad": "muy_facil", "valor": 5 },
+  { "dificultad": "facil", "valor": 10 },
+  { "dificultad": "media", "valor": 50 },
+  { "dificultad": "dificil", "valor": 100 },
+  { "dificultad": "muy_dificil", "valor": 150 },
+  { "dificultad": "extremadamente_dificil", "valor": 200 },
+  { "dificultad": "locura_completa", "valor": 300 },
+  { "dificultad": "absurda", "valor": 500 }
+]
