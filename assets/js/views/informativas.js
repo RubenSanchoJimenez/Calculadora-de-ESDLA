@@ -64,12 +64,61 @@ async function cargarVistaTabla(configuracion) {
         mostrarVista("tablaDinamica");
         mostrarMensajeTabla("Cargando tabla...");
 
-        const datos = await cargarTablaInformativa(configuracion.archivo);
+        const datos = transformarDatosTabla(configuracion.archivo, await cargarTablaInformativa(configuracion.archivo));
         pintarTabla(configuracion.titulo, datos);
     } catch (error) {
         console.error(error);
         mostrarMensajeTabla("No se pudo cargar la tabla.");
     }
+}
+
+function transformarDatosTabla(archivo, datos) {
+    if (archivo === "puntos_criticos.json") {
+        return datos.filter((fila) => Number(fila.nivel_oponente) <= 10);
+    }
+
+    if (archivo === "puntos_hechizos.json") {
+        return pivotarPorNivelPersonaje(datos, "nivel_hechizo", "nivel_hechizo");
+    }
+
+    if (archivo === "puntos_muertes.json") {
+        return pivotarPorNivelPersonaje(datos, "nivel_oponente", "nivel_oponente");
+    }
+
+    if (archivo === "penalizacion_peso.json") {
+        return datos.map((fila) => ({
+            "peso min": fila.peso_personaje_min,
+            "peso max": fila.peso_personaje_max,
+            cargas: fila.cargas
+        }));
+    }
+
+    return datos;
+}
+
+function pivotarPorNivelPersonaje(datos, claveNivelOrigen, claveColumnaDestino) {
+    const nivelesPersonaje = obtenerValoresUnicos(
+        datos.flatMap((fila) => Object.keys(fila.niveles_personaje ?? {}).map(Number))
+    );
+    const nivelesOrigen = obtenerValoresUnicos(datos.map((fila) => Number(fila[claveNivelOrigen])));
+
+    return nivelesPersonaje.map((nivelPersonaje) => {
+        return {
+            nivel_personaje: nivelPersonaje,
+            [claveColumnaDestino]: nivelesOrigen.map((nivelOrigen) => {
+                const filaOrigen = datos.find((fila) => Number(fila[claveNivelOrigen]) === nivelOrigen);
+
+                return {
+                    nivel: nivelOrigen,
+                    valor: filaOrigen?.niveles_personaje?.[String(nivelPersonaje)] ?? ""
+                };
+            })
+        };
+    });
+}
+
+function obtenerValoresUnicos(valores) {
+    return Array.from(new Set(valores.filter((valor) => Number.isFinite(valor)))).sort((a, b) => a - b);
 }
 
 async function cargarTablaInformativa(archivo) {
@@ -195,6 +244,10 @@ function crearTablaObjeto(objeto) {
 }
 
 function crearListaObjetos(lista) {
+    if (lista.every((item) => item && typeof item === "object" && !Array.isArray(item))) {
+        return crearTablaArrayObjetos(lista);
+    }
+
     const contenedor = document.createElement("div");
     contenedor.className = "tabla-dinamica-lista";
 
@@ -206,6 +259,32 @@ function crearListaObjetos(lista) {
     });
 
     return contenedor;
+}
+
+function crearTablaArrayObjetos(lista) {
+    const columnas = obtenerColumnas(lista);
+    const tabla = document.createElement("table");
+    const thead = document.createElement("thead");
+    const tbody = document.createElement("tbody");
+
+    tabla.className = "tabla-dinamica-interna";
+    thead.appendChild(crearFilaCabecera(columnas));
+
+    lista.forEach((item) => {
+        const tr = document.createElement("tr");
+
+        columnas.forEach((columna) => {
+            const td = document.createElement("td");
+            td.appendChild(crearContenidoCelda(item[columna]));
+            tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+    });
+
+    tabla.appendChild(thead);
+    tabla.appendChild(tbody);
+    return tabla;
 }
 
 function formatearValor(valor) {

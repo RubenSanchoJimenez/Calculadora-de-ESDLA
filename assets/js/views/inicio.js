@@ -15,6 +15,7 @@ const navbarImagenInicio = document.getElementById("navbar_imagen_inicio");
 const body = document.body;
 
 const menuPrincipal = document.getElementById("menu-principal");
+let vistaActual = null;
 
 const vistas = {
     ataque: document.getElementById("vista-ataque"),
@@ -73,6 +74,7 @@ function mostrarVistaPorElemento(vista) {
     menuPrincipal?.classList.add("d-none");
     vista.classList.remove("d-none");
     body?.classList.add("con-fondo-borroso");
+    vistaActual = vista;
     actualizarImagenNavbar(false);
 }
 
@@ -88,6 +90,11 @@ function registrarBotonInicio() {
     }
 
     btnVolverInicio.addEventListener("click", () => {
+        if (vistaActual === vistas.tablaDinamica) {
+            mostrarVistaPorElemento(vistas.otros);
+            return;
+        }
+
         mostrarInicio();
     });
 
@@ -102,6 +109,7 @@ function mostrarInicio() {
     cerrarVistas();
     menuPrincipal?.classList.remove("d-none");
     body?.classList.remove("con-fondo-borroso");
+    vistaActual = null;
     actualizarImagenNavbar(true);
 }
 

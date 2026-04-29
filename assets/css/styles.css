@@ -71,10 +71,11 @@ body.con-fondo-borroso::before {
     height: 80px;
 }
 .tabla-dinamica-contenedor {
-    max-height: calc(100vh - 170px);
+    max-height: calc(95vh - 170px);
     overflow: auto;
     background-color: rgba(255, 255, 255, 0.96);
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 .tabla-dinamica {
     margin: 0;
@@ -175,4 +176,7 @@ p {
 }
 #contenedor_popup > * {
     pointer-events: auto;
+}
+#contenedor-general {
+    max-width: 500px;
 }
