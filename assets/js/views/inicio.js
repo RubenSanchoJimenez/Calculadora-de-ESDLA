@@ -23,7 +23,7 @@ const vistas = {
     critico: document.getElementById("vista-critico"),
     pifia: document.getElementById("vista-pifia"),
     me: document.getElementById("vista-maniobra-estatica"),
-    mm: document.getElementById("vita-maniobra-movimiento"),
+    mm: document.getElementById("vista-maniobra-movimiento"),
     tr: document.getElementById("vista-resistencia"),
     otros: document.getElementById("vista-otros"),
     tablaDinamica: document.getElementById("vista-tabla-dinamica"),

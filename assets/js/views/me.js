@@ -94,6 +94,11 @@ function registrarBotonCalcularMe() {
                 return;
             }
 
+            if (seleccion.requiereNivelHechizo && !Number.isFinite(seleccion.nivelHechizo)) {
+                mostrarResultadoMe("Introduce el nivel del hechizo.");
+                return;
+            }
+
             const modificadorDificultad = await obtenerModificadorDificultadMe(seleccion.dificultadClave);
             const total = seleccion.totalBase + modificadorDificultad;
             const tabla = await cargarTablaMe("me_tirada", "../../tablas/maniobra_estatica/me_tirada.json");
@@ -173,14 +178,18 @@ function obtenerSeleccionMe() {
         const checkbox = document.getElementById(id);
         return total + (checkbox?.checked ? valor : 0);
     }, 0);
-    const nivelHechizo = leerNumeroOpcional(document.getElementById("me_nivel_hechizo"));
+    const nivelHechizo = tipoManiobra?.id === "me_leer_runas"
+        ? leerNumeroObligatorio(document.getElementById("me_nivel_hechizo"))
+        : leerNumeroOpcional(document.getElementById("me_nivel_hechizo"));
 
     return {
         dados,
+        nivelHechizo,
         dificultad,
         dificultadClave: dificultad ? dificultadesMe[dificultad.id] : null,
         columna: tipoManiobra ? columnasMe[tipoManiobra.id] : null,
         requiereDificultad: Boolean(tipoManiobra && tipoManiobra.id !== "me_leer_runas"),
+        requiereNivelHechizo: tipoManiobra?.id === "me_leer_runas",
         totalBase: dados + bonificador + modificadores - nivelHechizo
     };
 }

@@ -1,3 +1,5 @@
+import { calcularUmbralResistenciaTabla } from "../lib/resistencia.js";
+
 export const tr = {
     init() {
         registrarBotonLimpiarResistencia();
@@ -37,7 +39,7 @@ function registrarBotonCalcularResistencia() {
             const seleccion = obtenerSeleccionResistencia();
 
             if (!Number.isFinite(seleccion.dados)) {
-                mostrarResultadoResistencia("Introduce una tirada de dados válida.");
+                mostrarResultadoResistencia("Introduce una tirada de dados valida.");
                 return;
             }
 
@@ -52,24 +54,14 @@ function registrarBotonCalcularResistencia() {
             }
 
             const tabla = await cargarTablaResistencia();
-            const fila = tabla.find((item) => item.nivel_blanco === seleccion.nivelBlancoEfectivo);
-
-            if (!fila) {
-                mostrarResultadoResistencia("No se encontró la fila del nivel del blanco.");
-                return;
-            }
-
-            const umbral = fila.nivel_atacante[String(seleccion.nivelAtacanteAjustado)];
-
-            if (!Number.isFinite(umbral)) {
-                mostrarResultadoResistencia("No se encontró el valor de resistencia para esos niveles.");
-                return;
-            }
-
-            const umbralAjustado = umbral + seleccion.ajusteNivelAtacante - seleccion.ajusteNivelBlanco;
+            const umbralAjustado = calcularUmbralResistenciaTabla(
+                tabla,
+                seleccion.nivelAtacante,
+                seleccion.nivelBlanco
+            );
             const total = seleccion.dados + seleccion.bonificacion + seleccion.otraBonificacion + seleccion.ajusteVoluntario;
             const exito = total >= umbralAjustado;
-            const resultado = exito ? "Éxito" : "Fallo";
+            const resultado = exito ? "Exito" : "Fallo";
 
             mostrarResultadoResistencia(`${resultado}: ${total} / ${umbralAjustado}`);
         } catch (error) {
@@ -103,46 +95,14 @@ function obtenerSeleccionResistencia() {
     const bonificacionTexto = resistenciaBonificacion?.value?.trim() ?? "";
     const otraBonificacionTexto = resistenciaOtraBonificacion?.value?.trim() ?? "";
 
-    const dados = dadosTexto === "" ? Number.NaN : Number(dadosTexto);
-    const nivelAtacante = nivelAtacanteTexto === "" ? Number.NaN : Number(nivelAtacanteTexto);
-    const nivelBlanco = nivelBlancoTexto === "" ? Number.NaN : Number(nivelBlancoTexto);
-    const bonificacion = bonificacionTexto === "" ? 0 : Number(bonificacionTexto);
-    const otraBonificacion = otraBonificacionTexto === "" ? 0 : Number(otraBonificacionTexto);
-    const nivelAtacanteAjustado = ajustarNivel(nivelAtacante, 1, 15);
-    const nivelBlancoAjustado = ajustarNivel(nivelBlanco, 0, 15);
-    const ajusteNivelAtacante = calcularExcesoNivel(nivelAtacante);
-    const ajusteNivelBlanco = calcularExcesoNivel(nivelBlanco);
-    const nivelBlancoEfectivo = Math.max(nivelBlancoAjustado - ajusteNivelAtacante, 0);
-
     return {
-        dados,
-        nivelAtacante,
-        nivelBlanco,
-        bonificacion,
-        otraBonificacion,
-        ajusteVoluntario: resistenciaBlancoVoluntario?.checked ? -50 : 0,
-        nivelAtacanteAjustado,
-        nivelBlancoAjustado,
-        ajusteNivelAtacante,
-        ajusteNivelBlanco,
-        nivelBlancoEfectivo
+        dados: dadosTexto === "" ? Number.NaN : Number(dadosTexto),
+        nivelAtacante: nivelAtacanteTexto === "" ? Number.NaN : Number(nivelAtacanteTexto),
+        nivelBlanco: nivelBlancoTexto === "" ? Number.NaN : Number(nivelBlancoTexto),
+        bonificacion: bonificacionTexto === "" ? 0 : Number(bonificacionTexto),
+        otraBonificacion: otraBonificacionTexto === "" ? 0 : Number(otraBonificacionTexto),
+        ajusteVoluntario: resistenciaBlancoVoluntario?.checked ? -50 : 0
     };
-}
-
-function ajustarNivel(valor, minimo, maximo) {
-    if (!Number.isFinite(valor)) {
-        return Number.NaN;
-    }
-
-    return Math.min(Math.max(Math.trunc(valor), minimo), maximo);
-}
-
-function calcularExcesoNivel(valor) {
-    if (!Number.isFinite(valor)) {
-        return 0;
-    }
-
-    return Math.max(Math.trunc(valor) - 15, 0);
 }
 
 async function cargarTablaResistencia() {

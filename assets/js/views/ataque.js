@@ -9,9 +9,9 @@ export const ataque = {
 };
 
 const vistaAtaque = document.getElementById("vista-ataque");
-const radiosAtaque = document.querySelectorAll('input[name="ataque"]');
-const radiosTamanio = document.querySelectorAll('input[name="garra/agarre"]');
-const radiosArmadura = document.querySelectorAll('input[name="armadura"]');
+const radiosAtaque = vistaAtaque?.querySelectorAll('input[name="ataque"]') ?? [];
+const radiosTamanio = vistaAtaque?.querySelectorAll('input[name="garra/agarre"]') ?? [];
+const radiosArmadura = vistaAtaque?.querySelectorAll('input[name="ataque_armadura"]') ?? [];
 const ataqueGarra = document.getElementById("ataque_garra");
 const ataqueAgarre = document.getElementById("ataque_agarre");
 const ataqueTamanios = document.getElementById("ataque_tamanios");
@@ -52,6 +52,7 @@ const tiposPifiaAtaque = {
     ataque_2manos: { tipo: "arma_empunada_pifia", subtipo: "arma_empunada_dos_manos" },
     ataque_proyectil: { tipo: "arma_proyectil_pifia", subtipo: null }
 };
+// Garra y agarre usan "Ataque fallido" en sus tablas, no "F"; no abren pifia automatica.
 
 const columnasArmadura = {
     ataque_coraza: "coraza",

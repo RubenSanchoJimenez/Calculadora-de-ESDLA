@@ -17,7 +17,7 @@ const tablasInformativas = {
     },
     "btn-otros-experiencia-por-nivel": {
         titulo: "EXPERIENCIA POR NIVEL",
-        archivo: "experiacia_nivel.json"
+        archivo: "experiencia_nivel.json"
     },
     "btn-otros-grado-idiomas": {
         titulo: "GRADO DE IDIOMAS",
@@ -73,10 +73,6 @@ async function cargarVistaTabla(configuracion) {
 }
 
 function transformarDatosTabla(archivo, datos) {
-    if (archivo === "puntos_criticos.json") {
-        return datos.filter((fila) => Number(fila.nivel_oponente) <= 10);
-    }
-
     if (archivo === "puntos_hechizos.json") {
         return pivotarPorNivelPersonaje(datos, "nivel_hechizo", "nivel_hechizo");
     }

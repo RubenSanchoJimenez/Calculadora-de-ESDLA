@@ -1,4 +1,4 @@
-# Reporte de analisis V1.0 - Calculadora ESDLA
+# Reporte de analisis V0.2 - Calculadora ESDLA
 
 Fecha de revision: 2026-04-29  
 Alcance: revision estatica completa de `index.html`, `README.txt`, `assets/js`, `assets/css` y todos los JSON de `assets/tablas`.

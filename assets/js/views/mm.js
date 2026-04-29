@@ -7,25 +7,37 @@ export const mm = {
     }
 };
 
-const vistaMm = document.getElementById("vita-maniobra-movimiento");
+const vistaMm = document.getElementById("vista-maniobra-movimiento");
 const btnLimpiarMm = document.getElementById("btn_limpiar_mm");
 const btnCalcularMm = document.getElementById("mm_calcular");
 const mmDados = document.getElementById("mm_dados");
 const mmBonus = document.getElementById("mm_bonus");
 const mmOtros = document.getElementById("mm_otros");
 const mmTextoResultado = document.getElementById("mm_texto_resultado");
-const radiosDificultadMm = vistaMm?.querySelectorAll('input[name="pifia_mm_seleccion"]') ?? [];
+const radiosDificultadMm = vistaMm?.querySelectorAll('input[name="mm_dificultad"]') ?? [];
 
 const columnasMm = {
-    pifia_mm_rutinaria: "rutinaria",
-    pifia_mm_muy_facil: "muy_facil",
-    pifia_mm_facil: "facil",
-    pifia_mm_media: "media",
-    pifia_mm_dificil: "dificil",
-    pifia_mm_muy_dificil: "muy_dificil",
-    pifia_mm_extr_dificil: "extremadamente_dificil",
-    pifia_mm_locura_comp: "locura_completa",
-    pifia_mm_absurdo: "absurdo"
+    mm_rutinaria: "rutinaria",
+    mm_muy_facil: "muy_facil",
+    mm_facil: "facil",
+    mm_media: "media",
+    mm_dificil: "dificil",
+    mm_muy_dificil: "muy_dificil",
+    mm_extr_dificil: "extremadamente_dificil",
+    mm_locura_comp: "locura_completa",
+    mm_absurdo: "absurdo"
+};
+
+const pifiasPorDificultadMm = {
+    mm_rutinaria: "pifia_mm_rutinaria",
+    mm_muy_facil: "pifia_mm_muy_facil",
+    mm_facil: "pifia_mm_facil",
+    mm_media: "pifia_mm_media",
+    mm_dificil: "pifia_mm_dificil",
+    mm_muy_dificil: "pifia_mm_muy_dificil",
+    mm_extr_dificil: "pifia_mm_extr_dificil",
+    mm_locura_comp: "pifia_mm_locura_comp",
+    mm_absurdo: "pifia_mm_absurdo"
 };
 
 const modificadoresEstadoMm = [
@@ -78,7 +90,7 @@ function registrarBotonCalcularMm() {
             mostrarResultadoMm(textoResultado);
 
             if (resultado === "F") {
-                mostrarPopupPifia(textoResultado, "mm_pifia", seleccion.dificultadId);
+                mostrarPopupPifia(textoResultado, "mm_pifia", seleccion.pifiaDificultadId);
             }
         } catch (error) {
             console.error(error);
@@ -127,6 +139,7 @@ function obtenerSeleccionMm() {
     return {
         dados,
         dificultadId: dificultad?.id ?? null,
+        pifiaDificultadId: dificultad ? pifiasPorDificultadMm[dificultad.id] : null,
         columna: dificultad ? columnasMm[dificultad.id] : null,
         total: dados + bonus + otros + modificadoresEstado
     };

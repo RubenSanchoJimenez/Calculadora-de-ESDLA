@@ -1,4 +1,5 @@
-import { mostrarPopupCritico, mostrarPopupPifia } from "./popupCritico.js";
+﻿import { mostrarPopupCritico, mostrarPopupPifia } from "./popupCritico.js";
+import { calcularUmbralResistenciaTabla } from "../lib/resistencia.js";
 
 export const hechizo = {
     init() {
@@ -148,11 +149,11 @@ async function calcularHechizoBasico() {
     const bonificacionResistencia = leerNumeroOpcional(document.getElementById("hechizo_bonificacion_resistencia"));
     const bonificadorPositivo = leerNumeroOpcional(document.getElementById("hechizo_bonificador_positivo"));
     const bonificadorNegativo = leerNumeroOpcional(document.getElementById("hechizo_bonificador_negativo"));
-    const asaltosPreparacion = leerNumeroOpcional(document.getElementById("hechizo_asaltos_preparacion"));
-    const distancia = leerNumeroOpcional(document.getElementById("hechizo_distancia"));
+    const asaltosPreparacion = leerNumeroObligatorio(document.getElementById("hechizo_asaltos_preparacion"));
+    const distancia = leerNumeroObligatorio(document.getElementById("hechizo_distancia"));
 
     if (!tipoLanzamiento) {
-        mostrarResultadoHechizo("Selecciona esencia o canalización.");
+        mostrarResultadoHechizo("Selecciona esencia o canalizaciÃ³n.");
         return;
     }
 
@@ -185,10 +186,12 @@ async function calcularHechizoBasico() {
             dadosObjetivo,
             nivelLanzador,
             nivelReceptor,
-            nivelHechizo
+            nivelHechizo,
+            asaltosPreparacion,
+            distancia
         ])
     ) {
-        mostrarResultadoHechizo("Completa los campos numéricos obligatorios del hechizo básico.");
+        mostrarResultadoHechizo("Completa los campos numÃ©ricos obligatorios del hechizo bÃ¡sico.");
         return;
     }
 
@@ -214,7 +217,7 @@ async function calcularHechizoBasico() {
     const modificadorTabla = fila?.[columna];
 
     if (typeof modificadorTabla === "undefined") {
-        mostrarResultadoHechizo("No se encontró el resultado del hechizo básico.");
+        mostrarResultadoHechizo("No se encontrÃ³ el resultado del hechizo bÃ¡sico.");
         return;
     }
 
@@ -243,12 +246,12 @@ async function calcularHechizoBasico() {
 
 async function calcularHechizoDirigido() {
     const subtipo = obtenerRadioMarcado('input[name="hechizo_dirigido_tipo"]')?.id ?? null;
-    const armaduraId = obtenerRadioMarcado('#hechizo_dirigido_seleccionable input[type="radio"][name="armadura"]')?.id ?? null;
+    const armaduraId = obtenerRadioMarcado('#hechizo_dirigido_seleccionable input[type="radio"][name="hechizo_dirigido_armadura"]')?.id ?? null;
     const dados = leerNumeroObligatorio(document.getElementById("hechizo_dirigido_dados"));
     const bonifPos = leerNumeroOpcional(document.getElementById("hechizo_dirigido_bonif_pos"));
     const bonifNeg = leerNumeroOpcional(document.getElementById("hechizo_dirigido_bonif_neg"));
-    const asaltos = leerNumeroOpcional(document.getElementById("hechizo_dirigido_asaltos_preparacion"));
-    const distancia = leerNumeroOpcional(document.getElementById("hechizo_dirigido_distancia"));
+    const asaltos = leerNumeroObligatorio(document.getElementById("hechizo_dirigido_asaltos_preparacion"));
+    const distancia = leerNumeroObligatorio(document.getElementById("hechizo_dirigido_distancia"));
 
     if (!subtipo) {
         mostrarResultadoHechizo("Selecciona el tipo de hechizo dirigido.");
@@ -260,8 +263,8 @@ async function calcularHechizoDirigido() {
         return;
     }
 
-    if (!sonNumerosValidos([dados])) {
-        mostrarResultadoHechizo("Completa los campos numéricos obligatorios del hechizo dirigido.");
+    if (!sonNumerosValidos([dados, asaltos, distancia])) {
+        mostrarResultadoHechizo("Completa los campos numÃ©ricos obligatorios del hechizo dirigido.");
         return;
     }
 
@@ -275,13 +278,14 @@ async function calcularHechizoDirigido() {
         modEscudo;
 
     const tabla = await cargarTabla("hechizo_dirigido", "../../tablas/hechizo/hechizo_dirigido.json");
+    // Los maximos de subtipo limitan la tirada modificada antes de consultar la tabla.
     const tiradaCapada = Math.min(tirada, maximosHechizoDirigido[subtipo] ?? 150);
     const tiradaTabla = obtenerTiradaConsulta(tabla, dados, tiradaCapada);
     const fila = buscarFilaTabla(tabla, tiradaTabla);
     const resultado = fila?.[columnasImpacto[armaduraId]];
 
     if (typeof resultado === "undefined") {
-        mostrarResultadoHechizo("No se encontró el resultado del hechizo dirigido.");
+        mostrarResultadoHechizo("No se encontrÃ³ el resultado del hechizo dirigido.");
         return;
     }
 
@@ -293,7 +297,7 @@ async function calcularHechizoDirigido() {
     }
 
     const textoTotal =
-        tiradaCapada !== tirada ? `total ${tirada} (máx. ${tiradaCapada})` : `total ${tirada}`;
+        tiradaCapada !== tirada ? `total ${tirada} (mÃ¡x. ${tiradaCapada})` : `total ${tirada}`;
 
     const textoResultado = `Hechizo dirigido: ${textoTotal}, resultado ${resultado}.`;
     mostrarResultadoHechizo(textoResultado);
@@ -302,12 +306,12 @@ async function calcularHechizoDirigido() {
 
 async function calcularHechizoBola() {
     const subtipo = obtenerRadioMarcado('input[name="hechizo_bola_tipo"]')?.id ?? null;
-    const armaduraId = obtenerRadioMarcado('#hechizo_bola_seleccionable input[type="radio"][name="armadura"]')?.id ?? null;
+    const armaduraId = obtenerRadioMarcado('#hechizo_bola_seleccionable input[type="radio"][name="hechizo_bola_armadura"]')?.id ?? null;
     const dados = leerNumeroObligatorio(document.getElementById("hechizo_bola_dados"));
     const bonifPos = leerNumeroOpcional(document.getElementById("hechizo_bola_bonif_pos"));
     const bonifNeg = leerNumeroOpcional(document.getElementById("hechizo_bola_bonif_neg"));
-    const asaltos = leerNumeroOpcional(document.getElementById("hechizo_bola_asaltos_preparacion"));
-    const distancia = leerNumeroOpcional(document.getElementById("hechizo_bola_distancia"));
+    const asaltos = leerNumeroObligatorio(document.getElementById("hechizo_bola_asaltos_preparacion"));
+    const distancia = leerNumeroObligatorio(document.getElementById("hechizo_bola_distancia"));
     const modCentro = document.getElementById("hechizo_bola_centro")?.checked ? 20 : 0;
 
     if (!subtipo) {
@@ -320,8 +324,8 @@ async function calcularHechizoBola() {
         return;
     }
 
-    if (!sonNumerosValidos([dados])) {
-        mostrarResultadoHechizo("Completa los campos numéricos obligatorios del hechizo de bola.");
+    if (!sonNumerosValidos([dados, asaltos, distancia])) {
+        mostrarResultadoHechizo("Completa los campos numÃ©ricos obligatorios del hechizo de bola.");
         return;
     }
 
@@ -339,7 +343,7 @@ async function calcularHechizoBola() {
     const resultado = fila?.[columnasImpacto[armaduraId]];
 
     if (typeof resultado === "undefined") {
-        mostrarResultadoHechizo("No se encontró el resultado del hechizo de bola.");
+        mostrarResultadoHechizo("No se encontrÃ³ el resultado del hechizo de bola.");
         return;
     }
 
@@ -457,6 +461,7 @@ function calcularModificadorPreparacion(asaltos) {
 }
 
 function obtenerColumnaBasico(tipoLanzamiento, armaduraReceptorId) {
+    // Regla de canalizacion: cuero del receptor consulta la columna sin armadura.
     if (tipoLanzamiento === "hechizo_canalizacion" && armaduraReceptorId === "hechizo_receptor_cuero") {
         return "sin_armadura";
     }
@@ -502,6 +507,7 @@ function obtenerTiradaConsulta(tabla, dadosNaturales, tiradaModificada) {
 }
 
 function calcularTiradaTablaHechizo(dadosNaturales, tiradaModificada) {
+    // En hechizo basico y bola, 97-100 consultan por dado natural; el resto no supera 96.
     if (dadosNaturales === 100) {
         return 100;
     }
@@ -532,39 +538,7 @@ async function cargarTabla(clave, rutaRelativa) {
 
 async function calcularUmbralResistencia(nivelAtacante, nivelBlanco) {
     const tabla = await cargarTabla("resistencia", "../../tablas/resistencia/resistencia.json");
-    const nivelAtacanteAjustado = ajustarNivel(nivelAtacante, 1, 15);
-    const nivelBlancoAjustado = ajustarNivel(nivelBlanco, 0, 15);
-    const ajusteNivelAtacante = calcularExcesoNivel(nivelAtacante);
-    const ajusteNivelBlanco = calcularExcesoNivel(nivelBlanco);
-    const nivelBlancoEfectivo = Math.max(nivelBlancoAjustado - ajusteNivelAtacante, 0);
-    const fila = tabla.find((item) => item.nivel_blanco === nivelBlancoEfectivo);
-
-    if (!fila) {
-        throw new Error("No se encontró la fila de resistencia.");
-    }
-
-    const umbralBase = fila.nivel_atacante[String(nivelAtacanteAjustado)];
-    if (!Number.isFinite(umbralBase)) {
-        throw new Error("No se encontró el umbral de resistencia.");
-    }
-
-    return umbralBase + ajusteNivelAtacante - ajusteNivelBlanco;
-}
-
-function ajustarNivel(valor, minimo, maximo) {
-    if (!Number.isFinite(valor)) {
-        return Number.NaN;
-    }
-
-    return Math.min(Math.max(Math.trunc(valor), minimo), maximo);
-}
-
-function calcularExcesoNivel(valor) {
-    if (!Number.isFinite(valor)) {
-        return 0;
-    }
-
-    return Math.max(Math.trunc(valor) - 15, 0);
+    return calcularUmbralResistenciaTabla(tabla, nivelAtacante, nivelBlanco);
 }
 
 function mostrarResultadoHechizo(texto) {
