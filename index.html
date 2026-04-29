@@ -325,188 +325,440 @@
                 <div class="row m-0 justify-content-center">
                     <div class="col-4 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="basico">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="hechizo_basico" checked>
                         </div>
                     </div>
                     <div class="col-4 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="dirigido">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="hechizo_dirigido">
                         </div>
                     </div>
                     <div class="col-4 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="bola">
+                            <input class="form-check-input radio-large" type="radio" name="tipo_hechizo" id="hechizo_bola">
                         </div>
                     </div>
                 </div>
 
                 <hr class="hr-fancy mt-2 mb-2">
                 
-                <div class="row m-0 justify-content-center text-center">
-                    <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">ESENCIA</p>
-                    </div>
-                    <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">CANALIZACIÓN</p>
-                    </div>
-                </div>
-                <div class="row m-0 justify-content-center">
-                    <div class="col-6 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="tipo_lanzamiento" id="esencia">
+                <div id="hechizo_basico_seleccionable" class="">
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">ESENCIA</p>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">CANALIZACIÓN</p>
                         </div>
                     </div>
-                    <div class="col-6 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="tipo_lanzamiento" id="canalizacion">
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="tipo_lanzamiento" id="hechizo_esencia">
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="tipo_lanzamiento" id="hechizo_canalizacion">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100%;">
+                        <span class="text-white"><b>LANZADOR</b></span>
+                    </div>
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">CORAZA/MALLA</p>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">CUERO</p>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">S.A.</p>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="hechizo_lanzador_coraza">
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="hechizo_lanzador_cuero">
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="hechizo_lanzador_sa">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" style="height: 100%;">
+                        <span class="text-white"><b>RECEPTOR</b></span>
+                    </div>
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">CORAZA/MALLA</p>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">CUERO</p>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">S.A.</p>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="hechizo_receptor_coraza">
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="hechizo_receptor_cuero">
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="hechizo_receptor_sa">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" style="height: 100%;">
+                        <span class="text-white"><b>DADOS</b></span>
+                    </div>
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-6">
+                            <input id="hechizo_dados_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados lanzador">
+                        </div>
+                        <div class="col-6">
+                            <input id="hechizo_dados_objetivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados objetivo">
+                        </div>
+                    </div>
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-4">
+                            <input id="hechizo_nivel_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Lanzador">
+                        </div>
+                        <div class="col-4">
+                            <input id="hechizo_nivel_receptor" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Receptor">
+                        </div>
+                        <div class="col-4">
+                            <input id="hechizo_nivel_hechizo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Hechizo">
+                        </div>
+                    </div>
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-6">
+                            <input id="hechizo_bo_basico" type="number" class="form-control xxs-text input-formulario-alto" placeholder="BO Hechizo Básico">
+                        </div>
+                        <div class="col-6">
+                            <input id="hechizo_bonificacion_resistencia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación Resistencia">
+                        </div>
+                    </div>
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-6">
+                            <input id="hechizo_bonificador_positivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Positivo">
+                        </div>
+                        <div class="col-6">
+                            <input id="hechizo_bonificador_negativo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Negativo">
+                        </div>
+                    </div>
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-4">
+                            <input id="hechizo_asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
+                        </div>
+                        <div class="col-4">
+                            <input id="hechizo_distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <button id="btn_limpiar_hechizos" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-3 d-flex justify-content-center align-items-center">
+                            <p class="m-0">Blanco estático +10</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center align-items-center">
+                            <p class="m-0">Blanco voluntario -50</p>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-3 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="checkbox" id="hechizo_blanco_estatico">
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="checkbox" id="hechizo_blanco_voluntario">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                </div>
+
+                <div id="hechizo_dirigido_seleccionable" class="d-none">
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">DESC.</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">AGUA</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">HIELO</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">IGNEO</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">REL.</p>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="hechizo_dirigido_tipo" id="hechizo_dirigido_desc">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="hechizo_dirigido_tipo" id="hechizo_dirigido_agua">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="hechizo_dirigido_tipo" id="hechizo_dirigido_hielo">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="hechizo_dirigido_tipo" id="hechizo_dirigido_igneo">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="hechizo_dirigido_tipo" id="hechizo_dirigido_rel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-12 d-flex justify-content-center align-items-center">
+                            <p class="m-0">Objetivo con escudo +20</p>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="checkbox" id="hechizo_dirigido_escudo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-4">
+                            <input id="hechizo_dirigido_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                        </div>
+                        <div class="col-4">
+                            <input id="hechizo_dirigido_bonif_pos" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. +">
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <input id="hechizo_dirigido_bonif_neg" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. -">
+                        </div>
+                    </div>
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-4">
+                            <input id="hechizo_dirigido_asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
+                        </div>
+                        <div class="col-4">
+                            <input id="hechizo_dirigido_distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <button id="btn_limpiar_hechizo_dirigido" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
+                        </div>
+                    </div>
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">CORAZA</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">MALLA</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">CE</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">CUERO</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">S.A</p>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_dirigido_coraza">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_dirigido_malla">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_dirigido_ce">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_dirigido_cuero">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_dirigido_sa">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <hr class="hr-fancy mt-2 mb-2">
-
-                <div class="d-flex justify-content-center align-items-center mb-3" style="height: 100%;">
-                    <span class="text-white"><b>LANZADOR</b></span>
-                </div>
-                <div class="row m-0 justify-content-center text-center">
-                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">CORAZA/MALLA</p>
-                    </div>
-                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">CUERO</p>
-                    </div>
-                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">S.A.</p>
-                    </div>
-                </div>
-                <div class="row m-0 justify-content-center">
-                    <div class="col-4 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="lanzador_coraza">
+                <div id="hechizo_bola_seleccionable" class="d-none">
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">BOLA DE FRÍO</p>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <p class="m-0">BOLA DE FUEGO</p>
                         </div>
                     </div>
-                    <div class="col-4 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="lanzador_cuero">
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="hechizo_bola_tipo" id="hechizo_bola_frio">
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="hechizo_bola_tipo" id="hechizo_bola_fuego">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="lanzador_armadura" id="lanzador_sa">
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-12 d-flex justify-content-center align-items-center">
+                            <p class="m-0">Objetivo en el centro +20</p>
                         </div>
                     </div>
-                </div>
-
-                <hr class="hr-fancy mt-2 mb-2">
-
-                <div class="d-flex justify-content-center align-items-center mb-3 mt-3" style="height: 100%;">
-                    <span class="text-white"><b>RECEPTOR</b></span>
-                </div>
-                <div class="row m-0 justify-content-center text-center">
-                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">CORAZA/MALLA</p>
-                    </div>
-                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">CUERO</p>
-                    </div>
-                    <div class="col-4 d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <p class="m-0">S.A.</p>
-                    </div>
-                </div>
-                <div class="row m-0 justify-content-center">
-                    <div class="col-4 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="receptor_coraza">
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="checkbox" id="hechizo_bola_centro">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="receptor_cuero">
+
+                    <hr class="hr-fancy mt-2 mb-2">
+
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-4">
+                            <input id="hechizo_bola_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                        </div>
+                        <div class="col-4">
+                            <input id="hechizo_bola_bonif_pos" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. +">
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <input id="hechizo_bola_bonif_neg" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. -">
                         </div>
                     </div>
-                    <div class="col-4 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="receptor_armadura" id="receptor_sa">
+                    <div class="row mb-3" m-0 justify-content-center>
+                        <div class="col-4">
+                            <input id="hechizo_bola_asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
+                        </div>
+                        <div class="col-4">
+                            <input id="hechizo_bola_distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
+                            <button id="btn_limpiar_hechizo_bola" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
                         </div>
                     </div>
-                </div>
 
-                <hr class="hr-fancy mt-2 mb-2">
+                    <hr class="hr-fancy mt-2 mb-2">
 
-                <div class="d-flex justify-content-center align-items-center mb-3 mt-3" style="height: 100%;">
-                    <span class="text-white"><b>DADOS</b></span>
-                </div>
-                <div class="row mb-3" m-0 justify-content-center>
-                    <div class="col-6">
-                        <input id="hechizo_dados_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Lanzador">
-                    </div>
-                    <div class="col-6">
-                        <input id="hechizo_dados_objetivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Objetivo">
-                    </div>
-                </div>
-                <div class="row mb-3" m-0 justify-content-center>
-                    <div class="col-4">
-                        <input id="hechizo_nivel_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Lanzador">
-                    </div>
-                    <div class="col-4">
-                        <input id="hechizo_nivel_receptor" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Receptor">
-                    </div>
-                    <div class="col-4">
-                        <input id="hechizo_nivel_hechizo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Hechizo">
-                    </div>
-                </div>
-                <div class="row mb-3" m-0 justify-content-center>
-                    <div class="col-6">
-                        <input id="bo_hechizo_basico" type="number" class="form-control xxs-text input-formulario-alto" placeholder="BO Hechizo Básico">
-                    </div>
-                    <div class="col-6">
-                        <input id="hechizo_bonificacion_resistencia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación Resistencia">
-                    </div>
-                </div>
-                <div class="row mb-3" m-0 justify-content-center>
-                    <div class="col-6">
-                        <input id="hechizo_bonificador_positivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Positivo">
-                    </div>
-                    <div class="col-6">
-                        <input id="hechizo_bonificador_negativo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Negativo">
-                    </div>
-                </div>
-                <div class="row mb-3" m-0 justify-content-center>
-                    <div class="col-4">
-                        <input id="hechizo_asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
-                    </div>
-                    <div class="col-4">
-                        <input id="hechizo_distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
-                    </div>
-                    <div class="col-4 d-flex justify-content-center">
-                        <button id="btn_limpiar_hechizos" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
-                    </div>
-                </div>
-
-                <hr class="hr-fancy mt-2 mb-2">
-
-                <div class="row m-0 justify-content-center text-center">
-                    <div class="col-3 d-flex justify-content-center align-items-center">
-                        <p class="m-0">Blanco estático +10</p>
-                    </div>
-                    <div class="col-3 d-flex justify-content-center align-items-center">
-                        <p class="m-0">Blanco voluntario -50</p>
-                    </div>
-                </div>
-                <div class="row m-0 justify-content-center">
-                    <div class="col-3 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="checkbox" id="hechizo_blanco_estatico">
+                    <div class="row m-0 justify-content-center text-center">
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">CORAZA</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">MALLA</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">CE</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">CUERO</p>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <p class="m-0">SA</p>
                         </div>
                     </div>
-                    <div class="col-3 d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input radio-large" type="checkbox" id="hechizo_blanco_voluntario">
+                    <div class="row m-0 justify-content-center">
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_bola_coraza">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_bola_malla">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_bola_ce">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_bola_cuero">
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input radio-large" type="radio" name="armadura" id="hechizo_bola_sa">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <hr class="hr-fancy mt-2 mb-2">
+                <!--Texto resultado-->
+                <div id="hechizo_texto_resultado" class="texto_resultado mb-4 mt-4 d-none">
+                    
+                </div>
 
                 <!-- Botón de calcular-->
                 <div class="d-flex justify-content-center mt-4">
@@ -521,6 +773,11 @@
                 <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
                     <h1 class="m-0">TIRADA DE RESISTENCIA</h1>
                 </div>
+
+                <!--Texto resultado-->
+                <div id="resistencia_texto_resultado" class="texto_resultado mb-4 d-none">
+                    
+                </div>
                 
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-12">
@@ -529,10 +786,10 @@
                 </div>
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-6">
-                        <input id="resistencia_nivel_origen" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel de Origen">
+                        <input id="resistencia_nivel_atacante" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del atacante">
                     </div>
                     <div class="col-6">
-                        <input id="resistencia_nivel_receptor" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del Receptor">
+                        <input id="resistencia_nivel_blanco" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del blanco">
                     </div>
                 </div>
                 <div class="row mb-3" m-0 justify-content-center>
@@ -572,6 +829,11 @@
                 <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
                     <h1 class="m-0">CRÍTICO</h1>
                 </div>
+
+                <!--Texto resultado-->
+                <div id="critico_texto_resultado" class="texto_resultado_critico_pifia mb-4 d-none">
+                    
+                </div>
                 
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-6">
@@ -605,32 +867,32 @@
                 <div class="row m-0 justify-content-center">
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_t">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="critico_tipo_t">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_a">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="critico_tipo_a">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_b">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="critico_tipo_b">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_c">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="critico_tipo_c">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_d">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="critico_tipo_d">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="tipo_e">
+                      <input class="form-check-input radio-large" type="radio" name="critico_letra" id="critico_tipo_e">
                     </div>
                   </div>
                 </div>
@@ -660,32 +922,32 @@
                 <div class="row m-0 justify-content-center mb-3">
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="calor">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_calor">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="frio">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_frio">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="electrico">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_electrico">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="impacto">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_impacto">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="aplastamiento">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_aplastamiento">
                     </div>
                   </div>
                   <div class="col-2 d-flex justify-content-center">
                     <div class="form-check">
-                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="tajo">
+                      <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_tajo">
                     </div>
                   </div>
                 </div>
@@ -710,27 +972,27 @@
                 <div class="row m-0 justify-content-center">
                     <div class="col-2 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="perforante">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_perforante">
                         </div>
                     </div>
                     <div class="col-2 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="desequilibrante">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_desequilibrante">
                         </div>
                     </div>
                     <div class="col-2 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="presa">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_presa">
                         </div>
                     </div>
                     <div class="col-2 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="fisico_gc">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_fisico_gc">
                         </div>
                     </div>
                     <div class="col-2 d-flex justify-content-center">
                         <div class="form-check">
-                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="magico_gc">
+                            <input class="form-check-input radio-large" type="radio" name="critico_tipo" id="critico_magico_gc">
                         </div>
                     </div>
                 </div>
@@ -758,27 +1020,27 @@
                     <div class="row m-0 justify-content-center">
                         <div class="col-2 d-flex justify-content-center">
                             <div class="form-check">
-                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="normal">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="critico_tipo_gc_normal">
                             </div>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
                             <div class="form-check">
-                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="magica">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="critico_tipo_gc_magica">
                             </div>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
                             <div class="form-check">
-                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="mithril">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="critico_tipo_gc_mithril">
                             </div>
                         </div>
                         <div class="col-3 d-flex justify-content-center">
                             <div class="form-check">
-                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="sagrada">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="critico_tipo_gc_sagrada">
                             </div>
                         </div>
                         <div class="col-3 d-flex justify-content-center">
                             <div class="form-check">
-                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="exterminadora">
+                                <input class="form-check-input radio-large" type="radio" name="critico_gc" id="critico_tipo_gc_exterminadora">
                             </div>
                         </div>
                     </div>
@@ -799,6 +1061,11 @@
                 <!-- Título -->
                 <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
                     <h1 class="m-0">PIFIA</h1>
+                </div>
+
+                <!--Texto resultado-->
+                <div id="pifia_texto_resultado" class="texto_resultado_critico_pifia mb-4 d-none">
+                    
                 </div>
 
                 <div class="row mb-3" m-0 justify-content-center>
@@ -1490,6 +1757,31 @@
                 </div>
             </div>
         </div>
+
+        <div id="contenedor_popup" class="d-none">
+            <div id="popup">
+                <!-- Título -->
+                <div id="popup_titulo_critico" class="display-4 text-center mb-4 btn-gradient p-3 rounded">
+                    <h1 class="m-0">¿Calcular crítico?</h1>
+                </div>
+                <div id="popup_titulo_pifia" class="display-4 text-center mb-4 btn-gradient p-3 rounded d-none">
+                    <h1 class="m-0">¿Calcular pifia?</h1>
+                </div>
+                <!--Texto resultado-->
+                <div id="popup_texto_resultado" class="texto_resultado_popup mb-4">
+                    
+                </div>
+                <div class="row mb-3" m-0 justify-content-center>
+                    <div class="col-6">
+                        <button id="btn_popup_no" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">NO</button>
+                    </div>
+                    <div class="col-6">
+                        <button id="btn_popup_si" type="button" class="btn btn-gradient fw-bold input-formulario-alto" style="width: 100%;">SI</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script type="module" src="assets/js/app.js"></script>
     </body>

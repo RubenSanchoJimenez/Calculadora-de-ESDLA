@@ -1,5 +1,5 @@
 [
-  { "min": 1, "max": 2, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": "F", "cuero": "F", "sin_armadura": "F" },
+  { "min": 1, "max": 2, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": "F", "cuero": "F", "sin_armadura": "F", "sin_Modificador": 1 },
   { "min": 3, "max": 10, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": "F", "cuero": "F", "sin_armadura": "F" },
   { "min": 11, "max": 20, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": 0, "cuero": 0, "sin_armadura": 0 },
   { "min": 21, "max": 35, "coraza": 0, "cota_de_malla": 0, "cuero_endurecido": 0, "cuero": 0, "sin_armadura": 0 },

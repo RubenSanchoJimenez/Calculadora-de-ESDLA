@@ -40,11 +40,25 @@ function registrarBoton(boton, vista) {
     }
 
     boton.addEventListener("click", () => {
-        cerrarVistas();
-        menuPrincipal?.classList.add("d-none");
-        vista.classList.remove("d-none");
-        body?.classList.add("con-fondo-borroso");
+        mostrarVistaPorElemento(vista);
     });
+}
+
+export function mostrarVista(claveVista) {
+    const vista = vistas[claveVista];
+
+    if (!vista) {
+        return;
+    }
+
+    mostrarVistaPorElemento(vista);
+}
+
+function mostrarVistaPorElemento(vista) {
+    cerrarVistas();
+    menuPrincipal?.classList.add("d-none");
+    vista.classList.remove("d-none");
+    body?.classList.add("con-fondo-borroso");
 }
 
 function cerrarVistas() {

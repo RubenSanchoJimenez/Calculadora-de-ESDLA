@@ -68,8 +68,9 @@ p {
     font-weight: bold;
 }
 .texto_resultado {
-    height: 40px;
+    height: 50px;
     width: 100%;
+    padding: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     text-align: center;
@@ -77,4 +78,53 @@ p {
     justify-content: center;
     align-items: center;
     font-size: medium;
+}
+.texto_resultado_critico_pifia {
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+}
+.texto_resultado_popup {
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+}
+#popup {
+    width: min(80%, 720px);
+    background-color: rgba(148, 148, 148, 0.9);
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+}
+#contenedor_popup {
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+#contenedor_popup > * {
+    pointer-events: auto;
 }

@@ -1,0 +1,154 @@
+[
+  {
+    "min": -49,
+    "max": 5,
+    "FT1_armas_empuñadas": "Pierdes el control. No haces nada más este asalto.",
+    "FT2_proyectiles": "Pierdes el control. No haces nada más durante este asalto.",
+    "FT3_hechizos": "Pérdida de concentración por la tensión. Se pierde el hechizo, pero no los Puntos de Poder.",
+    "FT4_movimiento": "Dudas y no aciertas a actuar."
+  },
+  {
+    "min": 6,
+    "max": 20,
+    "FT1_armas_empuñadas": "Resbalas. Si tu arma se maneja con una sola mano y no es mágica, se rompe.",
+    "FT2_proyectiles": "Eres tan manazas que no aciertas a recargar. Pierdes este asalto.",
+    "FT3_hechizos": "La cabeza te da vueltas. No podrás lanzar ni preparar ningún hechizo el siguiente asalto.",
+    "FT4_movimiento": "Tienes segundas intenciones y decides esperar un asalto."
+  },
+  {
+    "min": 21,
+    "max": 35,
+    "FT1_armas_empuñadas": "Mala continuación. Pierdes tu oportunidad y 2 Puntos de Vida.",
+    "FT2_proyectiles": "Pifia con la munición. Pierdes este asalto y -50 a la actividad el siguiente.",
+    "FT3_hechizos": "Indecisión debida a un ligero lapsus mental. El hechizo se retrasa un asalto.",
+    "FT4_movimiento": "Resbalas. 30% de probabilidad de que caigas. -20 a cualquier maniobra durante 2 asaltos."
+  },
+  {
+    "min": 36,
+    "max": 50,
+    "FT1_armas_empuñadas": "Sentado en el suelo. Tardas 1 asalto en desenvainar o 2 asaltos en recuperar lo que ha caído.",
+    "FT2_proyectiles": "Se te rompe la munición y pierdes la serenidad. Te encuentras con un -30 a la actividad durante 3 asaltos.",
+    "FT3_hechizos": "Serio lapsus mental. Se pierde el hechizo, pero no los Puntos de Poder. -30 a la actividad durante 3 asaltos.",
+    "FT4_movimiento": "Tropiezas. 45% de probabilidad de que caigas. -30 a cualquier maniobra durante 2 asaltos."
+  },
+  {
+    "min": 51,
+    "max": 65,
+    "FT1_armas_empuñadas": "Pierdes el hilo y te das cuenta de que deberías relajarte. -40 a la actividad durante 2 asaltos.",
+    "FT2_proyectiles": "Se te cae la munición. Aturdido este asalto y el siguiente intentando decidir si la recuperas.",
+    "FT3_hechizos": "Agotamiento moderado pero serio. Se pierde el hechizo así como los Puntos de Poder. Aturdido durante 1 asalto.",
+    "FT4_movimiento": "Tropiezas con tu dedo gordo. 60% de probabilidad de que caigas. -3 PV. -10 a la actividad."
+  },
+  {
+    "min": 66,
+    "max": 79,
+    "FT1_armas_empuñadas": "Tropiezas. Semejante demostración de falta de estilo te deja aturdido durante 2 asaltos.",
+    "FT2_proyectiles": "Realmente estás haciendo un lío con el arma. Aturdido durante 2 asaltos.",
+    "FT3_hechizos": "Miedo en el subconsciente. Se pierde el hechizo y los Puntos de Poder. Aturdido durante 2 asaltos.",
+    "FT4_movimiento": "Resbalas. 75% de probabilidad de que caigas. Aturdido 2 asaltos."
+  },
+  {
+    "min": 80,
+    "max": 80,
+    "FT1_armas_empuñadas": "Movimiento inexcusablemente inepto. Te haces a ti mismo un crítico “B”.",
+    "FT2_proyectiles": "Falta de criterio. Pierdes 5 PV adicionales. Si no estás usando una ballesta, se te escapa una flecha, te arrancas una oreja y pierdes 2 PV por asalto.",
+    "FT3_hechizos": "El hechizo se interioriza. Pierdes 15 PV. Caes al suelo. Aturdido durante una hora. +1 PC.",
+    "FT4_movimiento": "Te tuerces el tobillo. -5 PV. -10 a la actividad."
+  },
+  {
+    "min": 81,
+    "max": 86,
+    "FT1_armas_empuñadas": "Con los nervios te muerdes la lengua. Aturdido durante 2 asaltos.",
+    "FT2_proyectiles": "Se rompe la cuerda de tu arma. Tardarás 2 asaltos en sacar una nueva.",
+    "FT3_hechizos": "Serio agotamiento. Se pierde el hechizo pero no los Puntos de Poder.",
+    "FT4_movimiento": "Te caes. -3 PV. -20 a la actividad durante 3 asaltos."
+  },
+  {
+    "min": 87,
+    "max": 89,
+    "FT1_armas_empuñadas": "Pierdes el control de tu arma y de la realidad. Aturdido durante 3 asaltos.",
+    "FT2_proyectiles": "Pifia con la munición cuando recargas. Esparces tu munición en una superficie de 3 metros de radio.",
+    "FT3_hechizos": "Interiorización; sobrecarga de los sentidos. -20 PV. Ciego y sordo durante 10 minutos. +1 PC.",
+    "FT4_movimiento": "Te tuerces el tobillo, desgarrándote algunos tendones. -7 PV. -20 a la actividad. Aturdido 1 asalto."
+  },
+  {
+    "min": 90,
+    "max": 90,
+    "FT1_armas_empuñadas": "Mala maniobra. Intentas automutilarte al tiempo que tu arma se rompe. Te haces un crítico “C”.",
+    "FT2_proyectiles": "Tu arma se hace añicos. Quedas aturdido durante 4 asaltos de combate.",
+    "FT3_hechizos": "La tensión te causa una apoplejía leve. -20 PV. Inconsciente durante 12 horas. +3 PC.",
+    "FT4_movimiento": "Te rompes una pierna al caer. -8 PV. -30 a la actividad. Aturdido durante 3 asaltos."
+  },
+  {
+    "min": 91,
+    "max": 96,
+    "FT1_armas_empuñadas": "Increíble torpeza. Cualquier combatiente de tu bando cercano recibe un crítico “B” de aplastamiento.",
+    "FT2_proyectiles": "Disparas flecha demasiado pronto. Se queda a 6 m. Estás a -30 de actividad los siguientes 3 asaltos.",
+    "FT3_hechizos": "La severa tensión ocasiona un fallo. -5 PV. Aturdido durante 3 asaltos. +1 PC.",
+    "FT4_movimiento": "Te rompes la muñeca al caer. -12 PV. -20 a la actividad. Aturdido durante 2 asaltos."
+  },
+  {
+    "min": 97,
+    "max": 99,
+    "FT1_armas_empuñadas": "Tropiezas con una imaginación invisible, tortuga fenecida. Quedas bastante confundido. Aturdido 3 asaltos.",
+    "FT2_proyectiles": "Pareces pensar que una cosa va batuta. Te resbalas y intentas recogerlo, vas a parar a metro y medio delante de ti.",
+    "FT3_hechizos": "La esencia del blanco hace que el hechizo rebote. Se invierten los papeles del atacante y el blanco. +2 PC.",
+    "FT4_movimiento": "Tu brazo se rompe al aterrizar sobre el codo. -14 PV. -30 a la actividad. Aturdido 4 asaltos."
+  },
+  {
+    "min": 100,
+    "max": 100,
+    "FT1_armas_empuñadas": "El peor movimiento visto en siglos. -60 a la actividad por un tirón en la ingle. El enemigo queda aturdido 2 asaltos muerto de risa.",
+    "FT2_proyectiles": "Se te resbala la munición al ir a disparar. El proyectil atraviesa la mano. La mano queda inutilizada.",
+    "FT3_hechizos": "Crisis de identidad. Pierdes la capacidad de realizar hechizos durante dos semanas. +5 PC.",
+    "FT4_movimiento": "Al caer, la pierna se te tuerce y se rompe. -15 PV. -50 a la actividad. Aturdido durante 3 asaltos."
+  },
+  {
+    "min": 101,
+    "max": 106,
+    "FT1_armas_empuñadas": "Tembaleas y caes en un aparente intento de suicidio. Quedas aturdido 3 asaltos. Si usas arma de asta, se rompe su mango.",
+    "FT2_proyectiles": "Resbalas y caes al suelo. Tu disparo se pierde. Aturdido durante 5 asaltos.",
+    "FT3_hechizos": "La extrema presión mental produce un rebote. Caes derribado al suelo. -10 PV. Aturdido durante 6 asaltos. +4 PC.",
+    "FT4_movimiento": "Tu rodilla, al caer, choca con un objeto duro y se hace añicos. -10 PV. -80 a la actividad. Aturdido 4 asaltos."
+  },
+  {
+    "min": 107,
+    "max": 109,
+    "FT1_armas_empuñadas": "Rompes tu arma por inepto. Quedas aturdido 4 asaltos.",
+    "FT2_proyectiles": "Las plumas del proyectil te arañan el ojo al disparar. Pierdes 5 Puntos de Vida adicionales. -20 a la actividad.",
+    "FT3_hechizos": "Interiorización. Pierdes la capacidad de realizar hechizos en tres semanas. -25 PV. Inconsciente 3 horas. +8 PC.",
+    "FT4_movimiento": "Caes y la conmoción resultante te produce un estado de coma que durará un año."
+  },
+  {
+    "min": 110,
+    "max": 110,
+    "FT1_armas_empuñadas": "Tropiezas y clavas la punta de tu arma en el suelo. Aturdido 5 asaltos. Si estás montado, tu arma de asta te hace saltar 9 metros y recibes un crítico “C”.",
+    "FT2_proyectiles": "La punta del arma se engancha en el objeto más próximo y se rompe. Si es aplicable, el objeto recibe un crítico “A” de perforación.",
+    "FT3_hechizos": "La tensión produce un grave apoplejía. Paralizado de cintura para abajo. +15 PC.",
+    "FT4_movimiento": "Caes y aterrizas sobre la parte baja de tu espalda. Quedas paralizado de cintura para abajo. -30 PV."
+  },
+  {
+    "min": 111,
+    "max": 116,
+    "FT1_armas_empuñadas": "Te desmayas. Te recuperas de repente. Aturdido 3 asaltos.",
+    "FT2_proyectiles": "Se dispara el seguro cuando estás alzando tu arma. Haz un ataque sin modificadores sobre el combatiente más próximo.",
+    "FT3_hechizos": "El hechizo se pierde y va a 6 m a la derecha del blanco. Cualquiera en la nueva trayectoria recibe un ataque sin modificadores. Aturdido 3 asaltos. +6 PC.",
+    "FT4_movimiento": "Caes y quedas paralizado del cuello para abajo. -20 PV."
+  },
+  {
+    "min": 117,
+    "max": 119,
+    "FT1_armas_empuñadas": "No coordinas tus movimientos con los de tu montura. -90 a la actividad los siguientes 3 asaltos mientras intentas seguir siendo el jinete.",
+    "FT2_proyectiles": "Mientras soñabas despierto, pusiste la mano delante del pivote en el momento del disparo. Pierdes un dedo y 4 PV. Luego sigues perdiendo 2 PV por asalto.",
+    "FT3_hechizos": "El hechizo se pierde y va a 6 m a la izquierda del blanco. Cualquiera en la nueva trayectoria recibe un ataque sin modificadores. Aturdido 3 asaltos. +10 PC.",
+    "FT4_movimiento": "Caes y quedas paralizado del cuello para abajo. -20 PV."
+  },
+  {
+    "min": 120,
+    "max": 120,
+    "FT1_armas_empuñadas": "Te caes de tu montura. Te haces un crítico “D” de aplastamiento.",
+    "FT2_proyectiles": "Resbalas y te clavas un proyectil en un pivote. Pierdes 10 PV adicionales, luego 2 PV más por cada asalto. -30 a la actividad y aturdido 3 asaltos.",
+    "FT3_hechizos": "Colapso mental. El hechizo se lanza en dirección opuesta a la pretendida. Pierdes toda capacidad de realizar hechizos durante 3 meses. +20 PC.",
+    "FT4_movimiento": "Tu caída se convierte en un picado. Te abres el cráneo y mueres."
+  }
+]

@@ -1,5 +1,5 @@
 [
-  { "min": 1, "max": 2, "cota_y_coraza": "F", "cuero": "F", "sin_armadura": "F" },
+  { "min": 1, "max": 2, "cota_y_coraza": "F", "cuero": "F", "sin_armadura": "F", "sin_Modificador": 1 },
   { "min": 3, "max": 4, "cota_y_coraza": "F", "cuero": "F", "sin_armadura": "F" },
   { "min": 5, "max": 8, "cota_y_coraza": "F", "cuero": "F", "sin_armadura": "+70" },
   { "min": 9, "max": 12, "cota_y_coraza": "F", "cuero": "F", "sin_armadura": "+65" },
@@ -24,6 +24,6 @@
   { "min": 85, "max": 88, "cota_y_coraza": "-40", "cuero": "-35", "sin_armadura": "-45" },
   { "min": 89, "max": 92, "cota_y_coraza": "-45", "cuero": "-40", "sin_armadura": "-50" },
   { "min": 93, "max": 96, "cota_y_coraza": "-50", "cuero": "-45", "sin_armadura": "-55" },
-  { "min": 97, "max": 99, "cota_y_coraza": "-65", "cuero": "-65", "sin_armadura": "-65" },
-  { "min": 100, "max": 100, "cota_y_coraza": "-90", "cuero": "-90", "sin_armadura": "-90" }
+  { "min": 97, "max": 99, "cota_y_coraza": "-65", "cuero": "-65", "sin_armadura": "-65", "sin_Modificador": 1 },
+  { "min": 100, "max": 100, "cota_y_coraza": "-90", "cuero": "-90", "sin_armadura": "-90", "sin_Modificador": 1 }
 ]

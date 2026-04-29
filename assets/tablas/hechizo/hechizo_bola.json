@@ -1,6 +1,6 @@
 [
-  { "min": 1, "max": 4, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": "F", "cuero": "F", "sin_armadura": "F" },
-  { "min": 5, "max": 8, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": "F", "cuero": "F", "sin_armadura": "F" },
+  { "min": 1, "max": 4, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": "F", "cuero": "F", "sin_armadura": "F", "sin_Modificador": 1},
+  { "min": 5, "max": 8, "coraza": "F", "cota_de_malla": "F", "cuero_endurecido": "F", "cuero": "F", "sin_armadura": "F"},
   { "min": 9, "max": 12, "coraza": 0, "cota_de_malla": 0, "cuero_endurecido": 0, "cuero": 0, "sin_armadura": 1 },
   { "min": 13, "max": 16, "coraza": 0, "cota_de_malla": 0, "cuero_endurecido": 0, "cuero": 0, "sin_armadura": 2 },
   { "min": 17, "max": 20, "coraza": 1, "cota_de_malla": 0, "cuero_endurecido": 0, "cuero": 0, "sin_armadura": 3 },
@@ -23,6 +23,6 @@
   { "min": 85, "max": 88, "coraza": "15C", "cota_de_malla": "14C", "cuero_endurecido": "13C", "cuero": "12B", "sin_armadura": "20C" },
   { "min": 89, "max": 92, "coraza": "15C", "cota_de_malla": "14C", "cuero_endurecido": "13C", "cuero": "12B", "sin_armadura": "21C" },
   { "min": 93, "max": 96, "coraza": "16C", "cota_de_malla": "15C", "cuero_endurecido": "14C", "cuero": "13C", "sin_armadura": "22C" },
-  { "min": 97, "max": 99, "coraza": "19D", "cota_de_malla": "18D", "cuero_endurecido": "17D", "cuero": "16D", "sin_armadura": "28D" },
-  { "min": 100, "max": 100, "coraza": "22E", "cota_de_malla": "21E", "cuero_endurecido": "20E", "cuero": "19E", "sin_armadura": "34E" }
+  { "min": 97, "max": 99, "coraza": "19D", "cota_de_malla": "18D", "cuero_endurecido": "17D", "cuero": "16D", "sin_armadura": "28D", "sin_Modificador": 1 },
+  { "min": 100, "max": 100, "coraza": "22E", "cota_de_malla": "21E", "cuero_endurecido": "20E", "cuero": "19E", "sin_armadura": "34E", "sin_Modificador": 1 }
 ]

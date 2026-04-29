@@ -1,0 +1,38 @@
+[
+  {
+    "Tabla": "FT1_armas_empuñadas",
+    "armas_contundentes": -20,
+    "armas_de_filo": -10,
+    "armas_a_dos_manos": 0,
+    "armas_de_asta": 10,
+    "montado": 20
+  },
+  {
+    "Tabla": "FT2_proyectiles",
+    "honda": -20,
+    "arco_corto": -10,
+    "arco_compuesto": 0,
+    "arco_largo": 10,
+    "ballesta": 20
+  },
+  {
+    "Tabla": "FT3_hechizos",
+    "hechizo_clase_T": -20,
+    "hechizo_clase_U": -10,
+    "hechizo_clase_P": 0,
+    "hechizo_clase_F_y_E": 10,
+    "hechizo_clase_ED_y_EB": 20
+  },
+  {
+    "Tabla": "FT4_movimiento",
+    "rutinaria": -50,
+    "muy_facil": -35,
+    "facil": -20,
+    "dificultad_media": -10,
+    "dificil": 0,
+    "muy_dificil": 5,
+    "extremadamente_dificil": 10,
+    "locura_completa": 15,
+    "absurdo": 20
+  }
+]

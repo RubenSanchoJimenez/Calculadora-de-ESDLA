@@ -1,0 +1,100 @@
+[
+  {
+    "Tabla": "CT1_aplastamiento",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT2_tajo",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT3_perforacion",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT4_desequilibrio",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT5_presa",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT6_calor",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT7_frio",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT8_electricidad",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT9_impacto",
+    "Critico_T": -50,
+    "Critico_A": -20,
+    "Critico_B": -10,
+    "Critico_C": 0,
+    "Critico_D": 10,
+    "Critico_E": 20
+  },
+  {
+    "Tabla": "CT10_grandes_fisico",
+    "arma_normal_o_garras_dientes": -20,
+    "arma_magica": -10,
+    "arma_mithril": 0,
+    "arma_sagrada": 10,
+    "arma_exterminadora": 20,
+    "contra_grandes_criaturas": -10
+  },
+  {
+    "Tabla": "CT11_grandes_hechizos",
+    "arma_normal": -20,
+    "arma_magica": -10,
+    "arma_mithril": 0,
+    "arma_sagrada": 10,
+    "arma_exterminadora": 20
+  }
+]

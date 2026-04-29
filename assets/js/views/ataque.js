@@ -1,3 +1,5 @@
+import { mostrarPopupCritico, mostrarPopupPifia } from "./popupCritico.js";
+
 export const ataque = {
     init() {
         registrarVisibilidadTamanios();
@@ -33,6 +35,22 @@ const tablasAtaque = {
     ataque_proyectil: "ataque_proyectil.json",
     ataque_garra: "ataque_garras.json",
     ataque_agarre: "ataque_agarrar.json"
+};
+
+const tiposCriticoAtaque = {
+    ataque_filo: "critico_tajo",
+    ataque_contundente: "critico_aplastamiento",
+    ataque_2manos: "critico_tajo",
+    ataque_proyectil: "critico_perforante",
+    ataque_garra: "critico_tajo",
+    ataque_agarre: "critico_presa"
+};
+
+const tiposPifiaAtaque = {
+    ataque_filo: { tipo: "arma_empunada_pifia", subtipo: "arma_empunada_filo" },
+    ataque_contundente: { tipo: "arma_empunada_pifia", subtipo: "arma_empunada_cont" },
+    ataque_2manos: { tipo: "arma_empunada_pifia", subtipo: "arma_empunada_dos_manos" },
+    ataque_proyectil: { tipo: "arma_proyectil_pifia", subtipo: null }
 };
 
 const columnasArmadura = {
@@ -118,8 +136,9 @@ function registrarBotonCalcular() {
                 return;
             }
 
-            const totalConsulta = aplicarMaximoPorTamanio(seleccion);
             const tabla = await cargarTablaAtaque(seleccion.tipoAtaque);
+            const totalModificado = aplicarMaximoPorTamanio(seleccion);
+            const totalConsulta = obtenerTiradaConsulta(tabla, seleccion.dados, totalModificado);
             const tramo =
                 tabla.find((fila) => totalConsulta >= fila.min && totalConsulta <= fila.max) ||
                 (totalConsulta > tabla[tabla.length - 1]?.max ? tabla[tabla.length - 1] : null);
@@ -137,10 +156,19 @@ function registrarBotonCalcular() {
 
             const textoTotal =
                 totalConsulta !== seleccion.total
-                    ? `Total ${seleccion.total} (máx. ${seleccion.tamanioTexto}: ${totalConsulta})`
+                    ? `Total ${seleccion.total} (${obtenerTextoAjusteConsulta(seleccion, totalConsulta)})`
                     : `Total ${seleccion.total}`;
 
-            mostrarResultadoAtaque(`${textoTotal}: ${resultado}`);
+            const textoResultado = `${textoTotal}: ${resultado}`;
+            mostrarResultadoAtaque(textoResultado);
+
+            if (resultado === "F") {
+                const pifia = tiposPifiaAtaque[seleccion.tipoAtaque];
+                mostrarPopupPifia(textoResultado, pifia?.tipo, pifia?.subtipo);
+                return;
+            }
+
+            mostrarPopupCritico(resultado, tiposCriticoAtaque[seleccion.tipoAtaque], textoResultado);
         } catch (error) {
             console.error(error);
             mostrarResultadoAtaque("No se pudo calcular el ataque.");
@@ -198,8 +226,25 @@ function obtenerSeleccionAtaque() {
         tamanio,
         tamanioTexto: obtenerTextoTamanio(tamanio),
         requiereTamanio: tipoAtaque === "ataque_garra" || tipoAtaque === "ataque_agarre",
+        dados,
         total: dados + bonificadorPositivo - bonificadorNegativo + bonificadoresSituacionales
     };
+}
+
+function obtenerTiradaConsulta(tabla, dados, totalModificado) {
+    const tramoSinModificador = tabla.find(
+        (fila) => fila.sin_Modificador === 1 && dados >= fila.min && dados <= fila.max
+    );
+
+    return tramoSinModificador ? dados : totalModificado;
+}
+
+function obtenerTextoAjusteConsulta(seleccion, totalConsulta) {
+    if (totalConsulta === seleccion.dados) {
+        return `dado natural: ${totalConsulta}`;
+    }
+
+    return `max. ${seleccion.tamanioTexto}: ${totalConsulta}`;
 }
 
 function aplicarMaximoPorTamanio(seleccion) {
