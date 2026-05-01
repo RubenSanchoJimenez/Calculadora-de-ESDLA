@@ -9,7 +9,7 @@
         <link rel="icon" type="image/png" href="assets/img/logos/logo.png">
 
         <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body>
@@ -201,13 +201,13 @@
 
                 <div class="row m-0 justify-content-center">
                     <div class="col-3 d-flex justify-content-center">
-                        <input id="btn_ataque_dados" type="number" class="form-control xxs-text input-formulario" placeholder="DADOS">
+                        <input id="btn_ataque_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario" placeholder="DADOS">
                     </div>
                     <div class="col-3 d-flex justify-content-center">
-                        <input id="btn_ataque_bonificador_pos" type="number" class="form-control xxs-text input-formulario" placeholder="BONIF.+">
+                        <input id="btn_ataque_bonificador_pos" type="number" step="1" class="form-control xxs-text input-formulario" placeholder="BONIF.+">
                     </div>
                     <div class="col-3 d-flex justify-content-center">
-                        <input id="btn_ataque_bonificador_neg" type="number" class="form-control xxs-text input-formulario" placeholder="BONIF.-">
+                        <input id="btn_ataque_bonificador_neg" type="number" step="1" class="form-control xxs-text input-formulario" placeholder="BONIF.-">
                     </div>
                     <div class="col-3 d-flex justify-content-center">
                         <button id="btn_ataque_limpiar" type="button" class="btn btn-gradient fw-bold input-formulario xxs-text">LIMPIAR</button>
@@ -442,45 +442,45 @@
                     </div>
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-6">
-                            <input id="hechizo_dados_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados lanzador">
+                            <input id="hechizo_dados_lanzador" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados lanzador">
                         </div>
                         <div class="col-6">
-                            <input id="hechizo_dados_objetivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados objetivo">
+                            <input id="hechizo_dados_objetivo" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados objetivo">
                         </div>
                     </div>
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-4">
-                            <input id="hechizo_nivel_lanzador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Lanzador">
+                            <input id="hechizo_nivel_lanzador" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Lanzador">
                         </div>
                         <div class="col-4">
-                            <input id="hechizo_nivel_receptor" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Receptor">
+                            <input id="hechizo_nivel_receptor" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Receptor">
                         </div>
                         <div class="col-4">
-                            <input id="hechizo_nivel_hechizo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Hechizo">
+                            <input id="hechizo_nivel_hechizo" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Nivel Hechizo">
                         </div>
                     </div>
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-6">
-                            <input id="hechizo_bo_basico" type="number" class="form-control xxs-text input-formulario-alto" placeholder="BO Hechizo Básico">
+                            <input id="hechizo_bo_basico" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="BO Hechizo Básico">
                         </div>
                         <div class="col-6">
-                            <input id="hechizo_bonificacion_resistencia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación Resistencia">
+                            <input id="hechizo_bonificacion_resistencia" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación Resistencia">
                         </div>
                     </div>
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-6">
-                            <input id="hechizo_bonificador_positivo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Positivo">
+                            <input id="hechizo_bonificador_positivo" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Positivo">
                         </div>
                         <div class="col-6">
-                            <input id="hechizo_bonificador_negativo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Negativo">
+                            <input id="hechizo_bonificador_negativo" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonificador Negativo">
                         </div>
                     </div>
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-4">
-                            <input id="hechizo_asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
+                            <input id="hechizo_asaltos_preparacion" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
                         </div>
                         <div class="col-4">
-                            <input id="hechizo_distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
+                            <input id="hechizo_distancia" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
                         </div>
                         <div class="col-4 d-flex justify-content-center">
                             <button id="btn_limpiar_hechizos" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -579,21 +579,21 @@
 
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-4">
-                            <input id="hechizo_dirigido_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                            <input id="hechizo_dirigido_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
                         </div>
                         <div class="col-4">
-                            <input id="hechizo_dirigido_bonif_pos" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. +">
+                            <input id="hechizo_dirigido_bonif_pos" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. +">
                         </div>
                         <div class="col-4 d-flex justify-content-center">
-                            <input id="hechizo_dirigido_bonif_neg" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. -">
+                            <input id="hechizo_dirigido_bonif_neg" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. -">
                         </div>
                     </div>
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-4">
-                            <input id="hechizo_dirigido_asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
+                            <input id="hechizo_dirigido_asaltos_preparacion" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
                         </div>
                         <div class="col-4">
-                            <input id="hechizo_dirigido_distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
+                            <input id="hechizo_dirigido_distancia" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
                         </div>
                         <div class="col-4 d-flex justify-content-center">
                             <button id="btn_limpiar_hechizo_dirigido" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -689,21 +689,21 @@
 
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-4">
-                            <input id="hechizo_bola_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                            <input id="hechizo_bola_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
                         </div>
                         <div class="col-4">
-                            <input id="hechizo_bola_bonif_pos" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. +">
+                            <input id="hechizo_bola_bonif_pos" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. +">
                         </div>
                         <div class="col-4 d-flex justify-content-center">
-                            <input id="hechizo_bola_bonif_neg" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. -">
+                            <input id="hechizo_bola_bonif_neg" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonif. -">
                         </div>
                     </div>
                     <div class="row mb-3" m-0 justify-content-center>
                         <div class="col-4">
-                            <input id="hechizo_bola_asaltos_preparacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
+                            <input id="hechizo_bola_asaltos_preparacion" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Asaltos Prep.">
                         </div>
                         <div class="col-4">
-                            <input id="hechizo_bola_distancia" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
+                            <input id="hechizo_bola_distancia" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Distancia">
                         </div>
                         <div class="col-4 d-flex justify-content-center">
                             <button id="btn_limpiar_hechizo_bola" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -784,23 +784,23 @@
                 
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-12">
-                        <input id="resistencia_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                        <input id="resistencia_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
                     </div>
                 </div>
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-6">
-                        <input id="resistencia_nivel_atacante" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del atacante">
+                        <input id="resistencia_nivel_atacante" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del atacante">
                     </div>
                     <div class="col-6">
-                        <input id="resistencia_nivel_blanco" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del blanco">
+                        <input id="resistencia_nivel_blanco" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Nivel del blanco">
                     </div>
                 </div>
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-4">
-                        <input id="resistencia_bonificacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación">
+                        <input id="resistencia_bonificacion" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonificación">
                     </div>
                     <div class="col-4">
-                        <input id="resistencia_otra_bonificacion" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Otros Bonif.">
+                        <input id="resistencia_otra_bonificacion" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Otros Bonif.">
                     </div>
                     <div class="col-4">
                         <button id="btn_limpiar_resistencia" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -840,7 +840,7 @@
                 
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-6">
-                        <input id="critico_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                        <input id="critico_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
                     </div>
                     <div class="col-6">
                         <button id="btn_limpiar_critico" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -1073,7 +1073,7 @@
 
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-6">
-                        <input id="pifia_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dado Pifia">
+                        <input id="pifia_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dado Pifia">
                     </div>
                     <div class="col-6">
                         <button id="btn_limpiar_pifia" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -1388,15 +1388,15 @@
 
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-6">
-                        <input id="mm_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                        <input id="mm_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
                     </div>
                     <div class="col-6">
-                        <input id="mm_bonus" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonus MM">                    
+                        <input id="mm_bonus" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonus MM">                    
                     </div>
                 </div>
                 <div class="row mb-3" m-0 justify-content-center>
                     <div class="col-6">
-                        <input id="mm_otros" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Otros">
+                        <input id="mm_otros" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Otros">
                     </div>
                     <div class="col-6">
                         <button id="btn_limpiar_mm" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -1539,10 +1539,10 @@
 
                 <div class="row mb-3 m-0 justify-content-center">
                     <div class="col-4">
-                        <input id="me_dados" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
+                        <input id="me_dados" type="number" min="1" max="100" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Dados">
                     </div>
                     <div class="col-4">
-                        <input id="me_bonificador" type="number" class="form-control xxs-text input-formulario-alto" placeholder="Bonif.">
+                        <input id="me_bonificador" type="number" step="1" class="form-control xxs-text input-formulario-alto" placeholder="Bonif.">
                     </div>
                     <div class="col-4">
                         <button id="btn_limpiar_me" type="button" class="btn btn-gradient fw-bold input-formulario-alto xxs-text" style="width: 100%;">LIMPIAR</button>
@@ -1729,7 +1729,7 @@
                 <div id="me_leer_runas_seleccion">
                     <div class="row mb-3 m-0 justify-content-center">
                         <div class="col-10">
-                            <input id="me_nivel_hechizo" type="number" class="form-control xxs-text input-formulario-alto" placeholder="NIVEL DE HECHIZO">
+                            <input id="me_nivel_hechizo" type="number" min="0" step="1" class="form-control xxs-text input-formulario-alto" placeholder="NIVEL DE HECHIZO">
                         </div>
                     </div>
                     <div class="row m-0 justify-content-center text-center">
@@ -1830,7 +1830,7 @@
             <!--Vista Quienes somos-->
             <div id="vista-quienes-somos" class="xxs-text d-none">
                 <div class="display-4 text-center mb-4 btn-gradient p-3 rounded">
-                    <h1 class="m-0">QUIÉNES SOMOS</h1>
+                    <h1 class="m-0">¿QUIÉNES SOMOS?</h1>
                 </div>
 
                 <div class="vista-informativa">
@@ -1901,7 +1901,7 @@
             </div>
         </div>
         
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
         <script type="module" src="assets/js/app.js"></script>
     </body>
 </html>

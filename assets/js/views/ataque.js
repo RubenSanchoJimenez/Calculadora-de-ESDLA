@@ -1,3 +1,5 @@
+import { calcularResultadoAtaque, calcularTotalAtaque } from "../lib/ataque.js";
+import { describirRango, validarEnteroEnRango } from "../lib/validacion.js";
 import { mostrarPopupCritico, mostrarPopupPifia } from "./popupCritico.js";
 
 export const ataque = {
@@ -62,23 +64,6 @@ const columnasArmadura = {
     ataque_sa: "sin_armadura"
 };
 
-const maximosPorTamanio = {
-    ataque_garra: {
-        ataque_diminuto: 85,
-        ataque_pequeno: 105,
-        ataque_mediano: 120,
-        ataque_grande: 135,
-        ataque_enorme: 150
-    },
-    ataque_agarre: {
-        ataque_diminuto: 85,
-        ataque_pequeno: 105,
-        ataque_mediano: 120,
-        ataque_grande: 135,
-        ataque_enorme: 150
-    }
-};
-
 const cacheTablas = new Map();
 
 function registrarVisibilidadTamanios() {
@@ -137,19 +122,20 @@ function registrarBotonCalcular() {
                 return;
             }
 
+            const errorDados = validarEnteroEnRango(seleccion.dados, 1, 100);
+            if (errorDados) {
+                mostrarResultadoAtaque(`La tirada de dados debe ser un ${describirRango(errorDados)}.`);
+                return;
+            }
+
             const tabla = await cargarTablaAtaque(seleccion.tipoAtaque);
-            const totalModificado = aplicarMaximoPorTamanio(seleccion);
-            const totalConsulta = obtenerTiradaConsulta(tabla, seleccion.dados, totalModificado);
-            const tramo =
-                tabla.find((fila) => totalConsulta >= fila.min && totalConsulta <= fila.max) ||
-                (totalConsulta > tabla[tabla.length - 1]?.max ? tabla[tabla.length - 1] : null);
+            const { totalConsulta, tramo, resultado } = calcularResultadoAtaque(tabla, seleccion);
 
             if (!tramo) {
                 mostrarResultadoAtaque(`No existe resultado para una tirada total de ${seleccion.total}.`);
                 return;
             }
 
-            const resultado = tramo[seleccion.armadura];
             if (typeof resultado === "undefined") {
                 mostrarResultadoAtaque("No hay resultado para la combinación seleccionada.");
                 return;
@@ -228,16 +214,13 @@ function obtenerSeleccionAtaque() {
         tamanioTexto: obtenerTextoTamanio(tamanio),
         requiereTamanio: tipoAtaque === "ataque_garra" || tipoAtaque === "ataque_agarre",
         dados,
-        total: dados + bonificadorPositivo - bonificadorNegativo + bonificadoresSituacionales
+        total: calcularTotalAtaque({
+            dados,
+            bonificadorPositivo,
+            bonificadorNegativo,
+            bonificadoresSituacionales
+        })
     };
-}
-
-function obtenerTiradaConsulta(tabla, dados, totalModificado) {
-    const tramoSinModificador = tabla.find(
-        (fila) => fila.sin_Modificador === 1 && dados >= fila.min && dados <= fila.max
-    );
-
-    return tramoSinModificador ? dados : totalModificado;
 }
 
 function obtenerTextoAjusteConsulta(seleccion, totalConsulta) {
@@ -246,15 +229,6 @@ function obtenerTextoAjusteConsulta(seleccion, totalConsulta) {
     }
 
     return `max. ${seleccion.tamanioTexto}: ${totalConsulta}`;
-}
-
-function aplicarMaximoPorTamanio(seleccion) {
-    if (!seleccion.requiereTamanio || !seleccion.tamanio) {
-        return seleccion.total;
-    }
-
-    const maximo = maximosPorTamanio[seleccion.tipoAtaque]?.[seleccion.tamanio];
-    return typeof maximo === "number" ? Math.min(seleccion.total, maximo) : seleccion.total;
 }
 
 function obtenerTextoTamanio(tamanio) {

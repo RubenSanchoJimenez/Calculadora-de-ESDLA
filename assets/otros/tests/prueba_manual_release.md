@@ -89,10 +89,22 @@ Resultado esperado: sin nivel muestra error; con nivel calcula resultado.
 
 Resultado esperado: no aparece error de carga y la navegacion vuelve a `Otros`.
 
+### 8. Navegacion visual general
+
+1. Desde Inicio, entrar en `Ataque`, `Hechizo`, `Critico`, `Pifia`, `ME`, `MM`, `Otros` y `TR`.
+2. En cada vista, confirmar que solo queda visible la pantalla seleccionada y que el logo del navbar cambia a flecha de volver.
+3. Pulsar la flecha de volver desde cada vista y confirmar retorno a Inicio.
+4. Entrar en `Otros`, abrir cualquier tabla dinamica y pulsar la flecha de volver.
+5. Confirmar que desde una tabla dinamica se vuelve a `Otros`, no directamente a Inicio.
+6. Reducir el ancho del navegador a tamano movil y comprobar que el boton hamburguesa abre y cierra el navbar.
+
+Resultado esperado: la navegacion es coherente en escritorio y movil, sin vistas solapadas ni errores en consola.
+
 ## Cierre
 
 La release queda lista si:
 
-- Los siete flujos anteriores pasan.
+- Los ocho flujos anteriores pasan.
 - La consola del navegador no muestra errores JavaScript.
 - `assets/otros/tests/validacion_estatica.ps1` devuelve `Validacion estatica OK`.
+- `assets/otros/tests/calculos_funcionales.ps1` devuelve `Tests funcionales de calculo OK`.

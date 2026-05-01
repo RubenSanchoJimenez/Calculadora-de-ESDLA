@@ -1,6 +1,15 @@
 ﻿import { mostrarPopupCritico, mostrarPopupPifia } from "./popupCritico.js";
 import { calcularUmbralResistenciaTabla } from "../lib/resistencia.js";
 
+import {
+    calcularModificadorDistancia,
+    calcularModificadorDistanciaDirigido,
+    calcularModificadorPreparacion,
+    calcularTiradaTablaHechizo
+} from "../lib/hechizo.js";
+import { buscarFilaPorRango, obtenerTiradaConsulta } from "../lib/tablas.js";
+import { describirRango, validarEnteroEnRango } from "../lib/validacion.js";
+
 export const hechizo = {
     init() {
         registrarCambioTipoHechizo();
@@ -195,6 +204,20 @@ async function calcularHechizoBasico() {
         return;
     }
 
+    const errorRango = validarRangosHechizo([
+        ["Dados lanzador", dadosLanzador, 1, 100],
+        ["Dados objetivo", dadosObjetivo, 1, 100],
+        ["Nivel lanzador", nivelLanzador, 0],
+        ["Nivel receptor", nivelReceptor, 0],
+        ["Nivel hechizo", nivelHechizo, 0],
+        ["Asaltos de preparacion", asaltosPreparacion, 0],
+        ["Distancia", distancia, 0]
+    ]);
+    if (errorRango) {
+        mostrarResultadoHechizo(errorRango);
+        return;
+    }
+
     const modDistancia = calcularModificadorDistancia(distancia);
     const modPreparacion = calcularModificadorPreparacion(asaltosPreparacion);
     const modAtacante = boBasico - nivelHechizo;
@@ -212,7 +235,7 @@ async function calcularHechizoBasico() {
 
     const tabla = await cargarTabla("hechizo_basico", "../../tablas/hechizo/hechizo_basico.json");
     const tiradaTabla = obtenerTiradaConsulta(tabla, dadosLanzador, calcularTiradaTablaHechizo(dadosLanzador, tiradaAtaque));
-    const fila = buscarFilaTabla(tabla, tiradaTabla);
+    const fila = buscarFilaPorRango(tabla, tiradaTabla);
     const columna = obtenerColumnaBasico(tipoLanzamiento, armaduraReceptorId);
     const modificadorTabla = fila?.[columna];
 
@@ -268,6 +291,16 @@ async function calcularHechizoDirigido() {
         return;
     }
 
+    const errorRango = validarRangosHechizo([
+        ["Dados", dados, 1, 100],
+        ["Asaltos de preparacion", asaltos, 0],
+        ["Distancia", distancia, 0]
+    ]);
+    if (errorRango) {
+        mostrarResultadoHechizo(errorRango);
+        return;
+    }
+
     const modEscudo = document.getElementById("hechizo_dirigido_escudo")?.checked ? -20 : 0;
     const tirada =
         dados +
@@ -281,7 +314,7 @@ async function calcularHechizoDirigido() {
     // Los maximos de subtipo limitan la tirada modificada antes de consultar la tabla.
     const tiradaCapada = Math.min(tirada, maximosHechizoDirigido[subtipo] ?? 150);
     const tiradaTabla = obtenerTiradaConsulta(tabla, dados, tiradaCapada);
-    const fila = buscarFilaTabla(tabla, tiradaTabla);
+    const fila = buscarFilaPorRango(tabla, tiradaTabla);
     const resultado = fila?.[columnasImpacto[armaduraId]];
 
     if (typeof resultado === "undefined") {
@@ -329,6 +362,16 @@ async function calcularHechizoBola() {
         return;
     }
 
+    const errorRango = validarRangosHechizo([
+        ["Dados", dados, 1, 100],
+        ["Asaltos de preparacion", asaltos, 0],
+        ["Distancia", distancia, 0]
+    ]);
+    if (errorRango) {
+        mostrarResultadoHechizo(errorRango);
+        return;
+    }
+
     const tirada =
         dados +
         bonifPos -
@@ -339,7 +382,7 @@ async function calcularHechizoBola() {
 
     const tabla = await cargarTabla("hechizo_bola", "../../tablas/hechizo/hechizo_bola.json");
     const tiradaTabla = obtenerTiradaConsulta(tabla, dados, calcularTiradaTablaHechizo(dados, tirada));
-    const fila = buscarFilaTabla(tabla, tiradaTabla);
+    const fila = buscarFilaPorRango(tabla, tiradaTabla);
     const resultado = fila?.[columnasImpacto[armaduraId]];
 
     if (typeof resultado === "undefined") {
@@ -388,76 +431,22 @@ function sonNumerosValidos(valores) {
     return valores.every((valor) => Number.isFinite(valor));
 }
 
+function validarRangosHechizo(campos) {
+    const invalido = campos.find(([, valor, minimo, maximo]) =>
+        validarEnteroEnRango(valor, minimo, maximo) !== null
+    );
+
+    if (!invalido) {
+        return null;
+    }
+
+    const [nombre, valor, minimo, maximo] = invalido;
+    const error = validarEnteroEnRango(valor, minimo, maximo);
+    return `${nombre} debe ser un ${describirRango(error)}.`;
+}
+
 function obtenerRadioMarcado(selector) {
     return document.querySelector(`${selector}:checked`);
-}
-
-function calcularModificadorDistancia(distancia) {
-    if (distancia <= 0) {
-        return 30;
-    }
-
-    if (distancia <= 3) {
-        return 10;
-    }
-
-    if (distancia <= 15) {
-        return 0;
-    }
-
-    if (distancia <= 30) {
-        return -10;
-    }
-
-    if (distancia <= 100) {
-        return -20;
-    }
-
-    return -30;
-}
-
-function calcularModificadorDistanciaDirigido(distancia) {
-    if (distancia <= 3) {
-        return 35;
-    }
-
-    if (distancia <= 15) {
-        return 0;
-    }
-
-    if (distancia <= 30) {
-        return -25;
-    }
-
-    if (distancia <= 60) {
-        return -40;
-    }
-
-    if (distancia <= 100) {
-        return -55;
-    }
-
-    return -75;
-}
-
-function calcularModificadorPreparacion(asaltos) {
-    if (asaltos >= 4) {
-        return 20;
-    }
-
-    if (asaltos === 3) {
-        return 10;
-    }
-
-    if (asaltos === 2) {
-        return 0;
-    }
-
-    if (asaltos === 1) {
-        return -15;
-    }
-
-    return -30;
 }
 
 function obtenerColumnaBasico(tipoLanzamiento, armaduraReceptorId) {
@@ -479,44 +468,6 @@ function convertirModificador(valor) {
 
 function formatearModificador(valor) {
     return valor > 0 ? `+${valor}` : String(valor);
-}
-
-function buscarFilaTabla(tabla, tirada) {
-    if (!Array.isArray(tabla) || tabla.length === 0) {
-        return null;
-    }
-
-    const fila = tabla.find((item) => tirada >= item.min && tirada <= item.max);
-    if (fila) {
-        return fila;
-    }
-
-    if (tirada < tabla[0].min) {
-        return tabla[0];
-    }
-
-    return tabla[tabla.length - 1];
-}
-
-function obtenerTiradaConsulta(tabla, dadosNaturales, tiradaModificada) {
-    const tramoSinModificador = tabla.find(
-        (fila) => fila.sin_Modificador === 1 && dadosNaturales >= fila.min && dadosNaturales <= fila.max
-    );
-
-    return tramoSinModificador ? dadosNaturales : tiradaModificada;
-}
-
-function calcularTiradaTablaHechizo(dadosNaturales, tiradaModificada) {
-    // En hechizo basico y bola, 97-100 consultan por dado natural; el resto no supera 96.
-    if (dadosNaturales === 100) {
-        return 100;
-    }
-
-    if (dadosNaturales >= 97 && dadosNaturales <= 99) {
-        return dadosNaturales;
-    }
-
-    return Math.min(tiradaModificada, 96);
 }
 
 async function cargarTabla(clave, rutaRelativa) {

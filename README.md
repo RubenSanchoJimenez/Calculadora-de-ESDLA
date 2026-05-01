@@ -19,13 +19,13 @@ El objetivo no es sustituir el manual ni la decision del director de juego, sino
 
 - **HTML5**: estructura principal en `index.html`.
 - **CSS3**: estilos propios en `assets/css/styles.css`.
-- **Bootstrap 5.3**: rejilla responsive, navbar, botones, tablas y utilidades visuales.
+- **Bootstrap 5.3.8**: rejilla responsive, navbar, botones, tablas y utilidades visuales cargadas desde CDN con SRI.
 - **JavaScript ES Modules**: logica separada por vista en `assets/js/views/`.
 - **Fetch API**: carga de tablas JSON desde `assets/tablas/`.
 - **JSON**: almacenamiento de tablas de reglas y tablas informativas.
 - **Arquitectura estatica sin backend**: la aplicacion funciona como cliente web.
 
-> Bootstrap se carga desde CDN. Para uso completamente offline conviene servir una copia local.
+> Bootstrap se carga desde CDN con `integrity` y `crossorigin="anonymous"`. Para uso completamente offline conviene servir una copia local.
 
 ## Estructura
 
@@ -40,7 +40,12 @@ El objetivo no es sustituir el manual ni la decision del director de juego, sino
 |   |-- js/
 |   |   |-- app.js
 |   |   |-- lib/
-|   |   |   `-- resistencia.js
+|   |   |   |-- ataque.js
+|   |   |   |-- hechizo.js
+|   |   |   |-- maniobras.js
+|   |   |   |-- resistencia.js
+|   |   |   |-- tablas.js
+|   |   |   `-- validacion.js
 |   |   `-- views/
 |   |       |-- ataque.js
 |   |       |-- critico.js
@@ -56,6 +61,7 @@ El objetivo no es sustituir el manual ni la decision del director de juego, sino
 |   |   |-- El Senor de los Anillos 2a Ed (MERP).pdf
 |   |   |-- reportes/
 |   |   `-- tests/
+|   |       |-- calculos_funcionales.ps1
 |   |       |-- prueba_manual_release.md
 |   |       `-- validacion_estatica.ps1
 |   `-- tablas/
@@ -95,7 +101,18 @@ Comprueba:
 
 - Que no haya IDs duplicados en `index.html`.
 - Que no queden referencias DOM obsoletas detectadas en revisiones anteriores.
+- Que las rutas y nombres JSON usados por JavaScript existan en `assets/tablas/`.
 - Que todos los JSON de `assets/tablas/` sean validos.
+
+## Tests funcionales de calculo
+
+El proyecto incluye una prueba funcional ligera para formulas y consultas criticas de tablas:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File assets\otros\tests\calculos_funcionales.ps1
+```
+
+Comprueba casos representativos de ataque, TR, hechizos, MM y ME usando datos reales de `assets/tablas/`.
 
 ## Prueba manual de release
 
@@ -114,6 +131,7 @@ Recorre los flujos principales recomendados antes de publicar una release:
 - MM con resultado `F` y popup de pifia.
 - ME leer runas sin nivel y con nivel.
 - Tabla informativa de experiencia.
+- Navegacion principal, flecha de volver, navbar responsive y retorno desde tabla dinamica.
 
 ## Navegacion general
 
@@ -377,7 +395,7 @@ Ventajas:
 - La aplicacion automatiza consultas y calculos, pero no reemplaza la interpretacion de reglas del manual.
 - Algunas decisiones siguen dependiendo del director de juego.
 - La precision depende de que las tablas JSON esten correctamente transcritas.
-- Bootstrap depende de CDN salvo que se anada una copia local.
+- Bootstrap depende de CDN, aunque usa SRI para verificar la integridad del recurso.
 
 ## Autor
 

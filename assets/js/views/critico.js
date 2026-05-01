@@ -1,3 +1,6 @@
+import { buscarFilaPorRango } from "../lib/tablas.js";
+import { describirRango, validarEnteroEnRango } from "../lib/validacion.js";
+
 export const critico = {
     init() {
         registrarVisibilidadTipoGc();
@@ -103,6 +106,12 @@ function registrarBotonCalcularCritico() {
                 return;
             }
 
+            const errorDados = validarEnteroEnRango(dados, 1, 100);
+            if (errorDados) {
+                mostrarResultadoCritico(`La tirada de dados debe ser un ${describirRango(errorDados)}.`);
+                return;
+            }
+
             if (!tipo) {
                 mostrarResultadoCritico("Selecciona un tipo de crítico.");
                 return;
@@ -155,7 +164,7 @@ function registrarBotonCalcularCritico() {
                 "critico_tirada",
                 "../../tablas/critico/critico_tirada.json"
             );
-            const filaResultado = buscarFilaCritico(tablaTirada, total);
+            const filaResultado = buscarFilaPorRango(tablaTirada, total);
             const resultado = filaResultado?.[tablaTipo];
 
             if (!resultado) {
@@ -213,23 +222,6 @@ async function cargarTablaCritico(clave, rutaRelativa) {
     }
 
     return tablasCritico[clave];
-}
-
-function buscarFilaCritico(tabla, total) {
-    if (!Array.isArray(tabla) || tabla.length === 0) {
-        return null;
-    }
-
-    const fila = tabla.find((item) => total >= item.min && total <= item.max);
-    if (fila) {
-        return fila;
-    }
-
-    if (total < tabla[0].min) {
-        return tabla[0];
-    }
-
-    return tabla[tabla.length - 1];
 }
 
 function mostrarResultadoCritico(texto) {

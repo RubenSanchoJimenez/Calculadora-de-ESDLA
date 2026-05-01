@@ -1,3 +1,6 @@
+import { buscarFilaPorRango, calcularTotalMe } from "../lib/maniobras.js";
+import { describirRango, validarEnteroEnRango } from "../lib/validacion.js";
+
 export const me = {
     init() {
         registrarVisibilidadSeleccionMe();
@@ -84,6 +87,12 @@ function registrarBotonCalcularMe() {
                 return;
             }
 
+            const errorDados = validarEnteroEnRango(seleccion.dados, 1, 100);
+            if (errorDados) {
+                mostrarResultadoMe(`La tirada de dados debe ser un ${describirRango(errorDados)}.`);
+                return;
+            }
+
             if (!seleccion.columna) {
                 mostrarResultadoMe("Selecciona el tipo de maniobra estática.");
                 return;
@@ -99,10 +108,24 @@ function registrarBotonCalcularMe() {
                 return;
             }
 
+            const errorNivelHechizo = seleccion.requiereNivelHechizo
+                ? validarEnteroEnRango(seleccion.nivelHechizo, 0)
+                : null;
+            if (errorNivelHechizo) {
+                mostrarResultadoMe(`El nivel del hechizo debe ser un ${describirRango(errorNivelHechizo)}.`);
+                return;
+            }
+
             const modificadorDificultad = await obtenerModificadorDificultadMe(seleccion.dificultadClave);
-            const total = seleccion.totalBase + modificadorDificultad;
+            const total = calcularTotalMe({
+                dados: seleccion.dados,
+                bonificador: seleccion.bonificador,
+                modificadores: seleccion.modificadores,
+                nivelHechizo: seleccion.nivelHechizo,
+                modificadorDificultad
+            });
             const tabla = await cargarTablaMe("me_tirada", "../../tablas/maniobra_estatica/me_tirada.json");
-            const fila = buscarFilaMe(tabla, total);
+            const fila = buscarFilaPorRango(tabla, total);
             const resultado = fila?.[seleccion.columna];
 
             if (!resultado) {
@@ -184,13 +207,14 @@ function obtenerSeleccionMe() {
 
     return {
         dados,
+        bonificador,
+        modificadores,
         nivelHechizo,
         dificultad,
         dificultadClave: dificultad ? dificultadesMe[dificultad.id] : null,
         columna: tipoManiobra ? columnasMe[tipoManiobra.id] : null,
         requiereDificultad: Boolean(tipoManiobra && tipoManiobra.id !== "me_leer_runas"),
-        requiereNivelHechizo: tipoManiobra?.id === "me_leer_runas",
-        totalBase: dados + bonificador + modificadores - nivelHechizo
+        requiereNivelHechizo: tipoManiobra?.id === "me_leer_runas"
     };
 }
 
@@ -234,23 +258,6 @@ async function cargarTablaMe(clave, rutaRelativa) {
     }
 
     return cacheTablasMe.get(clave);
-}
-
-function buscarFilaMe(tabla, total) {
-    if (!Array.isArray(tabla) || tabla.length === 0) {
-        return null;
-    }
-
-    const fila = tabla.find((item) => total >= item.min && total <= item.max);
-    if (fila) {
-        return fila;
-    }
-
-    if (total < tabla[0].min) {
-        return tabla[0];
-    }
-
-    return tabla[tabla.length - 1];
 }
 
 function mostrarResultadoMe(texto) {

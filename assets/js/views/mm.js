@@ -1,3 +1,5 @@
+import { buscarFilaPorRango, calcularTotalMm, formatearResultadoMm } from "../lib/maniobras.js";
+import { describirRango, validarEnteroEnRango } from "../lib/validacion.js";
 import { mostrarPopupPifia } from "./popupCritico.js";
 
 export const mm = {
@@ -72,13 +74,19 @@ function registrarBotonCalcularMm() {
                 return;
             }
 
+            const errorDados = validarEnteroEnRango(seleccion.dados, 1, 100);
+            if (errorDados) {
+                mostrarResultadoMm(`La tirada de dados debe ser un ${describirRango(errorDados)}.`);
+                return;
+            }
+
             if (!seleccion.columna) {
                 mostrarResultadoMm("Selecciona la dificultad de la maniobra.");
                 return;
             }
 
             const tabla = await cargarTablaMm("mm_tirada", "../../tablas/maniobra_movimiento/mm_tirada.json");
-            const fila = buscarFilaMm(tabla, seleccion.total);
+            const fila = buscarFilaPorRango(tabla, seleccion.total);
             const resultado = fila?.[seleccion.columna];
 
             if (typeof resultado === "undefined") {
@@ -141,7 +149,7 @@ function obtenerSeleccionMm() {
         dificultadId: dificultad?.id ?? null,
         pifiaDificultadId: dificultad ? pifiasPorDificultadMm[dificultad.id] : null,
         columna: dificultad ? columnasMm[dificultad.id] : null,
-        total: dados + bonus + otros + modificadoresEstado
+        total: calcularTotalMm({ dados, bonus, otros, modificadoresEstado })
     };
 }
 
@@ -170,27 +178,6 @@ async function cargarTablaMm(clave, rutaRelativa) {
     }
 
     return cacheTablasMm.get(clave);
-}
-
-function buscarFilaMm(tabla, total) {
-    if (!Array.isArray(tabla) || tabla.length === 0) {
-        return null;
-    }
-
-    const fila = tabla.find((item) => total >= item.min && total <= item.max);
-    if (fila) {
-        return fila;
-    }
-
-    if (total < tabla[0].min) {
-        return tabla[0];
-    }
-
-    return tabla[tabla.length - 1];
-}
-
-function formatearResultadoMm(resultado) {
-    return typeof resultado === "number" ? `${resultado}/100` : resultado;
 }
 
 function mostrarResultadoMm(texto) {

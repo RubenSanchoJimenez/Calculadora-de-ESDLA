@@ -1,3 +1,6 @@
+import { buscarFilaPorRango } from "../lib/tablas.js";
+import { describirRango, validarEnteroEnRango } from "../lib/validacion.js";
+
 export const pifia = {
     init() {
         registrarVisibilidadSeleccionPifia();
@@ -95,6 +98,12 @@ function registrarBotonCalcularPifia() {
                 return;
             }
 
+            const errorDados = validarEnteroEnRango(seleccion.dados, 1, 100);
+            if (errorDados) {
+                mostrarResultadoPifia(`La tirada de dados debe ser un ${describirRango(errorDados)}.`);
+                return;
+            }
+
             if (!seleccion.tipoAccion) {
                 mostrarResultadoPifia("Selecciona un tipo de acción.");
                 return;
@@ -133,7 +142,7 @@ function registrarBotonCalcularPifia() {
                 "pifia_tirada",
                 "../../tablas/pifia/pifia_tirada.json"
             );
-            const filaResultado = buscarFilaPifia(tablaTirada, total);
+            const filaResultado = buscarFilaPorRango(tablaTirada, total);
             const columnaResultado = obtenerColumnaResultadoPifia(filaResultado, seleccion.tablaTipo);
             const resultado = columnaResultado ? filaResultado?.[columnaResultado] : null;
 
@@ -223,23 +232,6 @@ async function cargarTablaPifia(clave, rutaRelativa) {
     }
 
     return cacheTablasPifia.get(clave);
-}
-
-function buscarFilaPifia(tabla, total) {
-    if (!Array.isArray(tabla) || tabla.length === 0) {
-        return null;
-    }
-
-    const fila = tabla.find((item) => total >= item.min && total <= item.max);
-    if (fila) {
-        return fila;
-    }
-
-    if (total < tabla[0].min) {
-        return tabla[0];
-    }
-
-    return tabla[tabla.length - 1];
 }
 
 function obtenerColumnaResultadoPifia(filaResultado, tablaTipo) {

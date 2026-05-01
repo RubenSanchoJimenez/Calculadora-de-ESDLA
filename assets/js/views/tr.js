@@ -1,4 +1,5 @@
 import { calcularUmbralResistenciaTabla } from "../lib/resistencia.js";
+import { describirRango, validarEnteroEnRango } from "../lib/validacion.js";
 
 export const tr = {
     init() {
@@ -53,6 +54,12 @@ function registrarBotonCalcularResistencia() {
                 return;
             }
 
+            const errorRango = validarRangosResistencia(seleccion);
+            if (errorRango) {
+                mostrarResultadoResistencia(errorRango);
+                return;
+            }
+
             const tabla = await cargarTablaResistencia();
             const umbralAjustado = calcularUmbralResistenciaTabla(
                 tabla,
@@ -103,6 +110,25 @@ function obtenerSeleccionResistencia() {
         otraBonificacion: otraBonificacionTexto === "" ? 0 : Number(otraBonificacionTexto),
         ajusteVoluntario: resistenciaBlancoVoluntario?.checked ? -50 : 0
     };
+}
+
+function validarRangosResistencia(seleccion) {
+    const campos = [
+        ["Dados", seleccion.dados, 1, 100],
+        ["Nivel del atacante", seleccion.nivelAtacante, 0],
+        ["Nivel del blanco", seleccion.nivelBlanco, 0]
+    ];
+    const invalido = campos.find(([, valor, minimo, maximo]) =>
+        validarEnteroEnRango(valor, minimo, maximo) !== null
+    );
+
+    if (!invalido) {
+        return null;
+    }
+
+    const [nombre, valor, minimo, maximo] = invalido;
+    const error = validarEnteroEnRango(valor, minimo, maximo);
+    return `${nombre} debe ser un ${describirRango(error)}.`;
 }
 
 async function cargarTablaResistencia() {
